@@ -1,0 +1,13 @@
+#!/bin/sh
+
+#	Run by itself, set the wallpaper (at X start).
+#	If given a file, set that as the new wallpaper.
+
+# Location of link to wallpaper link.
+bgloc="${XDG_DATA_HOME:-$HOME/.local/share/}/bg"
+
+[ -f "$1" ] && ln -sf "$(readlink -f "$1")" "$bgloc" && notify-send -i "$bgloc" "Changing wallpaper..."
+
+[ ! -f "$bgloc" ] && xwallpaper --zoom /usr/share/wallpapers/wp.jpg && exit
+
+xwallpaper --zoom "$bgloc"

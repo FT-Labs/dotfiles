@@ -1,0 +1,17 @@
+#!/bin/sh
+
+mkdir -p "$HOME/.local/.phycache/dwm"
+mkdir -p "$HOME/.local/.phycache/dwmblocks"
+cd "$HOME/.local/.phycache/$1"
+
+rm PKGBUILD
+
+if [ "$1" == "dwm" ]; then
+wget "https://raw.githubusercontent.com/PhyTech-R0/dwm-phyOS/master/PKGBUILD"
+elif [ "$1" == "dwmblocks" ]; then
+wget "https://raw.githubusercontent.com/PhyTech-R0/dwmblocks-phyOS/main/PKGBUILD"
+fi
+
+makepkg -si
+
+yes | rm -r "$1-phyOS" src pkg *.zst PKGBUILD

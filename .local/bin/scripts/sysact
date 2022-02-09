@@ -1,0 +1,19 @@
+#!/bin/sh
+
+# A dmenu wrapper script for system functions.
+
+case "$(readlink -f /sbin/init)" in
+	*systemd*) ctl='systemctl' ;;
+	*) ctl='loginctl' ;;
+esac
+
+cmds="\
+🖥️  powerof	$ctl poweroff -i
+🔒 lock		dm-tool lock
+🚪 logout	kill -TERM $(pidof -s dwm)
+♻ renew dwm	kill -HUP $(pidof -s dwm)
+🔃 reboot	$ctl reboot -i"
+
+choice="$(echo "$cmds" | cut -d'	' -f 1 | dmenu)" || exit 1
+
+`echo "$cmds" | grep "^$choice	" | cut -d '	' -f2-`
