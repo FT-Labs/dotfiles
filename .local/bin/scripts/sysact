@@ -8,7 +8,7 @@ case "$(readlink -f /sbin/init)" in
 esac
 
 cmds="\
-🖥️  powerof	$ctl poweroff -i
+🖥️  poweroff	$ctl poweroff -i
 🔒 lock		dm-tool lock
 🚪 logout	kill -TERM $(pidof -s dwm)
 ♻ renew dwm	kill -HUP $(pidof -s dwm)
