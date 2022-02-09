@@ -8,6 +8,7 @@
 # screen) and so they are needed there. To prevent doubling up commands, I
 # source them here with the line below.
 
+
 . ~/.config/xprofile
 
 ssh-agent dwm
