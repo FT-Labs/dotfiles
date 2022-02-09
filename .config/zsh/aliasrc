@@ -29,7 +29,9 @@ alias \
 
 alias \
 	weath="less -S ${XDG_DATA_HOME:-$HOME/.local/share}/weatherreport" \
-    vm="/usr/bin/vim"
+    vm="/usr/bin/vim" \
+	wp="whatsapp-for-linux" \
+	dc="discord"
 
 # Bare git dot config
 alias \
