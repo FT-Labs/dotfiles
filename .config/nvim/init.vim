@@ -19,6 +19,7 @@ Plug 'tpope/vim-commentary'
 Plug 'ap/vim-css-color'
 Plug 'neoclide/coc.nvim',{'branch': 'master'}
 Plug 'dense-analysis/ale'
+Plug 'catppuccin/nvim', {'as': 'catppuccin'}
 call plug#end()
 
 set go=a
@@ -35,7 +36,8 @@ set concealcursor=vin
 set pumheight=20
 
 "Setting colorscheme
-colorscheme molokai
+"colorscheme molokai
+colorscheme catppuccin
 
 " Some basics:
 	nnoremap c "_c
@@ -167,8 +169,9 @@ let @k=":call JavaRun()\<CR>i"
 let @f=":CocAction\<CR>"
 let @h=":w\<CR>:vsp |terminal go run %\<CR>i"
 let @p=":w\<CR>:vsp |terminal python %\<CR>i"
-let @g=":!g++ %\<CR> | :w\<CR>:vsp |terminal ./a.out\<CR>i"
-let @c=":call CppComp() \<CR>G:66\<CR>"
+let @c=":!g++ %\<CR> | :w\<CR>:vsp |terminal ./a.out\<CR>i"
+let @g=":!go run % \<CR>"
+let @1=":call CppComp() \<CR>G:66\<CR>"
 " below is for ros2 foxy
 "let @c="cmake -D CMAKE_CXX_COMPILER=clang++ -DCMAKE_EXPORT_COMPILE_COMMANDS=1"
 
