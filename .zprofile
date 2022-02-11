@@ -8,9 +8,9 @@
 
 # Adds `~/.local/bin` to $PATH
 export LD_LIBRARY_PATH="/usr/local/lib"
-export GOPATH="$(go env GOPATH)/bin"
+export GOPATH="$HOME/.local/go"
 export SCRIPTS="$(du "$HOME/.local/bin" | cut -f2 | paste -sd ':')"
-export PATH="$PATH:$GOPATH:$SCRIPTS"
+export PATH="$PATH:$GOPATH/bin:$SCRIPTS"
 
 # Default programs:
 export EDITOR="nvim"

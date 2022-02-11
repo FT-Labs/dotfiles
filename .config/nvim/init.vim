@@ -20,6 +20,7 @@ Plug 'ap/vim-css-color'
 Plug 'neoclide/coc.nvim',{'branch': 'master'}
 Plug 'dense-analysis/ale'
 Plug 'catppuccin/nvim', {'as': 'catppuccin'}
+Plug 'ryanoasis/vim-devicons'
 call plug#end()
 
 set go=a
