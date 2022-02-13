@@ -25,4 +25,4 @@ else
 	icon="🔉"
 fi
 
-echo "$icon$vol%"
+echo "$icon $vol%"

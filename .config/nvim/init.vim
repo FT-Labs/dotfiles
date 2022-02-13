@@ -127,6 +127,7 @@ noremap <F3> *``:set hls! hls?<CR>
 map <F4> :! compwrite && clear && g++ %<CR> \| :vsp \|terminal ./a.out<inp.txt <CR>
 map <F5> :CocRestart<CR>
 noremap <F6> :let [&nu, &rnu] = [!&rnu, &nu+&rnu==1]<CR>
+noremap <F7> :! make && sudo make install
 noremap <left> :tabp<CR>
 noremap <right> :tabn<CR>
 "Resizing preview windows
@@ -171,7 +172,7 @@ let @f=":CocAction\<CR>"
 let @h=":w\<CR>:vsp |terminal go run %\<CR>i"
 let @p=":w\<CR>:vsp |terminal python %\<CR>i"
 let @c=":!g++ %\<CR> | :w\<CR>:vsp |terminal ./a.out\<CR>i"
-let @g=":!go run % \<CR>"
+let @g=":!w\<CR> :vsp | terminal go run % \<CR>i"
 let @1=":call CppComp() \<CR>G:66\<CR>"
 " below is for ros2 foxy
 "let @c="cmake -D CMAKE_CXX_COMPILER=clang++ -DCMAKE_EXPORT_COMPILE_COMMANDS=1"
