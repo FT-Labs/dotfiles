@@ -24,11 +24,54 @@ for battery in /sys/class/power_supply/BAT?
 do
 	# Get its remaining capacity and charge status.
 	capacity=$(cat "$battery"/capacity 2>/dev/null) || break
-	status=$(sed "s/[Dd]ischarging/🔋/;s/[Nn]ot charging/🛑/;s/[Cc]harging/🔌/;s/[Uu]nknown/♻️/;s/[Ff]ull/⚡/" "$battery"/status)
+	status=$(sed "s/[Dd]ischarging/DC/;s/[Nn]ot charging/🛑/;s/[Cc]harging/C/;s/[Uu]nknown/♻️/;s/[Ff]ull//" "$battery"/status)
 
-	# If it is discharging and 25% or less, we will add a ❗ as a warning.
-	 [ "$capacity" -le 25 ] && [ "$status" = "🔋" ] && warn="❗"
+	if [ $status = "DC" ]; then
+		if (( $capacity <= 10 )); then
+			status=""
+		elif (( $capacity <= 20 )); then
+			status=""
+		elif (( $capacity <= 30 )); then
+			status=""
+		elif (( $capacity <= 40 )); then
+			status=""
+		elif (( $capacity <= 50 )); then
+			status=""
+		elif (( $capacity <= 60 )); then
+			status=""
+		elif (( $capacity <= 70 )); then
+			status=""
+		elif (( $capacity <= 80 )); then
+			status=""
+		elif (( $capacity <= 90 )); then
+			status=""
+		else
+			status=""
+		fi
+	elif [ $status = "C" ]; then
+		if (( $capacity <= 10 )); then
+			status=""
+		elif (( $capacity <= 20 )); then
+			status=""
+		elif (( $capacity <= 30 )); then
+			status=""
+		elif (( $capacity <= 40 )); then
+			status=""
+		elif (( $capacity <= 50 )); then
+			status=""
+		elif (( $capacity <= 60 )); then
+			status=""
+		elif (( $capacity <= 70 )); then
+			status=""
+		elif (( $capacity <= 80 )); then
+			status=""
+		elif (( $capacity <= 90 )); then
+			status=""
+		else
+			status=""
+		fi
+	fi
 
-	printf "%s%s%s%% " "$status" "$warn" "$capacity"
+	printf "%s%s%s%% " "$status " "$warn" "$capacity"
 	unset warn
 done | sed 's/ *$//'
