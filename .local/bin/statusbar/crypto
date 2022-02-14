@@ -13,7 +13,7 @@ Ethereum;eth;|S3|
 dir="${XDG_DATA_HOME:-$HOME/.local/share}/crypto-prices"
 
 getprices() { # The command to get the desired prices
-	printf "🔃 "; printprices
+	printprices
 	{ rm -rf "${dir:?}/*"
 	echo "$coins" | while IFS=';' read -r human web icon; do
 		val="$(curl -s "rate.sx/1$web")" &&
@@ -34,7 +34,7 @@ printprices() { # Print/format all prices
 [ ! -d "$dir" ] && mkdir -p "$dir" && { getprices; exit ;}
 
 # If currencies haven't been updated today, try to update them.
-[ "$(stat -c %x "$HOME/.local/share/crypto-prices" | cut -d' ' -f1)" != "$(date '+%Y-%m-%d')" ] &&
+[ -z "$(find "$HOME/.local/share/crypto-prices" -mmin -5)" ] &&
 	{ ping -q -c 1 example.org >/dev/null 2>&1 && getprices || exit ;}
 
 case $BLOCK_BUTTON in
