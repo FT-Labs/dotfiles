@@ -35,7 +35,7 @@ printprices() { # Print/format all prices
 
 # If currencies haven't been updated today, try to update them.
 [ -z "$(find "$HOME/.local/share/crypto-prices" -mmin -5)" ] &&
-	{ ping -q -c 1 example.org >/dev/null 2>&1 && getprices || exit ;}
+	{ ping -q -c 1 example.org >/dev/null 2>&1 && getprices ;}
 
 case $BLOCK_BUTTON in
 	1) "$TERMINAL" -e "cointop" "$1" ;;
