@@ -167,8 +167,8 @@ let @k=":call JavaRun()\<CR>i"
 let @f=":CocAction\<CR>"
 let @h=":w\<CR>:vsp |terminal go run %\<CR>i"
 let @p=":w\<CR>:vsp |terminal python %\<CR>i"
-let @c=":!g++ %\<CR> | :w\<CR>:vsp |terminal ./a.out\<CR>i"
-let @g=":!w\<CR> :vsp | terminal go run % \<CR>i"
+let @c=":w\<CR> :!g++ %\<CR> | :vsp |terminal ./a.out\<CR>i"
+let @g=":w\<CR> :vsp | terminal go run % \<CR>i"
 let @1=":call CppComp() \<CR>G:66\<CR>"
 
 function CppUsual1()
