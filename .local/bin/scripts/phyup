@@ -2,7 +2,7 @@
 
 mkdir -p "$HOME/.cache/phyos/dwm"
 mkdir -p "$HOME/.cache/phyos/dwmblocks"
-cd "$HOME/.cache/.phyos/$1"
+cd "$HOME/.cache/phyos/$1"
 
 rm PKGBUILD
 
