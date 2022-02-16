@@ -1,16 +1,17 @@
 [global]
     monitor = 0
     follow = keyboard
-    geometry = "350x5-0+24"
+	width = 350
+	origin = top-right
     indicate_hidden = yes
     shrink = yes
-    transparency = 20
-    notification_height = 0
+    transparency = 15
     separator_height = 2
     padding = 0
     horizontal_padding = 8
     frame_width = 3
-    frame_color = "#282828"
+	corner_radius = 7
+    frame_color = "#add8e6"
 
     # Define a color for the separator.
     # possible values are:
@@ -24,7 +25,7 @@
     sort = yes
 
     idle_threshold = 120
-    font = Monospace 14
+    font = SF Pro Text 16
     line_height = 0
     markup = full
 
@@ -40,7 +41,7 @@
     # Markup is allowed
     format = "<b>%s</b>\n%b"
 
-    alignment = left
+    alignment = center
     show_age_threshold = 60
     word_wrap = yes
     ellipsize = middle
@@ -50,46 +51,38 @@
     show_indicators = yes
     icon_position = left
     max_icon_size = 40
-    #icon_path = /usr/share/icons/gnome/16x16/status/:/usr/share/icons/gnome/16x16/devices/:/usr/share/icons/Adwaita/256x256/status/
+    #icon_path = /usr/share/icons/Adwaita/256x256/status/
     sticky_history = yes
     history_length = 20
     dmenu = /usr/bin/dmenu -p dunst:
-    browser = /usr/bin/firefox -new-tab
 
     # Always run rule-defined scripts, even if the notification is suppressed
     always_run_script = true
 
     title = Dunst
     class = Dunst
-    startup_notification = false
-    force_xinerama = false
+    force_xinerama = true
 [experimental]
-    per_monitor_dpi = false
-
-[shortcuts]
-    close = ctrl+space
-    close_all = ctrl+shift+space
-    history = ctrl+grave
-    context = ctrl+shift+period
+    per_monitor_dpi = true
 
 [urgency_low]
     # IMPORTANT: colors have to be defined in quotation marks.
     # Otherwise the "#" and following would be interpreted as a comment.
-    background = "#282828"
-    foreground = "#928374"
-    timeout = 5
+    background = "#1e1d2d"
+    foreground = "#96cdfb"
+    timeout = 3
     # Icon for notifications with low urgency, uncomment to enable
     #icon = /path/to/icon
 
 [urgency_normal]
-    background = "#458588"
-    foreground = "#ebdbb2"
-    timeout = 5
+    background = "#1e1d2d"
+    foreground = "#96cdfb"
+    timeout = 3
 
 [urgency_critical]
-    background = "#cc2421"
-    foreground = "#ebdbb2"
-    frame_color = "#fabd2f"
+    background = "#f28fad"
+    foreground = "#1e1d2d"
+    frame_color = "#add8e6"
     timeout = 0
 
 # Every section that isn't one of the above is interpreted as a rules to

@@ -4,15 +4,10 @@
 # to charge status (🔌 for plugged up, 🔋 for discharging on battery, etc.).
 
 case $BLOCK_BUTTON in
-	3) notify-send "🔋 Battery module" "🔋: discharging
-🛑: not charging
-♻: stagnant charge
-🔌: charging
-⚡: charged
-❗: battery very low!
-- Scroll to change adjust xbacklight." ;;
-	4) xbacklight -inc 10 ;;
-	5) xbacklight -dec 10 ;;
+	3) notify-send "🔋 Battery module" "
+- Scroll to change adjust brightness." ;;
+	4) light -U 10 ;;
+	5) light -A 10 ;;
 	6) "$TERMINAL" -e "$EDITOR" "$0" ;;
 esac
 
@@ -27,49 +22,31 @@ do
 	status=$(sed "s/[Dd]ischarging/DC/;s/[Nn]ot charging/🛑/;s/[Cc]harging/C/;s/[Uu]nknown/♻️/;s/[Ff]ull//" "$battery"/status)
 
 	if [ $status = "DC" ]; then
-		if (( $capacity <= 10 )); then
-			status=""
-		elif (( $capacity <= 20 )); then
-			status=""
-		elif (( $capacity <= 30 )); then
-			status=""
-		elif (( $capacity <= 40 )); then
-			status=""
-		elif (( $capacity <= 50 )); then
-			status=""
-		elif (( $capacity <= 60 )); then
-			status=""
-		elif (( $capacity <= 70 )); then
-			status=""
-		elif (( $capacity <= 80 )); then
-			status=""
-		elif (( $capacity <= 90 )); then
-			status=""
-		else
-			status=""
-		fi
+		case 1 in
+			$(( $capacity <= 10 ))) status="" ;;
+			$(( $capacity <= 20 ))) status="" ;;
+			$(( $capacity <= 30 ))) status="" ;;
+			$(( $capacity <= 40 ))) status="" ;;
+			$(( $capacity <= 50 ))) status="" ;;
+			$(( $capacity <= 60 ))) status="" ;;
+			$(( $capacity <= 70 ))) status="" ;;
+			$(( $capacity <= 80 ))) status="" ;;
+			$(( $capacity <= 90 ))) status="" ;;
+			 				     *) status="" ;;
+		 esac
 	elif [ $status = "C" ]; then
-		if (( $capacity <= 10 )); then
-			status=""
-		elif (( $capacity <= 20 )); then
-			status=""
-		elif (( $capacity <= 30 )); then
-			status=""
-		elif (( $capacity <= 40 )); then
-			status=""
-		elif (( $capacity <= 50 )); then
-			status=""
-		elif (( $capacity <= 60 )); then
-			status=""
-		elif (( $capacity <= 70 )); then
-			status=""
-		elif (( $capacity <= 80 )); then
-			status=""
-		elif (( $capacity <= 90 )); then
-			status=""
-		else
-			status=""
-		fi
+		case 1 in
+			$(( $capacity <= 10 ))) status="" ;;
+			$(( $capacity <= 20 ))) status="" ;;
+			$(( $capacity <= 30 ))) status="" ;;
+			$(( $capacity <= 40 ))) status="" ;;
+			$(( $capacity <= 50 ))) status="" ;;
+			$(( $capacity <= 60 ))) status="" ;;
+			$(( $capacity <= 70 ))) status="" ;;
+			$(( $capacity <= 80 ))) status="" ;;
+			$(( $capacity <= 90 ))) status="" ;;
+								 *)	status="" ;;
+		 esac
 	fi
 
 	printf "%s%s%s%% " "$status " "$warn" "$capacity"
