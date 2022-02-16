@@ -51,9 +51,6 @@ colorscheme catppuccin
 " Disables automatic commenting on newline:
 	autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
-" Goyo plugin makes text more readable when writing prose:
-	map <leader>f :Goyo \| set bg=light \| set linebreak<CR>
-
 " Splits open at the bottom and right, which is non-retarded, unlike vim defaults.
 	set splitbelow splitright
 
@@ -140,7 +137,6 @@ tnoremap <Esc> <C-\><C-n>:bd!<CR>
 
 
 
-
 function DateAuthor()
 	let var1 =strftime('%c')
 	:call setline(1,"/*")
@@ -174,9 +170,6 @@ let @p=":w\<CR>:vsp |terminal python %\<CR>i"
 let @c=":!g++ %\<CR> | :w\<CR>:vsp |terminal ./a.out\<CR>i"
 let @g=":!w\<CR> :vsp | terminal go run % \<CR>i"
 let @1=":call CppComp() \<CR>G:66\<CR>"
-" below is for ros2 foxy
-"let @c="cmake -D CMAKE_CXX_COMPILER=clang++ -DCMAKE_EXPORT_COMPILE_COMMANDS=1"
-
 
 function CppUsual1()
 	:call DateAuthor()
