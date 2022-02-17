@@ -108,7 +108,7 @@ askrecording() { \
 	}
 
 asktoend() { \
-	response=$(printf "No\\nYes" | rofi -dmenu  -i -p "Recording still active. End recording?") &&
+	response=$(printf "No\\nYes" | dmenu -i -p "Recording still active. End recording?") &&
 	[ "$response" = "Yes" ] &&  killrecording
 	}
 
@@ -119,5 +119,5 @@ case "$1" in
 	audio) audio;;
 	video) video;;
 	kill) killrecording;;
-	*) ([ -f /tmp/recordingpid ] && asktoend && exit 1) || askrecording ;;
+	*) ([ -f /tmp/recordingpid ] && asktoend && exit) || askrecording ;;
 esac
