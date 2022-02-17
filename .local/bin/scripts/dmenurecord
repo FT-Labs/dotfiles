@@ -37,7 +37,7 @@ screencastsec() { \
 	-f alsa -i default \
 	-r 30 \
  	-c:v h264 -crf 0 -preset ultrafast -c:a aac \
-	"$HOME/Video/screencast-$(date '+%y%m%d-%H%M-%S').mp4" &
+	"$HOME/Videos/screencast-$(date '+%y%m%d-%H%M-%S').mp4" &
 	echo $! > /tmp/recordingpid
 	updateicon "⏺️🎙️"
        	}
@@ -52,7 +52,7 @@ screencast() { \
 	-f alsa -i default \
 	-r 30 \
  	-c:v h264 -crf 0 -preset ultrafast -c:a aac \
-	"$HOME/Video/screencast-$(date '+%y%m%d-%H%M-%S').mp4" &
+	"$HOME/Videos/screencast-$(date '+%y%m%d-%H%M-%S').mp4" &
 	echo $! > /tmp/recordingpid
 	updateicon "⏺️🎙️"
        	}

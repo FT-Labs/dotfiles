@@ -11,7 +11,6 @@ case $BLOCK_BUTTON in
 	3) notify-send "📢 Volume module" "\- Shows volume 🔊, 🔇 if muted.
 - Middle click to mute.
 - Scroll to change." ;;
-	6) "$TERMINAL" -e "$EDITOR" "$0" ;;
 esac
 
 function send_notification {
