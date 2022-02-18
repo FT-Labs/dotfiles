@@ -1,5 +1,5 @@
 !! Transparency (0-1):
-*.alpha: 0.75
+*.alpha: 0.9
 
 !! Set a default font and font size as below:
 /* *.font:	 MesloLGS NF:style=regular:pixelsize=18:antialias=true:autohint=true; */
