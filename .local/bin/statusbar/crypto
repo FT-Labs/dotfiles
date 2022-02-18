@@ -35,7 +35,7 @@ printprices() { # Print/format all prices
 
 # If currencies haven't been updated today, try to update them.
 [ -z "$(find "$HOME/.local/share/crypto-prices" -mmin -5)" ] &&
-	{ ping -q -c 1 example.org >/dev/null 2>&1 && getprices ;}
+	{ ping -q -c 1 example.org >/dev/null 2>&1 && getprices ;} || printprices
 
 case $BLOCK_BUTTON in
 	1) "$TERMINAL" -e "cointop" "$1" ;;
@@ -46,5 +46,3 @@ case $BLOCK_BUTTON in
 - Manually add/remove currencies to list in the script." ;;
 	6) "$TERMINAL" -e "$EDITOR" "$0" ;;
 esac
-
-printprices
