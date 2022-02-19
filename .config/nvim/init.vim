@@ -125,7 +125,7 @@ noremap <F3> *``:set hls! hls?<CR>
 map <F4> :! compwrite && clear && g++ %<CR> \| :vsp \|terminal ./a.out<inp.txt <CR>
 map <F5> :tabnew<CR>
 noremap <F6> :let [&nu, &rnu] = [!&rnu, &nu+&rnu==1]<CR>
-noremap <F7> :! make && sudo make install
+noremap <F7> :! make && sudo make PREFIX=/usr/local install
 noremap <left> :tabp<CR>
 noremap <right> :tabn<CR>
 "Resizing preview windows
