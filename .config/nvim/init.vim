@@ -11,7 +11,6 @@ Plug 'preservim/nerdtree'
 Plug 'preservim/nerdcommenter'
 Plug 'jreybert/vimagit'
 Plug 'OmniSharp/omnisharp-vim'
-Plug 'borissov/vim-mysql-suggestions'
 Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'uiiaoo/java-syntax.vim'
 Plug 'bling/vim-airline'
@@ -19,8 +18,12 @@ Plug 'tpope/vim-commentary'
 Plug 'ap/vim-css-color'
 Plug 'neoclide/coc.nvim',{'branch': 'master'}
 Plug 'dense-analysis/ale'
-Plug 'catppuccin/nvim', {'as': 'catppuccin'}
 Plug 'ryanoasis/vim-devicons'
+Plug 'junegunn/fzf'
+Plug 'yuki-yano/fzf-preview.vim', { 'branch': 'release/rpc' }
+Plug 'catppuccin/nvim', {'as': 'catppuccin'}
+Plug 'navarasu/onedark.nvim'
+Plug 'sonph/onehalf', { 'rtp': 'vim' }
 call plug#end()
 
 set go=a
@@ -36,9 +39,6 @@ set conceallevel=2
 set concealcursor=vin
 set pumheight=20
 
-"Setting colorscheme
-"colorscheme molokai
-colorscheme catppuccin
 
 " Some basics:
 	nnoremap c "_c
@@ -82,12 +82,6 @@ if &diff
     highlight! link DiffText MatchParen
 endif
 
-"Making vim compatible with st
-let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"
-let &t_8b="\<Esc>[48;2;%lu;%lu;%lum"
-if(has("termguicolors"))
-	set termguicolors
-endif
 
 if has("autocmd")
   au VimEnter,InsertLeave * silent execute '!echo -ne "\e[2 q"' | redraw!
@@ -98,6 +92,13 @@ if has("autocmd")
     \   silent execute '!echo -ne "\e[4 q"' | redraw! |
     \ endif
   au VimLeave * silent execute '!echo -ne "\e[ q"' | redraw!
+endif
+
+"Making vim compatible with st
+let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"
+let &t_8b="\<Esc>[48;2;%lu;%lu;%lum"
+if(has("termguicolors"))
+	set termguicolors
 endif
 
 " SuperTab completion fall-back
@@ -119,10 +120,10 @@ let g:cpp_class_decl_highlight = 1
 let mapleader=";"
 "Key remappings
 map <F1> :NERDTree<CR>
-map <F2> :tabnew<CR>
+map <F2> :FzfPreviewProjectFiles<CR>
 noremap <F3> *``:set hls! hls?<CR>
 map <F4> :! compwrite && clear && g++ %<CR> \| :vsp \|terminal ./a.out<inp.txt <CR>
-map <F5> :CocRestart<CR>
+map <F5> :tabnew<CR>
 noremap <F6> :let [&nu, &rnu] = [!&rnu, &nu+&rnu==1]<CR>
 noremap <F7> :! make && sudo make install
 noremap <left> :tabp<CR>
@@ -134,11 +135,8 @@ nnoremap <Tab>k :resize -5 <CR>
 nnoremap <Tab>j :resize +5 <CR>
 tnoremap <Esc> <C-\><C-n>:bd!<CR>
 
-
-
-
 function DateAuthor()
-	let var1 =strftime('%c')
+	let var1=strftime('%c')
 	:call setline(1,"/*")
 	:call setline(2,"Author: PhysTech")
 	:call setline(3,var1)
@@ -231,10 +229,14 @@ function! s:insert_sh()
 	normal! kk
 endfunction
 
+"Fzf config
+let g:fzf_preview_command = 'bat --color=always --plain {-1}'
+let g:fzf_binary_preview_command = 'echo "{} is a binary file"'
+let g:fzf_preview_lines_command = 'bat --color=always --plain --number'
+let g:fzf_preview_preview_key_bindings = 'ctrl-d:preview-page-down,ctrl-u:preview-page-up,?:toggle-preview'
+let g:fzf_preview_use_dev_icons = 1
 
-highlight Pmenu NONE
 highlight Pmenu ctermfg=2 ctermbg=3 guifg=#ffffff guibg=#0000ff
-highlight Normal guibg=#282828 guifg=#ededed
 hi Comment guifg=#5ff752
 hi Conceal guifg=#ffffff guibg=#0000ff ctermfg=black
 let g:NERDTreeWinPos = "right"
@@ -242,11 +244,19 @@ highlight Visual  guifg=#ffffff guibg=#0000ff
 highlight Error cterm=bold guifg=#ffffff guibg=#000000
 highlight SpellBad cterm=bold guifg=#ffffff guibg=#000000
 
+let g:onedark_config = {
+    \ 'style': 'cool',
+\}
+
+"Setting colorscheme
+colorscheme onehalfdark
+set bg=dark
+set termguicolors
+let g:airline_theme='onehalfdark'
+
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <silent><expr> <c-space> coc#refresh()
 inoremap <silent> <CR> <C-r>=<SID>ExpandSnippetOrClosePumOrReturnNewline()<CR>
-"inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-"inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
 let g:OmniSharp_server_use_mono=1
 let g:bufferline_echo=0
@@ -259,6 +269,7 @@ let g:ale_linters ={
 let g:ale_warn_about_traling_blank_lines=0
 let g:ale_warn_about_traling_whitespace=0
 let g:coc_global_config="$HOME/.config/nvim/coc-setting.json"
+
 
 function! s:ExpandSnippetOrClosePumOrReturnNewline()
     if pumvisible()
