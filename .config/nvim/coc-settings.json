@@ -15,5 +15,12 @@
 	],
 	"coc.source.OmniSharp.triggerCharacters":".",
 	"python.autoComplete.addBrackets":true,
-	"clangd.fallbackFlags": [ "-std=c++17" ]
+	"clangd.fallbackFlags": [ "-std=c++17" ],
+    "languageserver": {
+    "efm": {
+      "command": "efm-langserver",
+      "args": [],
+      "filetypes": ["vim", "eruby", "markdown", "yaml"]
+    }
+  }
 }

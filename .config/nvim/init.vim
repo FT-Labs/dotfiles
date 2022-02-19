@@ -14,6 +14,7 @@ Plug 'OmniSharp/omnisharp-vim'
 Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'uiiaoo/java-syntax.vim'
 Plug 'bling/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-commentary'
 Plug 'ap/vim-css-color'
 Plug 'neoclide/coc.nvim',{'branch': 'master'}
@@ -24,6 +25,7 @@ Plug 'yuki-yano/fzf-preview.vim', { 'branch': 'release/rpc' }
 Plug 'catppuccin/nvim', {'as': 'catppuccin'}
 Plug 'navarasu/onedark.nvim'
 Plug 'sonph/onehalf', { 'rtp': 'vim' }
+
 call plug#end()
 
 set go=a
@@ -119,8 +121,10 @@ let g:cpp_class_decl_highlight = 1
 
 let mapleader=";"
 "Key remappings
+map <Leader>d :bd<CR>
+map <Leader>f :FzfPreviewProjectFiles<CR>
 map <F1> :NERDTree<CR>
-map <F2> :FzfPreviewProjectFiles<CR>
+map <F2> :tabnew<CR>
 noremap <F3> *``:set hls! hls?<CR>
 map <F4> :! compwrite && clear && g++ %<CR> \| :vsp \|terminal ./a.out<inp.txt <CR>
 map <F5> :tabnew<CR>
@@ -236,23 +240,30 @@ let g:fzf_preview_lines_command = 'bat --color=always --plain --number'
 let g:fzf_preview_preview_key_bindings = 'ctrl-d:preview-page-down,ctrl-u:preview-page-up,?:toggle-preview'
 let g:fzf_preview_use_dev_icons = 1
 
-highlight Pmenu ctermfg=2 ctermbg=3 guifg=#ffffff guibg=#0000ff
+
+
+
+"Airline config
+let g:airline_theme='violet'
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#show_buffers = 0
+let g:airline#extensions#tabline#show_tabs = 0
+autocmd BufDelete * call airline#extensions#tabline#buflist#invalidate()
+
+"Setting colorscheme
+"colorscheme catppuccin
+colorscheme molokai
+set bg=dark
+set termguicolors
+highlight normal guibg=#1e1d2d
+"highlight Pmenu ctermfg=2 ctermbg=3 guifg=#ffffff guibg=#0000ff
 hi Comment guifg=#5ff752
 hi Conceal guifg=#ffffff guibg=#0000ff ctermfg=black
 let g:NERDTreeWinPos = "right"
 highlight Visual  guifg=#ffffff guibg=#0000ff
-highlight Error cterm=bold guifg=#ffffff guibg=#000000
-highlight SpellBad cterm=bold guifg=#ffffff guibg=#000000
-
-let g:onedark_config = {
-    \ 'style': 'cool',
-\}
-
-"Setting colorscheme
-colorscheme onehalfdark
-set bg=dark
-set termguicolors
-let g:airline_theme='onehalfdark'
+"highlight Error cterm=bold guifg=#ffffff guibg=#000000
+"highlight SpellBad cterm=bold guifg=#ffffff guibg=#000000
 
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <silent><expr> <c-space> coc#refresh()

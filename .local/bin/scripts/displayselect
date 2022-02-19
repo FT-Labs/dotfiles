@@ -32,11 +32,11 @@ twoscreen() { # If multi-monitor is selected and there are two screens.
     else
 
         primary=$(echo "$screens" | rofi -dmenu -i -p "Select primary display:")
-		primaryrate=$(xrandr -q | sed -n "/$primary/{n;p;}" | cut -d ' ' -f 10- | tr -s " " "\n" | rofi -dmenu -i -p "Set refresh rate for '$primary':")
+		primaryrate=$(xrandr -q | sed -n "/$primary/{n;p;}" | cut -d ' ' -f 11- | tr -s " " "\n" | rofi -dmenu -i -p "Set refresh rate for '$primary':")
 		primaryres=$(xrandr -q | sed -n "/$primary/{n;p;}" | awk '{ print $1 }')
         secondary=$(echo "$screens" | grep -v "$primary")
 		secondaryres=$(xrandr -q | sed -n "/$secondary/{n;p;}" | awk '{ print $1 }')
-		secondaryrate=$(xrandr -q | sed -n "/$secondary/{n;p;}" | cut -d ' ' -f 10- | tr -s " " "\n" | rofi -dmenu -i -p "Set refresh rate for '$secondary':")
+		secondaryrate=$(xrandr -q | sed -n "/$secondary/{n;p;}" | cut -d ' ' -f 11- | tr -s " " "\n" | rofi -dmenu -i -p "Set refresh rate for '$secondary':")
         direction=$(printf "left\\nright\\nabove" | rofi -dmenu -i -p "What side of $primary should $secondary be on?")
         xrandr --output "$primary" --rate "$primaryrate" --mode "$primaryres" --scale 1.0x1.0 --output "$secondary" --"$direction"-of "$primary" --rate "$secondaryrate" --mode "$secondaryres" --scale 1.0x1.0
     fi
@@ -44,15 +44,15 @@ twoscreen() { # If multi-monitor is selected and there are two screens.
 
 morescreen() { # If multi-monitor is selected and there are more than two screens.
 	primary=$(echo "$screens" | rofi -dmenu -i -p "Select primary display:")
-	primaryrate=$(xrandr -q | sed -n "/$primary/{n;p;}" | cut -d ' ' -f 10- | tr -s " " "\n" | rofi -dmenu -i -p "Set refresh rate for '$primary':")
+	primaryrate=$(xrandr -q | sed -n "/$primary/{n;p;}" | cut -d ' ' -f 11- | tr -s " " "\n" | rofi -dmenu -i -p "Set refresh rate for '$primary':")
 	primaryres=$(xrandr -q | sed -n "/$primary/{n;p;}" | awk '{ print $1 }')
 	secondary=$(echo "$screens" | grep -v "$primary" | rofi -dmenu -i -p "Select secondary display:")
 	secondaryres=$(xrandr -q | sed -n "/$secondary/{n;p;}" | awk '{ print $1 }')
-	secondaryrate=$(xrandr -q | sed -n "/$secondary/{n;p;}" | cut -d ' ' -f 10- | tr -s " " "\n" | rofi -dmenu -i -p "Set refresh rate for '$secondary':")
+	secondaryrate=$(xrandr -q | sed -n "/$secondary/{n;p;}" | cut -d ' ' -f 11- | tr -s " " "\n" | rofi -dmenu -i -p "Set refresh rate for '$secondary':")
 	direction=$(printf "left\\nright\\nabove" | rofi -dmenu -i -p "What side of $primary should $secondary be on?")
 	tertiary=$(echo "$screens" | grep -v "$primary" | grep -v "$secondary" | rofi -dmenu -i -p "Select third display:")
 	tertiaryres=$(xrandr -q | sed -n "/$tertiary/{n;p;}" | awk '{ print $1 }')
-	tertiaryrate=$(xrandr -q | sed -n "/$tertiary/{n;p;}" | cut -d ' ' -f 10- | tr -s " " "\n" | rofi -dmenu -i -p "Set refresh rate for '$tertiary':")
+	tertiaryrate=$(xrandr -q | sed -n "/$tertiary/{n;p;}" | cut -d ' ' -f 11- | tr -s " " "\n" | rofi -dmenu -i -p "Set refresh rate for '$tertiary':")
 	xrandr --output "$primary" --mode "$primaryres" --rate "$primaryrate" --output "$secondary" --"$direction"-of "$primary" --mode "$secondaryres" --rate "$secondaryrate" --output "$tertiary" --"$(printf "left\\nright\\nabove" | grep -v "$direction")"-of "$primary" --mode "$tertiaryres" --rate "$tertiaryrate"
 	}
 
