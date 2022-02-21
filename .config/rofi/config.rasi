@@ -10,6 +10,10 @@ configuration{
     disable-history: false;
     hide-scrollbar: true;
     display-drun: "Apps:";
+	kb-row-up: "Up,Super+k";
+	kb-row-down: "Down,Super+j";
+	kb-row-left: "Super+h";
+	kb-row-right: "Super+l";
 }
 
 @theme "onedark"
