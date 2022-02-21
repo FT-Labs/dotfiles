@@ -1,7 +1,7 @@
 configuration{
-    modi: "run,drun,window";
+    modi: "run,drun,window,windowcd";
     lines: 5;
-    font: "SF Pro Text 12";
+    font: "SF Pro Text 13";
     show-icons: true;
     icon-theme: "Infinity-Dark-Icons";
     terminal: "st";
@@ -14,7 +14,7 @@ configuration{
 
 @theme "onedark"
 
-element-text, element-icon , mode-switcher {
+element-text, element-icon, element-index, mode-switcher {
     background-color: inherit;
     text-color:       inherit;
 }
@@ -22,7 +22,7 @@ element-text, element-icon , mode-switcher {
 window {
 	height: 360px;
     border: 3px;
-    border-color: @border-col;
+    border-color: #96cdfb;
     background-color: @bg-col;
 }
 
@@ -60,7 +60,7 @@ entry {
 listview {
     border: 0px 0px 0px;
     padding: 6px 0px 0px;
-    margin: 10px 0px 0px 20px;
+    margin: 10px 0px 0px;
     columns: 2;
     background-color: @bg-col;
 }
@@ -68,12 +68,20 @@ listview {
 element {
     padding: 5px;
     background-color: @bg-col;
-    text-color: @fg-col  ;
+    text-color: @fg-col;
 }
 
 element-icon {
     size: 25px;
 }
+
+element-index {
+    background-color: @bg-col;
+    text-color: @fg-col;
+
+    font: "SF Pro Text 13";
+}
+
 
 element selected {
     background-color:  @selected-col ;
