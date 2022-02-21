@@ -122,6 +122,7 @@ let g:cpp_class_decl_highlight = 1
 let mapleader=";"
 "Key remappings
 map <Leader>d :bd<CR>
+map <Leader>s :TagbarOpenAutoClose<CR>
 map <Leader>f :FzfPreviewProjectFiles<CR>
 map <F1> :NERDTree<CR>
 map <F2> :tabnew<CR>
