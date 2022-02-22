@@ -7,7 +7,7 @@ endif
 
 call plug#begin(system('echo -n "${XDG_CONFIG_HOME:-$HOME/.config}/nvim/plugged"'))
 Plug 'tpope/vim-surround'
-Plug 'preservim/nerdtree'
+Plug 'ms-jpq/chadtree', {'branch': 'chad', 'do': 'python3 -m chadtree deps'}
 Plug 'preservim/nerdcommenter'
 Plug 'jreybert/vimagit'
 Plug 'OmniSharp/omnisharp-vim'
@@ -25,7 +25,6 @@ Plug 'yuki-yano/fzf-preview.vim', { 'branch': 'release/rpc' }
 Plug 'catppuccin/nvim', {'as': 'catppuccin'}
 Plug 'navarasu/onedark.nvim'
 Plug 'sonph/onehalf', { 'rtp': 'vim' }
-
 call plug#end()
 
 set go=a
@@ -41,7 +40,6 @@ set conceallevel=2
 set concealcursor=vin
 set pumheight=20
 
-
 " Some basics:
 	nnoremap c "_c
 	set nocompatible
@@ -55,16 +53,6 @@ set pumheight=20
 
 " Splits open at the bottom and right, which is non-retarded, unlike vim defaults.
 	set splitbelow splitright
-
-" Nerd tree
-	map <leader>n :NERDTreeToggle<CR>
-	let NERDTreeQuitOnOpen=1
-	autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-    if has('nvim')
-        let NERDTreeBookmarksFile = stdpath('data') . '/NERDTreeBookmarks'
-    else
-        let NERDTreeBookmarksFile = '~/.vim' . '/NERDTreeBookmarks'
-    endif
 
 " Shortcutting split navigation, saving a keypress:
 	map <C-h> <C-w>h
@@ -124,7 +112,7 @@ let mapleader=";"
 map <Leader>d :bd<CR>
 map <Leader>s :TagbarOpenAutoClose<CR>
 map <Leader>f :FzfPreviewProjectFiles<CR>
-map <F1> :NERDTree<CR>
+map <F1> :<cmd>CHADopen<cr><cr>
 map <F2> :tabnew<CR>
 noremap <F3> *``:set hls! hls?<CR>
 map <F4> :! compwrite && clear && g++ %<CR> \| :vsp \|terminal ./a.out<inp.txt <CR>

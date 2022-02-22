@@ -32,7 +32,7 @@ alias \
     vm="/usr/bin/vim" \
 	wp="whatsapp-for-linux" \
 	dc="discord" \
-	lss="colorls"
+	l="colorls"
 
 # Bare git dot config
 alias \
