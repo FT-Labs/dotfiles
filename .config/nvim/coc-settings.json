@@ -3,13 +3,13 @@
 	"suggest.echodocSupport": true,
 	"suggest.enablePreselect":false,
 	"suggest.floatEnable": true,
+	"suggest.snippetsSupport" : true,
 	"signature.enable":true,
 	"signature.target":"echo",
 	"signature.preferShownAbove": true,
 	"diagnostic.checkCurrentLine":true,
 	"diagnostic.displayByAle":false,
 	"diagnostic.messageTarget":"float",
-	"coc.preferences.echodocSupport": true,
 	"coc.source.OmniSharp.enable":true,
 	"coc.source.OmniSharp.filetypes": [
 		"cs"

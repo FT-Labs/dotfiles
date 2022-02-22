@@ -9,13 +9,13 @@ call plug#begin(system('echo -n "${XDG_CONFIG_HOME:-$HOME/.config}/nvim/plugged"
 Plug 'tpope/vim-surround'
 Plug 'ms-jpq/chadtree', {'branch': 'chad', 'do': 'python3 -m chadtree deps'}
 Plug 'preservim/nerdcommenter'
-Plug 'jreybert/vimagit'
+Plug 'preservim/tagbar'
 Plug 'OmniSharp/omnisharp-vim'
-Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'uiiaoo/java-syntax.vim'
 Plug 'bling/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-commentary'
+Plug 'jreybert/vimagit'
 Plug 'ap/vim-css-color'
 Plug 'neoclide/coc.nvim',{'branch': 'master'}
 Plug 'dense-analysis/ale'
@@ -25,20 +25,23 @@ Plug 'yuki-yano/fzf-preview.vim', { 'branch': 'release/rpc' }
 Plug 'catppuccin/nvim', {'as': 'catppuccin'}
 Plug 'navarasu/onedark.nvim'
 Plug 'sonph/onehalf', { 'rtp': 'vim' }
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 call plug#end()
 
-set go=a
-set mouse=a
 set nohlsearch
 set hidden
 set number
 set tabstop=4
 set shiftwidth=4
 set softtabstop=4
+set	scrolloff=8
+set	sidescrolloff=8
 set completeopt=menu,menuone
 set conceallevel=0
 set concealcursor=vin
 set pumheight=20
+set cursorline
+set cursorlineopt=number
 
 " Some basics:
 	nnoremap c "_c
@@ -59,6 +62,13 @@ set pumheight=20
 	map <C-j> <C-w>j
 	map <C-k> <C-w>k
 	map <C-l> <C-w>l
+" Move text easy
+	nnoremap <S-k> :m-2<CR>
+	nnoremap <S-j> :m+<CR>
+	inoremap <S-k> <Esc>:m-2<CR>
+	inoremap <S-j> <Esc>:m+<CR>
+	vnoremap <S-k> :m '<-2<CR>gv-gv
+	vnoremap <S-j> :m '>+1<CR>gv-gv
 
 " Save file as sudo on files that require root permission
 	cnoremap w!! execute 'silent! write !sudo tee % >/dev/null' <bar> edit!
@@ -243,10 +253,10 @@ let g:airline#extensions#tabline#show_tabs = 0
 autocmd BufDelete * call airline#extensions#tabline#buflist#invalidate()
 
 "Setting colorscheme
+set termguicolors
 "colorscheme catppuccin
 colorscheme molokai
-set bg=dark
-set termguicolors
+"set bg=dark
 highlight normal guibg=#1e1d2d
 "highlight Pmenu ctermfg=2 ctermbg=3 guifg=#ffffff guibg=#0000ff
 hi Comment guifg=#5ff752
@@ -256,7 +266,8 @@ highlight Visual  guifg=#ffffff guibg=#0000ff
 "highlight Error cterm=bold guifg=#ffffff guibg=#000000
 "highlight SpellBad cterm=bold guifg=#ffffff guibg=#000000
 
-inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <C-j> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <C-k> pumvisible() ? "\<C-p>" : "\<Tab>"
 inoremap <silent><expr> <c-space> coc#refresh()
 inoremap <silent> <CR> <C-r>=<SID>ExpandSnippetOrClosePumOrReturnNewline()<CR>
 
@@ -268,6 +279,20 @@ let g:ale_linters ={
 \	'python' : ['pylint'],
 \   'cpp' : [''],
 \}
+
+
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? coc#_select_confirm() :
+      \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+let g:coc_snippet_next = '<tab>'
 let g:ale_warn_about_traling_blank_lines=0
 let g:ale_warn_about_traling_whitespace=0
 let g:coc_global_config="$HOME/.config/nvim/coc-setting.json"
