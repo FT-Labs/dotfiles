@@ -9,6 +9,7 @@
 	"diagnostic.checkCurrentLine":true,
 	"diagnostic.displayByAle":false,
 	"diagnostic.messageTarget":"float",
+	"coc.preferences.echodocSupport": true,
 	"coc.source.OmniSharp.enable":true,
 	"coc.source.OmniSharp.filetypes": [
 		"cs"

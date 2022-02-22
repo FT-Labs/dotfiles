@@ -36,7 +36,7 @@ set tabstop=4
 set shiftwidth=4
 set softtabstop=4
 set completeopt=menu,menuone
-set conceallevel=2
+set conceallevel=0
 set concealcursor=vin
 set pumheight=20
 
@@ -216,6 +216,8 @@ autocmd BufNewFile *.{sh} call <SID>insert_sh()
 autocmd BufWritePost *.{sh} !chmod +x <afile>
 autocmd BufWritePre *.py :%s/\s\+$//e
 autocmd BufWritePre *.cpp :%s/\s\+$//e
+
+autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 
 function! s:insert_sh()
 	execute "normal! i#!/bin/bash"
