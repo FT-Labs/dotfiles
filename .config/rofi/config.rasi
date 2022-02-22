@@ -10,12 +10,16 @@ configuration{
     disable-history: false;
     hide-scrollbar: true;
     display-drun: "Apps:";
-	kb-row-up: "Up,Super+k";
-	kb-row-down: "Down,Super+j";
-	kb-row-left: "Super+h";
-	kb-row-right: "Super+l";
+	kb-row-up: "Up,Control+k";
+	kb-row-down: "Down,Control+j";
+	kb-row-left: "Control+h";
+	kb-row-right: "Control+l";
+	kb-remove-char-back: "BackSpace,Shift+BackSpace";
+	kb-mode-complete: "Super+l";
 	kb-accept-entry: "Tab,Return,KP_Enter";
 	kb-row-tab: "";
+	kb-remove-to-eol: "";
+
 }
 
 @theme "onedark"

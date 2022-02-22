@@ -5,10 +5,6 @@
 
 case $BLOCK_BUTTON in
 	3) notify-send "🔋 Battery module" "
-- Scroll to change adjust brightness." ;;
-	4) light -U 10 ;;
-	5) light -A 10 ;;
-	6) "$TERMINAL" -e "$EDITOR" "$0" ;;
 esac
 
 # acpi alternative
