@@ -26,6 +26,7 @@ Plug 'catppuccin/nvim', {'as': 'catppuccin'}
 Plug 'navarasu/onedark.nvim'
 Plug 'sonph/onehalf', { 'rtp': 'vim' }
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'arcticicestudio/nord-vim'
 call plug#end()
 
 set nohlsearch
@@ -97,6 +98,7 @@ endif
 "Making vim compatible with st
 let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"
 let &t_8b="\<Esc>[48;2;%lu;%lu;%lum"
+let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 if(has("termguicolors"))
 	set termguicolors
 endif
@@ -241,9 +243,6 @@ let g:fzf_preview_lines_command = 'bat --color=always --plain --number'
 let g:fzf_preview_preview_key_bindings = 'ctrl-d:preview-page-down,ctrl-u:preview-page-up,?:toggle-preview'
 let g:fzf_preview_use_dev_icons = 1
 
-
-
-
 "Airline config
 let g:airline_theme='violet'
 let g:airline_powerline_fonts = 1
@@ -253,18 +252,13 @@ let g:airline#extensions#tabline#show_tabs = 0
 autocmd BufDelete * call airline#extensions#tabline#buflist#invalidate()
 
 "Setting colorscheme
-set termguicolors
-"colorscheme catppuccin
-colorscheme molokai
-"set bg=dark
-highlight normal guibg=#1e1d2d
+colorscheme onedark
+"highlight normal guibg=#1e1d2d
 "highlight Pmenu ctermfg=2 ctermbg=3 guifg=#ffffff guibg=#0000ff
 hi Comment guifg=#5ff752
-hi Conceal guifg=#ffffff guibg=#0000ff ctermfg=black
+"hi Conceal guifg=#ffffff guibg=#0000ff ctermfg=black
 let g:NERDTreeWinPos = "right"
 highlight Visual  guifg=#ffffff guibg=#0000ff
-"highlight Error cterm=bold guifg=#ffffff guibg=#000000
-"highlight SpellBad cterm=bold guifg=#ffffff guibg=#000000
 
 inoremap <expr> <C-j> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <C-k> pumvisible() ? "\<C-p>" : "\<Tab>"
