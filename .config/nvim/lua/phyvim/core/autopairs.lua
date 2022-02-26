@@ -1,6 +1,6 @@
 local M = {}
 
-local opts = {
+local opt = {
     active = true,
     ---@usage  modifies the function or method delimiter by filetypes
     map_char = {
@@ -48,18 +48,18 @@ M.setup = function()
   local Rule = require "nvim-autopairs.rule"
 
   autopairs.setup {
-    check_ts = opts.check_ts,
-    enable_check_bracket_line = opts.enable_check_bracket_line,
-    ts_config = opts.ts_config,
-    disable_filetype = opts.disable_filetype,
-    disable_in_macro = opts.disable_in_macro,
-    ignored_next_char = opts.ignored_next_char,
-    enable_moveright = opts.enable_moveright,
-    enable_afterquote = opts.enable_afterquote,
-    map_c_w = opts.map_c_w,
-    map_bs = opts.map_bs,
-    disable_in_visualblock = opts.disable_in_visualblock,
-    fast_wrap = opts.fast_wrap,
+    check_ts = opt.check_ts,
+    enable_check_bracket_line = opt.enable_check_bracket_line,
+    ts_config = opt.ts_config,
+    disable_filetype = opt.disable_filetype,
+    disable_in_macro = opt.disable_in_macro,
+    ignored_next_char = opt.ignored_next_char,
+    enable_moveright = opt.enable_moveright,
+    enable_afterquote = opt.enable_afterquote,
+    map_c_w = opt.map_c_w,
+    map_bs = opt.map_bs,
+    disable_in_visualblock = opt.disable_in_visualblock,
+    fast_wrap = opt.fast_wrap,
   }
 
   require("nvim-treesitter.configs").setup { autopairs = { enable = true } }
@@ -69,6 +69,29 @@ M.setup = function()
   autopairs.add_rules {
     Rule("%", "%", "lua"):with_pair(ts_conds.is_ts_node { "string", "comment" }),
     Rule("$", "$", "lua"):with_pair(ts_conds.is_not_ts_node { "function" }),
+		  Rule(' ', ' ')
+    :with_pair(function (opts)
+      local pair = opts.line:sub(opts.col - 1, opts.col)
+      return vim.tbl_contains({ '()', '[]', '{}' }, pair)
+    end),
+		Rule('( ', ' )')
+      :with_pair(function() return false end)
+      :with_move(function(opts)
+          return opts.prev_char:match('.%)') ~= nil
+      end)
+      :use_key(')'),
+		Rule('{ ', ' }')
+      :with_pair(function() return false end)
+      :with_move(function(opts)
+          return opts.prev_char:match('.%}') ~= nil
+      end)
+      :use_key('}'),
+		Rule('[ ', ' ]')
+      :with_pair(function() return false end)
+      :with_move(function(opts)
+          return opts.prev_char:match('.%]') ~= nil
+      end)
+      :use_key(']')
   }
 end
 

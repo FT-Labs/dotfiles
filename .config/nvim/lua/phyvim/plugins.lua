@@ -51,6 +51,7 @@ return packer.startup(function(use)
   use "hrsh7th/cmp-buffer" -- buffer completions
   use "hrsh7th/cmp-path" -- path completions
   use "hrsh7th/cmp-cmdline" -- cmdline opts
+  use "hrsh7th/cmp-nvim-lsp-signature-help" -- cmdline opts
   use "saadparwaiz1/cmp_luasnip" -- snippet completions
 	use "windwp/nvim-autopairs" -- Autopairs
 	use "numToStr/Comment.nvim" -- Comment
@@ -72,7 +73,7 @@ return packer.startup(function(use)
 		"antoinemadec/FixCursorHold.nvim",
 		event = "BufRead",
 		config = function()
-			vim.g.cursorhold_updatetime = 100
+			vim.g.cursorhold_updatetime = 300
 		end,
 	}
 
