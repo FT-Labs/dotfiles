@@ -13,6 +13,7 @@ function M:load()
 	require "phyvim.core.project".setup()
 	require "phyvim.core.lualine".setup()
 	require "phyvim.core.symbols-outline".setup()
+	require "phyvim.core.indent-line".setup()
 end
 
 return M
