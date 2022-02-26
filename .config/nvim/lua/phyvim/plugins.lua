@@ -64,10 +64,8 @@ return packer.startup(function(use)
 	use "ahmedkhalf/project.nvim"
 	use "nvim-lualine/lualine.nvim"
 	use { "weilbith/nvim-code-action-menu", cmd = "CodeActionMenu" } -- better code action menu
-	use "simrat39/symbols-outline.nvim"
-
-
-
+	use "simrat39/symbols-outline.nvim" -- tags
+	use "lukas-reineke/indent-blankline.nvim" -- line indent
 
 		-- Cursorhold fix
 	use {
@@ -91,6 +89,8 @@ return packer.startup(function(use)
 	  "nvim-treesitter/nvim-treesitter",
 	  run = ":TSUpdate"
   }
+
+
 
 
   -- Automatically set up your configuration after cloning packer.nvim
