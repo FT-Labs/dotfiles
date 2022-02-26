@@ -49,6 +49,31 @@ void fast(T &x)
 		x *= -1;
 }
 
+
+string* _arrRead(int n)
+{
+	string* _arr = new string[n];
+	F(i, 0, n) cin >> _arr[i];
+	return _arr;
+}
+
+template<typename A>
+A* _arrRead(int n)
+{
+	A* _arr = new A[n];
+	for (int i=0; i<n; i++) fast(_arr[i]);
+	return _arr;
+}
+
+template<typename M>
+M** _matRead(int n, int m)
+{
+	M** _mat = new M*[n];
+	for (int i=0; i<n; i++) _mat[i] = new M[n];
+	for (int i=0; i<n; i++) for (int j=0; j<m; j++) fast(_mat[i][j]);
+}
+
+
 void desync()
 {
 	ios_base::sync_with_stdio(false);

@@ -6,13 +6,6 @@
 # to clean up.
 
 
-# Adds `~/.local/bin` to $PATH
-export LD_LIBRARY_PATH="/usr/local/lib"
-export GOPATH="$HOME/.local/go"
-export NPMBIN="$HOME/.local/npm/bin"
-export SCRIPTS="$(du "$HOME/.local/bin" | cut -f2 | paste -sd ':')"
-export PATH="$PATH:$GOPATH/bin:$NPMBIN:$SCRIPTS"
-
 # Default programs:
 export EDITOR="nvim"
 export TERMINAL="st"
@@ -30,6 +23,16 @@ export LESSHISTFILE="-"
 export ZDOTDIR="${XDG_CONFIG_HOME:-$HOME/.config}/zsh"
 export INPUTRC="${XDG_CONFIG_HOME:-$HOME/.config}/zsh/inputrc"
 export HISTFILE="${XDG_DATA_HOME:-$HOME/.local/share}/history"
+
+
+# Adds `~/.local/bin` to $PATH
+export LD_LIBRARY_PATH="/usr/local/lib"
+export GOPATH="$HOME/.local/go"
+export NODE_PATH="${XDG_DATA_HOME:-$HOME/.local/share}/node_modules"
+export NPMBIN="$HOME/.local/npm/bin"
+export SCRIPTS="$(du "$HOME/.local/bin" | cut -f2 | paste -sd ':')"
+export PATH="$PATH:$GOPATH/bin:$NPMBIN:$SCRIPTS"
+
 
 # Other program settings:
 export SUDO_ASKPASS="$HOME/.local/bin/scripts/dmenupass"

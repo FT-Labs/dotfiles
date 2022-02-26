@@ -1,0 +1,8 @@
+vim.cmd([[ let @r="\y:%s/\<C-r>\"//g\<Left>\<Left>" ]])
+vim.cmd([[ let @j=":w\<CR>:vsp | terminal java %\<CR>i" ]])
+vim.cmd([[ let @k=":call JavaRun()\<CR>i" ]])
+vim.cmd([[ let @h=":w\<CR>:vsp |terminal go run %\<CR>i" ]])
+vim.cmd([[ let @p=":w\<CR>:vsp |terminal python %\<CR>i" ]])
+vim.cmd([[ let @c=":w\<CR> :!g++ %\<CR> | :vsp |terminal ./a.out\<CR>i" ]])
+vim.cmd([[ let @g=":w\<CR> :vsp | terminal go run % \<CR>i" ]])
+vim.cmd([[ let @1=":call CppComp() \<CR>G:66\<CR>" ]])
