@@ -3,20 +3,7 @@ lua require ("init")
 filetype plugin on
 syntax on
 
-
-if has("autocmd")
-  au VimEnter,InsertLeave * silent execute '!echo -ne "\e[2 q"' | redraw!
-  au InsertEnter,InsertChange *
-    \ if v:insertmode == 'i' |
-    \   silent execute '!echo -ne "\e[6 q"' | redraw! |
-    \ elseif v:insertmode == 'r' |
-    \   silent execute '!echo -ne "\e[4 q"' | redraw! |
-    \ endif
-  au VimLeave * silent execute '!echo -ne "\e[ q"' | redraw!
-endif
-
 " Functions
-
 function DateAuthor()
 	let var1=strftime('%c')
 	:call setline(1,"/*")
@@ -89,15 +76,15 @@ endfunction
 "Java configs
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 autocmd Filetype java set makeprg=javac\ -d\ %:~:h:s?src?bin?\ %
+autocmd FileType lua setlocal tabstop=2 softtabstop=2 shiftwidth=2
 autocmd BufNewFile *.java exe "normal opublic class " . expand('%:t:r') . "\n{\n}\<Esc>1Go\<CR>\<CR>\<Esc>1G"
 autocmd BufNewFile *.{h,hpp} call <SID>insert_gates()
+
+
 autocmd BufNewFile *.{py} call <SID>insert_py()
 autocmd BufNewFile *.{sh} call <SID>insert_sh()
 "For auto shell change user permission
 autocmd BufWritePost *.{sh} !chmod +x <afile>
-autocmd BufWritePre *.py :%s/\s\+$//e
-autocmd BufWritePre *.cpp :%s/\s\+$//e
 autocmd BufWritePre * %s/\s\+$//e
 autocmd BufWritepre * %s/\n\+\%$//e
 "Lua set tabspace to 2
-autocmd FileType lua setlocal tabstop=2 softtabstop=2 shiftwidth=2

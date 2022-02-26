@@ -96,7 +96,7 @@ function M.setup()
 
   ins_left {
     "diff",
-    symbols = { added = " ", modified = "柳", removed = " " },
+    symbols = { added = " ", modified = "", removed = " " },
     diff_color = {
       added = { fg = colors.green },
       modified = { fg = colors.yellow_1 },
@@ -200,7 +200,7 @@ function M.setup()
     function()
       local b = vim.api.nvim_get_current_buf()
       if next(vim.treesitter.highlighter.active[b]) then
-        return " 綠TS"
+        return "  TS"
       end
       return ""
     end,
