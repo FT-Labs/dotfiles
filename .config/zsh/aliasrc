@@ -35,6 +35,13 @@ alias \
 	tg="telegram-desktop &>/dev/null & disown" \
 	l="colorls"
 
+alias \
+	gco="~/Desktop/Codes/" \
+	ggo="~/Desktop/Codes/Go/" \
+	gcp="~/Desktop/Codes/C++/" \
+	gpy="~/Desktop/Codes/Python/" \
+	gj="~/Desktop/Codes/Java/"
+
 # Bare git dot config
 alias \
 	config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME' \
