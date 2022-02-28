@@ -26,7 +26,6 @@ M.setup = function()
 			formatting.gofumpt,
       -- Set a linter
 			d.flake8,
-			d.golangci_lint,
 			d.pylint,
 			d.zsh,
 			d.luacheck,

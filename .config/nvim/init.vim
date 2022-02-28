@@ -7,7 +7,7 @@ syntax on
 function DateAuthor()
 	let var1=strftime('%c')
 	:call setline(1,"/*")
-	:call setline(2,"Author: PhysTech")
+	:call setline(2,"Author: PhyTech")
 	:call setline(3,var1)
 	:call setline(4,"*/")
 	:call setline(5,"")
