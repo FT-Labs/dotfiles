@@ -9,6 +9,18 @@ local opts = {
     selection_caret = " ",
     path_display = { "smart" },
 
+		vimgrep_arguments = {
+			"rg",
+			"--color=never",
+			"--no-heading",
+			"--with-filename",
+			"--line-number",
+			"--column",
+			"--smart-case",
+			"--hidden",
+			"--glob=!.git/",
+		},
+
     mappings = {
       i = {
         ["<C-n>"] = actions.cycle_history_next,
@@ -74,7 +86,8 @@ local opts = {
       },
     },
   },
-        file_ignore_patterns = {},
+			file_ignore_patterns = {".git/", ".cache", "%.o", "%.a", "%.out", "%.class",
+			"%.pdf", "%.mkv", "%.mp4", "%.zip"},
       path_display = { shorten = 5 },
       winblend = 0,
       border = {},
@@ -82,9 +95,9 @@ local opts = {
       color_devicons = true,
       set_env = { ["COLORTERM"] = "truecolor" }, -- default = nil,
       pickers = {
-        find_files = {
-          find_command = { "fd", "--type=file", "--hidden" },
-        },
+        -- find_files = {
+        --   find_command = { "fd", "--type=file", "--hidden" },
+        -- },
         live_grep = {
           --@usage don't include the filename in the search results
           only_sort_text = true,
@@ -108,9 +121,7 @@ function M.setup()
 
 	telescope.load_extension('media_files')
 
-
 	telescope.setup(opts)
-
 end
 
 return M

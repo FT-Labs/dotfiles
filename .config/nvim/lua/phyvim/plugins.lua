@@ -64,9 +64,15 @@ return packer.startup(function(use)
 	use "jose-elias-alvarez/null-ls.nvim" -- for formatters and linters
 	use "ahmedkhalf/project.nvim"
 	use "nvim-lualine/lualine.nvim"
-	use { "weilbith/nvim-code-action-menu", cmd = "CodeActionMenu" } -- better code action menu
 	use "simrat39/symbols-outline.nvim" -- tags
 	use "lukas-reineke/indent-blankline.nvim" -- line indent
+
+	use { "weilbith/nvim-code-action-menu",
+				cmd = "CodeActionMenu",
+				config = function()
+					vim.g.code_action_menu_show_diff = false
+				end,
+			} -- better code action menu
 
 		-- Cursorhold fix
 	use {
