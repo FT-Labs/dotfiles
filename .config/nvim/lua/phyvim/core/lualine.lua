@@ -40,7 +40,7 @@ function M.setup()
       disabled_filetypes = { "NvimTree", "neo-tree", "dashboard", "Outline" },
       component_separators = "",
       section_separators = "",
-			theme = "nord",
+			theme = "catppuccin",
       -- theme = {
       --   normal = { c = { fg = colors.white, bg = colors.grey } },
       --   inactive = { c = { fg = colors.white, bg = colors.grey } },
