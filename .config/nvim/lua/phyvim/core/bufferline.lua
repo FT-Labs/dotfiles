@@ -43,11 +43,11 @@ local opts = {
         -- gui = "italic",
       },
       buffer_selected = {
-        gui = "bold",
+        -- gui = "bold",
       },
     },
     options = {
-      numbers = "none", -- can be "none" | "ordinal" | "buffer_id" | "both" | function
+      numbers = "", -- can be "none" | "ordinal" | "buffer_id" | "both" | function
       close_command = "bdelete! %d", -- can be a string | function, see "Mouse actions"
       right_mouse_command = "vert sbuffer %d", -- can be a string | function, see "Mouse actions"
       left_mouse_command = "buffer %d", -- can be a string | function, see "Mouse actions"
