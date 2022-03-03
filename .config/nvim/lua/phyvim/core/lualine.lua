@@ -18,6 +18,7 @@ function M.setup()
     violet = "#a9a1e1",
     magenta = "#c678dd",
     blue = "#51afef",
+		blue_1 = "#96cdfb",
     red = "#ec5f67",
   }
 
@@ -90,7 +91,7 @@ function M.setup()
   ins_left {
     "filetype",
     cond = conditions.buffer_not_empty,
-    color = { fg = colors.magenta, gui = "bold" },
+    color = { fg = colors.blue_1, gui = "bold" },
     padding = { left = 2, right = 1 },
   }
 
