@@ -1,7 +1,6 @@
 lua require ("init")
 
 filetype plugin on
-syntax on
 
 " Functions
 function DateAuthor()
@@ -73,15 +72,13 @@ function! s:insert_sh()
 	normal! kk
 endfunction
 
-"Java configs
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+"Java configs
 autocmd Filetype java set makeprg=javac\ -d\ %:~:h:s?src?bin?\ %
 "Lua set tabspace to 2
 autocmd FileType lua setlocal tabstop=2 softtabstop=2 shiftwidth=2
 autocmd BufNewFile *.java exe "normal opublic class " . expand('%:t:r') . "\n{\n}\<Esc>1Go\<CR>\<CR>\<Esc>1G"
 autocmd BufNewFile *.{h,hpp} call <SID>insert_gates()
-
-
 autocmd BufNewFile *.{py} call <SID>insert_py()
 autocmd BufNewFile *.{sh} call <SID>insert_sh()
 "For auto shell change user permission

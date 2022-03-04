@@ -41,7 +41,7 @@ alias \
 	gcp="~/Desktop/Codes/C++/" \
 	gpy="~/Desktop/Codes/Python/" \
 	gj="~/Desktop/Codes/Java/" \
-	t="st ./ & disown"
+	t="st &>/dev/null & disown"
 
 # Bare git dot config
 alias \

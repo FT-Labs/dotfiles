@@ -1,6 +1,6 @@
 local M = {}
 
-function M:load()
+M.load = function()
 	require "impatient"
 	require "phyvim.core.cmp".setup()
 	require "phyvim.core.telescope".setup()

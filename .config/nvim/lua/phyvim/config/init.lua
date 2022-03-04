@@ -1,9 +1,10 @@
 local M = {}
 
 function M:load()
-  local options = require "phyvim.config.options"
   require "phyvim.config.keymaps"
-  options.load_options()
+  require "phyvim.config.options".load_options()
+	-- TODO below
+	-- require "phyvim.config.autocmds"
 
   vim.g.tokyonight_style = "night"
   local colorscheme = "tokyonight"
