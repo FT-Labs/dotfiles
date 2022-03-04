@@ -3,7 +3,8 @@ return {
 
     python = {
       analysis = {
-        typeCheckingMode = "off"
+        typeCheckingMode = "off",
+  			autoImportCompletion = true
       }
     }
 	},
