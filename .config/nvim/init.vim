@@ -76,6 +76,7 @@ endfunction
 "Java configs
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 autocmd Filetype java set makeprg=javac\ -d\ %:~:h:s?src?bin?\ %
+"Lua set tabspace to 2
 autocmd FileType lua setlocal tabstop=2 softtabstop=2 shiftwidth=2
 autocmd BufNewFile *.java exe "normal opublic class " . expand('%:t:r') . "\n{\n}\<Esc>1Go\<CR>\<CR>\<Esc>1G"
 autocmd BufNewFile *.{h,hpp} call <SID>insert_gates()
@@ -87,4 +88,3 @@ autocmd BufNewFile *.{sh} call <SID>insert_sh()
 autocmd BufWritePost *.{sh} !chmod +x <afile>
 autocmd BufWritePre * %s/\s\+$//e
 autocmd BufWritepre * %s/\n\+\%$//e
-"Lua set tabspace to 2

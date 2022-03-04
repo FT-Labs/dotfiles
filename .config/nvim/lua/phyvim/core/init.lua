@@ -2,7 +2,7 @@ local M = {}
 
 function M:load()
 	require "impatient"
-	require "phyvim.core.cmp"
+	require "phyvim.core.cmp".setup()
 	require "phyvim.core.telescope".setup()
 	require "phyvim.core.treesitter".setup()
 	require "phyvim.core.autopairs".setup()

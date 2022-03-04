@@ -40,8 +40,9 @@ alias \
 	ggo="~/Desktop/Codes/Go/" \
 	gcp="~/Desktop/Codes/C++/" \
 	gpy="~/Desktop/Codes/Python/" \
-	gj="~/Desktop/Codes/Java/"
+	gj="~/Desktop/Codes/Java/" \
+	t="st ./ & disown"
 
 # Bare git dot config
 alias \
-	config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME' \
+	config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'

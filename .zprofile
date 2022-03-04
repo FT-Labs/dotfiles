@@ -9,7 +9,7 @@
 # Default programs:
 export EDITOR="nvim"
 export TERMINAL="st"
-export BROWSER="brave"
+export BROWSER="chromium"
 export READER="zathura"
 
 # ~/ Clean-up:
