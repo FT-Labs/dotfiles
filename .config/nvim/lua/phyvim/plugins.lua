@@ -11,7 +11,15 @@ if fn.empty(fn.glob(install_path)) > 0 then
     install_path,
   }
   print "Installing packer close and reopen Neovim..."
-  vim.cmd [[packadd packer.nvim]] end -- Autocommand that reloads neovim whenever you save the plugins.lua file
+  vim.cmd [[packadd packer.nvim]]
+end
+
+vim.cmd [[
+  augroup packer_user_config
+    autocmd!
+    autocmd BufWritePost plugins.lua source <afile> | PackerSync
+  augroup end
+]]
 
 local status_ok, packer = pcall(require, "packer")
 if not status_ok then
@@ -60,6 +68,7 @@ return packer.startup(function(use)
 	use "nvim-lualine/lualine.nvim"
 	use "simrat39/symbols-outline.nvim" -- tags
 	use "lukas-reineke/indent-blankline.nvim" -- line indent
+	use "akinsho/toggleterm.nvim" -- toggle terminal
 
 	use { "weilbith/nvim-code-action-menu",
 				cmd = "CodeActionMenu",

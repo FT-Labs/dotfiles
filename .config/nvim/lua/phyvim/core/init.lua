@@ -14,6 +14,7 @@ M.load = function()
 	require "phyvim.core.lualine".setup()
 	require "phyvim.core.symbols-outline".setup()
 	require "phyvim.core.indent-line".setup()
+	require "phyvim.core.terminal".setup()
 end
 
 return M
