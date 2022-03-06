@@ -5,9 +5,10 @@ PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magent
 # History in cache directory:
 setopt autocd
 ZSH_THEME="eastwood"
-HISTSIZE=1000
-SAVEHIST=1000
+HISTSIZE=10000
+SAVEHIST=10000
 HISTFILE=~/.cache/zsh/history
+setopt appendhistory
 
 
 # Basic auto/tab complete:
