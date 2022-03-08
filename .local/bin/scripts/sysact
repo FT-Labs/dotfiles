@@ -44,54 +44,24 @@ confirm_exit() {
 		-theme $dir/confirm.rasi
 }
 
-# Message
-msg() {
-	rofi -theme "$dir/message.rasi" -e "Available Options  -  yes / y / no / n"
-}
-
 case "$(readlink -f /sbin/init)" in
 	*systemd*) ctl='systemctl' ;;
 	*) ctl='loginctl' ;;
 esac
 
 # Variable passed to rofi
-options="$shutdown\n$reboot\n$lock\n$logout\n$renew_dwm"
+options="$logout\n$lock\n$shutdown\n$reboot\n$renew_dwm"
 
 chosen="$(echo -e "$options" | $rofi_command -p "Uptime: $uptime" -dmenu -selected-row 2)"
 case $chosen in
-    $shutdown)
-		ans=$(confirm_exit &)
-		if [[ $ans == "yes" || $ans == "YES" || $ans == "y" || $ans == "Y" ]]; then
-			$ctl poweroff -i
-		elif [[ $ans == "no" || $ans == "NO" || $ans == "n" || $ans == "N" ]]; then
-			exit 0
-        else
-			msg
-        fi
-        ;;
-    $reboot)
-		ans=$(confirm_exit &)
-		if [[ $ans == "yes" || $ans == "YES" || $ans == "y" || $ans == "Y" ]]; then
-			$ctl reboot -i
-		elif [[ $ans == "no" || $ans == "NO" || $ans == "n" || $ans == "N" ]]; then
-			exit 0
-        else
-			msg
-        fi
-        ;;
-    $lock)
-		dm-tool lock
-        ;;
     $logout)
-		ans=$(confirm_exit &)
-		if [[ $ans == "yes" || $ans == "YES" || $ans == "y" || $ans == "Y" ]]; then
-			kill -TERM $(pidof -s dwm)
-		elif [[ $ans == "no" || $ans == "NO" || $ans == "n" || $ans == "N" ]]; then
-			exit 0
-        else
-			msg
-        fi
-        ;;
+		kill -TERM $(pidof -s dwm) ;;
+    $lock)
+		dm-tool lock ;;
+    $shutdown)
+		$ctl poweroff -i ;;
+    $reboot)
+		$ctl reboot -i ;;
 	$renew_dwm)
 		kill -HUP $(pidof -s dwm) ;;
 esac
