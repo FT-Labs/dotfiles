@@ -27,8 +27,8 @@ local opts = {
       },
     },
     -- indent = {enable = true, disable = {"python", "html", "javascript"}},
-    indent = { enable = false, disable = { "yaml" } },
-    autotag = { enable = false },
+    indent = { enable = true, disable = { "yaml" } },
+    autotag = { enable = true },
     textobjects = {
       swap = {
         enable = false,
