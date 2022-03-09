@@ -20,7 +20,7 @@ M.setup = function()
     sources = {
       -- Set a formatter
 			formatting.cmake_format,
-			formatting.gofmt,
+			-- formatting.gofmt,
 			formatting.goimports,
 			formatting.golines,
 			formatting.gofumpt,
