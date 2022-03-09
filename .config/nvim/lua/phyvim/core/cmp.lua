@@ -18,6 +18,11 @@ M.setup = function()
 		return col == 0 or vim.fn.getline("."):sub(col, col):match "%s"
 	end
 
+	local has_words_before = function()
+		local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+		return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
+	end
+
 	--   פּ ﯟ   some other good icons
 	local kind_icons =  {
 		Class = " ",
@@ -75,6 +80,8 @@ M.setup = function()
 					luasnip.expand_or_jump()
 				elseif cmp.visible() then
 					cmp.confirm({ select = true })
+				elseif has_words_before() then
+					cmp.complete()
 				elseif check_backspace() then
 					fallback()
 				else
@@ -85,10 +92,10 @@ M.setup = function()
 				"s",
 			}),
 			["<S-Tab>"] = cmp.mapping(function(fallback)
-				if cmp.visible() then
-					cmp.select_prev_item()
-				elseif luasnip.jumpable(-1) then
+				if luasnip.jumpable(-1) then
 					luasnip.jump(-1)
+				elseif cmp.visible() then
+					cmp.select_prev_item()
 				else
 					fallback()
 				end
@@ -127,7 +134,7 @@ M.setup = function()
 			border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
 		},
 		experimental = {
-			ghost_text = true,
+			ghost_text = false,
 			native_menu = false,
 		},
 	}

@@ -6,7 +6,7 @@ function M:load()
 	-- TODO below
 	-- require "phyvim.config.autocmds"
 
- -- vim.g.tokyonight_style = "night"
+  vim.g.tokyonight_style = "night"
   local colorscheme = "tokyonight"
 
 	local status_ok, _ = pcall(vim.cmd, "colorscheme " .. colorscheme)
