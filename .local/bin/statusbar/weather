@@ -15,7 +15,7 @@ getforecast() { curl -sf "wttr.in/$LOCATION" > "$weatherreport" || exit 1 ;}
 showweather() { sed '13q;d' "$weatherreport" | grep -o "m\\([-+]\\)*[0-9]\\+" | sed 's/+//g' | sort -n -t 'm' -k 2n | sed -e 1b -e '$!d' | tr '\n|m' ' ' | awk '{print "🥶" $1 "°","🌞" $2 "°"}' ;}
 
 case $BLOCK_BUTTON in
-	1) setsid -f "$TERMINAL" -e less -Srf "$weatherreport" ;;
+	1) setsid -f "$TERMINAL" -e less -Srf "$weatherreport" && sleep 0.1 && xdotool key Super_L+f ;;
 	2) getforecast && showweather ;;
 	3) notify-send "🌈 Weather module" "\- Left click for full forecast.
 - Middle click to update forecast.
