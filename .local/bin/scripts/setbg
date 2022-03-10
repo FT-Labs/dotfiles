@@ -8,8 +8,8 @@ bgloc="${XDG_DATA_HOME:-$HOME/.local/share/}/bg"
 
 [ -f "$1" ] && ln -sf "$(readlink -f "$1")" "$bgloc" && notify-send -i "$bgloc" "Changing wallpaper..."
 
-if [ ! -f "$bgloc" ]; then
-	bgloc="/usr/share/wallpapers/wp.*"
+if [ ! -e "$bgloc" ]; then
+	bgloc="/usr/share/wallpapers/wp.png"
 fi
 
 

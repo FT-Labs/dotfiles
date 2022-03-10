@@ -16,4 +16,6 @@ fi
 
 makepkg -si
 
+kill -HUP $(pidof -s dwm) && xdotool key Super_L
+
 yes | rm -r "$1-phyOS" src pkg *.zst PKGBUILD

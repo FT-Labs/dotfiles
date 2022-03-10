@@ -14,6 +14,8 @@ alias \
 # Colorize commands when possible.
 alias \
 	ls="ls -hN --color=auto --group-directories-first" \
+	l="colorls" \
+	lt="colorls --tree" \
 	grep="grep --color=auto" \
 	diff="diff --color=auto" \
 	ccat="highlight --out-format=ansi"
@@ -33,7 +35,6 @@ alias \
 	wp="whatsapp-for-linux &>/dev/null & disown" \
 	dc="discord &>/dev/null & disown" \
 	tg="telegram-desktop &>/dev/null & disown" \
-	l="colorls"
 
 alias \
 	gco="~/Desktop/Codes/" \
