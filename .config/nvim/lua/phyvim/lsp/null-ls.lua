@@ -25,8 +25,8 @@ M.setup = function()
 			formatting.golines,
 			formatting.gofumpt,
       -- Set a linter
-			d.flake8,
-			d.pylint,
+			--d.flake8,
+			--d.pylint,
 			d.zsh,
 			d.luacheck,
     },
