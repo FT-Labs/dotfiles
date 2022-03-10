@@ -22,8 +22,8 @@ M.setup = function()
 			formatting.cmake_format,
 			-- formatting.gofmt,
 			formatting.goimports,
-			formatting.golines,
-			formatting.gofumpt,
+			-- formatting.golines,
+			-- formatting.gofumpt,
       -- Set a linter
 			--d.flake8,
 			--d.pylint,
