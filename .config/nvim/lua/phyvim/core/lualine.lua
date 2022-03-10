@@ -91,7 +91,7 @@ function M.setup()
   ins_left {
     "filetype",
     cond = conditions.buffer_not_empty,
-    color = { fg = colors.blue_1, gui = "bold" },
+    -- color = {  fg = colors.blue_1, gui = "bold" },
     padding = { left = 2, right = 1 },
   }
 
