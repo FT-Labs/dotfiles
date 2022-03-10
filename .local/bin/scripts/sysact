@@ -46,7 +46,7 @@ options="$logout\n$lock\n$shutdown\n$reboot\n$renew_dwm"
 chosen="$(echo -e "$options" | $rofi_command -p "Uptime: $uptime" -dmenu -selected-row 2)"
 case $chosen in
     $logout)
-		kill -TERM $(pidof -s dwm) ;;
+		kill -TERM $(pidof -s dwm) && xdotool key Super_L ;;
     $lock)
 		dm-tool lock ;;
     $shutdown)
@@ -54,5 +54,5 @@ case $chosen in
     $reboot)
 		$ctl reboot -i ;;
 	$renew_dwm)
-		kill -HUP $(pidof -s dwm) ;;
+		kill -HUP $(pidof -s dwm) && xdotool key Super_L ;;
 esac
