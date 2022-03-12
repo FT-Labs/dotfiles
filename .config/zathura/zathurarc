@@ -1,0 +1,17 @@
+# One page per row by default
+set pages-per-row 1
+
+#stop at page boundries
+set scroll-page-aware "true"
+set smooth-scroll "true"
+set scroll-full-overlap 0.01
+set scroll-step 100
+map J zoom out
+map K zoom in
+map R rotate
+
+#zoom settings
+set zoom-min 10
+set font "SF Pro Text 14"
+
+include themes/catppuccin
