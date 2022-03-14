@@ -46,4 +46,4 @@ alias \
 
 # Bare git dot config
 alias \
-	config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
+	dots='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
