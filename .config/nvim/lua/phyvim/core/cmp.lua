@@ -1,10 +1,12 @@
 local M = {}
 
+
+local cmp_status_ok, cmp = pcall(require, "cmp")
+if not cmp_status_ok then
+	return
+end
+
 local function jumpable(dir)
-	local cmp_status_ok, cmp = pcall(require, "cmp")
-	if not cmp_status_ok then
-		return
-	end
 
   local luasnip_ok, luasnip = pcall(require, "luasnip")
   if not luasnip_ok then
@@ -93,7 +95,7 @@ local function jumpable(dir)
     -- No candidate, but have an exit node
     if exit_node then
 			if cmp.visible() then
-				cmp.complete()
+				return false
 			end
       -- to jump to the exit node, seek to snippet
       luasnip.session.current_nodes[get_current_buf()] = snippet
@@ -114,10 +116,6 @@ local function jumpable(dir)
 end
 
 M.setup = function()
-	local cmp_status_ok, cmp = pcall(require, "cmp")
-	if not cmp_status_ok then
-		return
-	end
 
 	local snip_status_ok, luasnip = pcall(require, "luasnip")
 	if not snip_status_ok then
