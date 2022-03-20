@@ -20,7 +20,6 @@ export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_CACHE_HOME="$HOME/.cache"
 export QT_QPA_PLATFORMTHEME="qt5ct"	# Have QT use qt5ct theme.
 export ZDOTDIR="${XDG_CONFIG_HOME:-$HOME/.config}/zsh"
-export INPUTRC="${XDG_CONFIG_HOME:-$HOME/.config}/zsh/inputrc"
 export HISTFILE="${XDG_DATA_HOME:-$HOME/.local/share}/history"
 
 
@@ -34,7 +33,7 @@ export PATH="$PATH:$GOPATH/bin:$NPMBIN:$SCRIPTS"
 
 
 # Other program settings:
-export SUDO_ASKPASS="$HOME/.local/bin/scripts/dmenupass"
+export SUDO_ASKPASS="$HOME/.local/bin/scripts/dmenupass" # Ask password with dmenu if any command needs it
 export LESS=-R
 export LESS_TERMCAP_mb="$(printf '%b' '[1;31m')"
 export LESS_TERMCAP_md="$(printf '%b' '[1;36m')"
