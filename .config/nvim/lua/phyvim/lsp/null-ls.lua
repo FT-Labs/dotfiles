@@ -28,7 +28,6 @@ M.setup = function()
 			--d.flake8,
 			--d.pylint,
 			d.zsh,
-			d.luacheck,
     },
     -- NOTE: You can remove this on attach function to disable format on save
     on_attach = function(client)

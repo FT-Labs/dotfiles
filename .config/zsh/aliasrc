@@ -34,7 +34,7 @@ alias \
     vm="/usr/bin/vim" \
 	wp="whatsapp-for-linux &>/dev/null & disown" \
 	dc="discord &>/dev/null & disown" \
-	tg="telegram-desktop &>/dev/null & disown" \
+	tg="telegram-desktop &>/dev/null & disown"
 
 alias \
 	gco="~/Desktop/Codes/" \
