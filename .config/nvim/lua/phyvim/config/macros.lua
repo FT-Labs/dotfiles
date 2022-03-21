@@ -6,4 +6,5 @@ vim.cmd([[ let @a=":w\<CR> :!nasm -f elf64 -o out.o % && ld out.o -o a.out \<CR>
 vim.cmd([[ let @c=":w\<CR> :!g++ %\<CR> | :vsp |terminal ./a.out\<CR>i" ]])
 vim.cmd([[ let @g=":w\<CR> :vsp | terminal go run % \<CR>i" ]])
 vim.cmd([[ let @h=":ProjectRoot \<CR> :w\<CR> :vsp | terminal  go run *.go \<CR>i" ]])
+vim.cmd([[ let @n=":w\<CR> :vsp | terminal node % \<CR>i" ]])
 vim.cmd([[ let @1=":call CppComp() \<CR>G:66\<CR>" ]])
