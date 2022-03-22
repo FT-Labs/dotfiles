@@ -14,7 +14,7 @@ M.setup = function()
 
   local config = {
     -- disable virtual text
-    virtual_text = true,
+    virtual_text = false,
 		code_lens_refresh = true,
     -- show signs
     signs = {
