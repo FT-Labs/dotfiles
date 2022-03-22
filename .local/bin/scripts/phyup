@@ -2,6 +2,7 @@
 
 mkdir -p "$HOME/.cache/phyos/dwm"
 mkdir -p "$HOME/.cache/phyos/dwmblocks"
+mkdir -p "$HOME/.cache/phyos/dots"
 cd "$HOME/.cache/phyos/$1"
 
 rm PKGBUILD
@@ -10,7 +11,7 @@ if [ "$1" == "dwm" ]; then
 	wget "https://raw.githubusercontent.com/PhyTech-R0/dwm-phyOS/master/PKGBUILD"
 elif [ "$1" == "dwmblocks" ]; then
 	wget "https://raw.githubusercontent.com/PhyTech-R0/dwmblocks-phyOS/main/PKGBUILD"
-elif [ "$1" == "dotfiles" ]; then
+elif [ "$1" == "dots" ]; then
 	git clone "https://github.com/PhyTech-R0/dotfiles" && yes | cp -r dotfiles/.* "$HOME/" || yes | rm -r dotfiles && exit
 fi
 
