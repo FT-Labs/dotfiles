@@ -38,6 +38,8 @@ kmap("n", "<F4>", ":! compwrite && clear && g++ %<cr> | :vsp |terminal ./a.out<i
 
 -- Toggle tags
 kmap("n", "<leader>t", ":SymbolsOutline<cr>", opts)
+-- Change dir
+kmap("n", "<leader>C", ":cd %:h <cr>", opts)
 
 -- Move text up down
 kmap("v", "<A-j>", ":m .+1<CR>==", opts)
