@@ -232,8 +232,8 @@ M.setup = function()
 		sources = {
 			{ name = "nvim_lsp" },
 			{ name = "nvim_lua" },
-			{ name = "buffer" },
 			{ name = "luasnip" },
+			{ name = "buffer" },
 			{ name = "path" },
 			{ name = "nvim_lsp_signature_help" },
 		},
