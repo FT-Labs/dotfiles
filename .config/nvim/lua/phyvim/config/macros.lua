@@ -8,6 +8,7 @@ vim.cmd([[ let @r="\y:%s/\<C-r>\"//g\<Left>\<Left>" ]])
 -- vim.cmd([[ let @g=":w\<CR> :vsp | terminal go run % \<CR>i" ]])
 vim.cmd([[ let @h=":ProjectRoot \<CR> :w\<CR> :vsp | terminal  go run *.go \<CR>i" ]])
 vim.cmd([[ let @1=":call CppComp() \<CR>G:66\<CR>" ]])
+vim.cmd([[ let @c=":cd %:h \<CR>" ]])
 
 -- All previous macros have been changed to autocmd, @g macro will run current file
 vim.cmd [[
