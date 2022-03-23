@@ -1,0 +1,174 @@
+{
+  "name": "phyvim-snippets",
+  "engines": {
+    "vscode": "^1.11.0"
+  },
+  "contributes": {
+    "snippets": [
+      {
+        "language": [
+          "plaintext",
+          "markdown",
+          "tex",
+          "html",
+          "global"
+        ],
+        "path": "./global.json"
+      },
+      {
+        "language": "c",
+        "path": "./c.json"
+      },
+      {
+        "language": "cpp",
+        "path": "./cpp.json"
+      },
+      {
+        "language": [
+          "gitcommit",
+          "NeogitCommitMessage"
+        ],
+        "path": "./gitcommit.json"
+      },
+      {
+        "language": "lua",
+        "path": "./lua.json"
+      },
+      {
+        "language": "go",
+        "path": "./go.json"
+      },
+      {
+        "language": [
+          "shellscript",
+          "shell",
+          "sh",
+          "zsh"
+        ],
+        "path": "./shell.json"
+      },
+      {
+        "language": [
+          "markdown",
+          "rmd"
+        ],
+        "path": "./markdown.json"
+      },
+      {
+        "language": "java",
+        "path": "./snippets/java.json"
+      },
+      {
+        "language": [
+          "html",
+          "jade",
+          "pug",
+          "eruby"
+        ],
+        "path": "./html.json"
+      },
+      {
+        "language": [
+          "css",
+          "scss",
+          "sass",
+          "less",
+          "stylus"
+        ],
+        "path": "./css.json"
+      },
+      {
+        "language": [
+          "javascript",
+          "javascriptreact",
+          "vue",
+          "svelte"
+        ],
+        "path": "./javascript/javascript.json"
+      },
+      {
+        "language": [
+          "typescript",
+          "typescriptreact"
+        ],
+        "path": "./javascript/typescript.json"
+      },
+      {
+        "language": "javascriptreact",
+        "path": "./javascript/react.json"
+      },
+      {
+        "language": "javascriptreact",
+        "path": "./javascript/react-native.json"
+      },
+      {
+        "language": "typescriptreact",
+        "path": "./javascript/react-ts.json"
+      },
+      {
+        "language": "typescriptreact",
+        "path": "./javascript/react-native-ts.json"
+      },
+      {
+        "language": "vue",
+        "path": "./frameworks/vue/html.json"
+      },
+      {
+        "language": "vue",
+        "path": "./frameworks/vue/pug.json"
+      },
+      {
+        "language": "vue",
+        "path": "./frameworks/vue/javascript.json"
+      },
+      {
+        "language": "vue",
+        "path": "./frameworks/vue/vue.json"
+      },
+      {
+        "language": "python",
+        "path": "./python/base.json"
+      },
+      {
+        "language": "python",
+        "path": "./python/comprehension.json"
+      },
+      {
+        "language": "python",
+        "path": "./python/debug.json"
+      },
+      {
+        "language": "python",
+        "path": "./python/python.json"
+      },
+      {
+        "language": "python",
+        "path": "./python/unittest.json"
+      },
+      {
+        "language": "django",
+        "path": "./frameworks/django/imports.json"
+      },
+      {
+        "language": "django",
+        "path": "./frameworks/django/forms.json"
+      },
+      {
+        "language": "django",
+        "path": "./frameworks/django/models.json"
+      },
+      {
+        "language": "django",
+        "path": "./frameworks/django/views.json"
+      },
+      {
+        "language": "django",
+        "path": "./frameworks/django/filetemplates.json"
+      },
+      {
+        "language": "make",
+        "path": "./make.json"
+      }
+    ]
+  }
+}
