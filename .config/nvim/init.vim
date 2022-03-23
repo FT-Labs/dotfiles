@@ -1,5 +1,3 @@
-lua require ("init")
-
 filetype plugin on
 
 " Functions
@@ -49,7 +47,7 @@ function JavaCompRead()
 endfunction
 
 "For C/C++ header files
-function! s:insert_gates()
+function Insert_gates()
   let gatename = substitute(toupper(expand("%:t")), "\\.", "_", "g")
   execute "normal! i#ifndef " . gatename
   execute "normal! o#define " . gatename . " "
@@ -58,7 +56,7 @@ function! s:insert_gates()
 endfunction
 
 "Python configs
-function! s:insert_py()
+function Insert_py()
 	execute "normal! i#!/usr/bin/env python"
 	execute "normal! o"
 	execute "normal! o"
@@ -67,21 +65,23 @@ function! s:insert_py()
 	"execute "normal! oif __name__ == \"__main__\":"
 endfunction
 
-function! s:insert_sh()
+function Insert_sh()
 	execute "normal! i#!/bin/bash"
 	normal! kk
 endfunction
 
-autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
-"Java configs
-autocmd Filetype java set makeprg=javac\ -d\ %:~:h:s?src?bin?\ %
-"Lua set tabspace to 2
-autocmd FileType lua setlocal tabstop=2 softtabstop=2 shiftwidth=2
-autocmd BufNewFile *.java exe "normal opublic class " . expand('%:t:r') . "\n{\n}\<Esc>1Go\<CR>\<CR>\<Esc>1G"
-autocmd BufNewFile *.{h,hpp} call <SID>insert_gates()
-autocmd BufNewFile *.{py} call <SID>insert_py()
-autocmd BufNewFile *.{sh} call <SID>insert_sh()
-"For auto shell change user permission
-autocmd BufWritePost *.{sh} !chmod +x <afile>
-autocmd BufWritePre * %s/\s\+$//e
-autocmd BufWritepre * %s/\n\+\%$//e
+lua require ("init")
+
+" autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+" "Java configs
+" autocmd Filetype java set makeprg=javac\ -d\ %:~:h:s?src?bin?\ %
+" "Lua set tabspace to 2
+" autocmd FileType lua setlocal tabstop=2 softtabstop=2 shiftwidth=2
+" autocmd BufNewFile *.java exe "normal opublic class " . expand('%:t:r') . "\n{\n}\<Esc>1Go\<CR>\<CR>\<Esc>1G"
+" autocmd BufNewFile *.{h,hpp} call <SID>insert_gates()
+" autocmd BufNewFile *.{py} call <SID>insert_py()
+" autocmd BufNewFile *.{sh} call <SID>insert_sh()
+" "For auto shell change user permission
+" autocmd BufWritePost *.{sh} !chmod +x <afile>
+" autocmd BufWritePre * %s/\s\+$//e
+" autocmd BufWritepre * %s/\n\+\%$//e

@@ -4,7 +4,7 @@ function M:load()
   require "phyvim.config.keymaps"
   require "phyvim.config.options".load_options()
 	-- TODO below
-	-- require "phyvim.config.autocmds"
+	require "phyvim.config.autocmds"
 
   vim.g.tokyonight_style = "night"
   local colorscheme = "tokyonight"
