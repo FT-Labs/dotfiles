@@ -12,7 +12,7 @@ if [ "$1" == "dwm" ]; then
 elif [ "$1" == "dwmblocks" ]; then
 	wget "https://raw.githubusercontent.com/PhyTech-R0/dwmblocks-phyOS/main/PKGBUILD"
 elif [ "$1" == "dots" ]; then
-	git clone "https://github.com/PhyTech-R0/dotfiles" && yes | cp -r dotfiles/.* "$HOME/" || yes | rm -r dotfiles && exit
+	git clone "https://github.com/PhyTech-R0/dotfiles" && yes | rm -r dotfiles/.git && cp -r dotfiles/.* "$HOME/" || yes | rm -r dotfiles && exit
 fi
 
 makepkg -si
