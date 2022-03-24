@@ -94,15 +94,15 @@ local function jumpable(dir)
 
     -- No candidate, but have an exit node
     if exit_node then
-			if cmp.visible() then
-				return false
-			end
       -- to jump to the exit node, seek to snippet
       luasnip.session.current_nodes[get_current_buf()] = snippet
       return true
     end
 
     -- No exit node, exit from snippet
+		if cmp.visible() then
+			cmp.confirm({ select = true })
+		end
     snippet:remove_from_jumplist()
     luasnip.session.current_nodes[get_current_buf()] = nil
     return false
@@ -221,8 +221,8 @@ M.setup = function()
 				vim_item.kind = string.format("%s", kind_icons[vim_item.kind])
 				vim_item.menu = ({
 					nvim_lsp = "[LSP]",
-					nvim_lua = "[NVIM_LUA]",
 					luasnip = "[Snippet]",
+					nvim_lua = "[NVIM_LUA]",
 					buffer = "[Buffer]",
 					path = "[Path]",
 				})[entry.source.name]
@@ -230,9 +230,9 @@ M.setup = function()
 			end,
 		},
 		sources = {
-			{ name = "nvim_lsp" },
 			{ name = "nvim_lua" },
 			{ name = "luasnip" },
+			{ name = "nvim_lsp" },
 			{ name = "buffer" },
 			{ name = "path" },
 			{ name = "nvim_lsp_signature_help" },
