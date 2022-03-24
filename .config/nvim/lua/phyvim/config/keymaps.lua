@@ -32,12 +32,14 @@ kmap("n", "8",  ":BufferLineGoToBuffer 8<CR>", opts)
 kmap("n", "9",  ":BufferLineGoToBuffer 9<CR>", opts)
 
 -- F Keys
-kmap("n", "<F1>", ":NvimTreeRefresh<cr> | :NvimTreeToggle<cr>", opts)
-kmap("i", "<F1>", "<esc>:NvimTreeRefresh<cr> | :NvimTreeToggle<cr>", opts)
+kmap("n", "<F1>", ":NvimTreeToggle<cr>", opts)
+kmap("i", "<F1>", "<esc> :NvimTreeToggle<cr>", opts)
 kmap("n", "<F4>", ":! compwrite && clear && g++ %<cr> | :vsp |terminal ./a.out<inp.txt <cr>", opts)
 
 -- Toggle tags
 kmap("n", "<leader>t", ":SymbolsOutline<cr>", opts)
+-- Restart lsp && refresh files
+kmap("n", "<leader>r", ":NvimTreeRefresh<cr> | :LspRestart<cr>", opts)
 
 -- Move text up down
 kmap("v", "<A-j>", ":m .+1<CR>==", opts)
