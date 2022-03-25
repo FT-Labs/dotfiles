@@ -1,5 +1,7 @@
 filetype plugin on
 
+lua require ("init")
+
 " Functions
 function DateAuthor()
 	let var1=strftime('%c')
@@ -21,11 +23,6 @@ function JavaRun()
 	let l:curDir = getcwd()
 	execute (binDir) | execute ("terminal java ". projName. ".".fileName)
 	execute ("cd " . curDir)
-endfunction
-
-function CppUsual1()
-	:call DateAuthor()
-	:5r ~/.config/nvim/templates/usual-1.cpp
 endfunction
 
 function CppComp()
@@ -60,6 +57,7 @@ function Insert_py()
 	execute "normal! i#!/usr/bin/env python"
 	execute "normal! o"
 	execute "normal! o"
+	" Uncomment below if you need main
 	"execute "normal! o"
 	"execute "normal! o"
 	"execute "normal! oif __name__ == \"__main__\":"
@@ -67,21 +65,7 @@ endfunction
 
 function Insert_sh()
 	execute "normal! i#!/bin/bash"
-	normal! kk
+	normal! o
+	normal! o
 endfunction
 
-lua require ("init")
-
-" autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
-" "Java configs
-" autocmd Filetype java set makeprg=javac\ -d\ %:~:h:s?src?bin?\ %
-" "Lua set tabspace to 2
-" autocmd FileType lua setlocal tabstop=2 softtabstop=2 shiftwidth=2
-" autocmd BufNewFile *.java exe "normal opublic class " . expand('%:t:r') . "\n{\n}\<Esc>1Go\<CR>\<CR>\<Esc>1G"
-" autocmd BufNewFile *.{h,hpp} call <SID>insert_gates()
-" autocmd BufNewFile *.{py} call <SID>insert_py()
-" autocmd BufNewFile *.{sh} call <SID>insert_sh()
-" "For auto shell change user permission
-" autocmd BufWritePost *.{sh} !chmod +x <afile>
-" autocmd BufWritePre * %s/\s\+$//e
-" autocmd BufWritepre * %s/\n\+\%$//e
