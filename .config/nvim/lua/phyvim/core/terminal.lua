@@ -34,10 +34,6 @@ M.setup = function()
         background = "Normal",
       },
     },
-    -- Add executables on the config.lua
-    -- { exec, keymap, name}
-    -- lvim.builtin.terminal.execs = {{}} to overwrite
-    -- lvim.builtin.terminal.execs[#lvim.builtin.terminal.execs+1] = {"gdb", "tg", "GNU Debugger"}
     execs = {
       { "lazygit", "<leader>gg", "LazyGit", "float" },
       { "lazygit", "<c-\\><c-g>", "LazyGit", "float" },
