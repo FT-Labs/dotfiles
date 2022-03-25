@@ -62,6 +62,7 @@ kmap("t", "<Esc><C-\\><C-n>", ":bd!<cr>", term_opts)
 
 kmap("n", "<leader>f", "<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({ previewer = false }))<cr>", opts)
 kmap("n", "<leader>F", "<cmd>Telescope find_files<cr>", opts)
+kmap("n", "<leader>k", "<cmd>lua require'telescope.builtin'.keymaps(require('telescope.themes').get_dropdown({ previewer = false }))<cr>", opts)
 kmap("n", "<c-g>", "<cmd>Telescope live_grep<cr>", opts)
 
 require "phyvim.config.macros"
