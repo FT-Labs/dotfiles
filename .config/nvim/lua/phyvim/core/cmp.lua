@@ -100,9 +100,6 @@ local function jumpable(dir)
     end
 
     -- No exit node, exit from snippet
-		if cmp.visible() then
-			cmp.confirm({ select = true })
-		end
     snippet:remove_from_jumplist()
     luasnip.session.current_nodes[get_current_buf()] = nil
     return false
