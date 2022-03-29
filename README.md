@@ -1,7 +1,7 @@
 ### Dotfiles for phyOS
 (Screenshots)
-<img src="https://github.com/PhyTech-R0/dwm-phyOS/blob/master/screenshots/s4.png">
-<img src="https://github.com/PhyTech-R0/dwm-phyOS/blob/master/screenshots/s5.png">
+<img src="https://github.com/PhyTech-R0/dwm-phyOS/blob/screenshots/screenshots/s4.png">
+<img src="https://github.com/PhyTech-R0/dwm-phyOS/blob/screenshots/screenshots/s5.png">
 phyOS arch iso users doesn't need to do anything, all of them will be preinstalled in their system.
 If you are using dwm & dwmblocks from phyOS or installed them seperately from repositories in this account, please extract **all of these dotfiles** to your home directory. \
 All of the scripts and most of the shortcuts which leads to these scripts are located in this repo.
