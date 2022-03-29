@@ -1,0 +1,3 @@
+#!/bin/bash
+
+gcc -fno-asynchronous-unwind-tables -s -c -o out.o $1
