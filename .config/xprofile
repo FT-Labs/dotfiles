@@ -9,5 +9,5 @@ remaps &		# run the remaps script, switching caps/esc and more; check it for mor
 setbg &			# set the background with the `setbg` script
 picom -c --experimental-backends --backend glx &		# picom for transparency and rounded corners
 dunst &			# dunst for notifications
-xset r rate 300 50 &	# Speed xrate up
+xset r rate 250 30 &	# Speed xrate up
 unclutter &		# Remove mouse when idle
