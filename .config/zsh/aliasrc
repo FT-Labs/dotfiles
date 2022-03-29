@@ -46,4 +46,5 @@ alias \
 
 # Bare git dot config
 alias \
-	dots='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
+	dots='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME' \
+	glfsforcerefs="git push origin --force 'refs/heads/*'"
