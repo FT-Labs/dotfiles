@@ -18,6 +18,9 @@ kmap("n", "<Tab>l", ":vertical resize +4<cr>", opts)
 kmap("n", "<Tab>j", ":resize +4<cr>", opts)
 kmap("n", "<Tab>k", ":resize -4<cr>", opts)
 
+-- Shift tab to escape current character
+kmap("i", "<S-Tab>", "<right>", opts)
+
 -- Navigate buffers
 kmap("n", "<S-l>", ":BufferLineCycleNext<CR>", opts)
 kmap("n", "<S-h>", ":BufferLineCyclePrev<CR>", opts)
