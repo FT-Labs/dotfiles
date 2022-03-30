@@ -2,32 +2,27 @@
 
 # zsh profile file. Runs on login. Environmental variables are set here.
 
-# If you don't plan on reverting to bash, you can remove the link in ~/.profile
-# to clean up.
-
-
 # Default programs:
 export EDITOR="nvim"
 export TERMINAL="st"
 export BROWSER="chromium"
 export READER="zathura"
 
-# ~/ Clean-up:
-plugins=(git mvn golang)
-export ZSH=$HOME/.oh-my-zsh
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_CACHE_HOME="$HOME/.cache"
 export QT_QPA_PLATFORMTHEME="qt5ct"	# Have QT use qt5ct theme.
 export ZDOTDIR="${XDG_CONFIG_HOME:-$HOME/.config}/zsh"
+export ZSH="$ZDOTDIR/oh-my-zsh/"
 export HISTFILE="${XDG_DATA_HOME:-$HOME/.local/share}/history"
+plugins=$("which ls $ZSH/plugins")
 
 
-# Adds `~/.local/bin` to $PATH
 export LD_LIBRARY_PATH="/usr/local/lib"
 export GOPATH="$HOME/.local/go"
 export NPMBIN="$HOME/.local/npm/bin"
 export NODE_PATH="${XDG_DATA_HOME:-$HOME/.local/share}/node_modules"
+# Adds `~/.local/bin` to $PATH
 export SCRIPTS="$(du "$HOME/.local/bin" | cut -f2 | paste -sd ':')"
 export PATH="$PATH:$GOPATH/bin:$NPMBIN:$SCRIPTS"
 
