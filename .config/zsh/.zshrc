@@ -2,14 +2,12 @@
 autoload -U colors && colors
 PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%~%{$fg[red]%}]%{$reset_color%}$%b "
 
-# History in cache directory:
-setopt autocd
-ZSH_THEME="eastwood"
-HISTSIZE=10000
-SAVEHIST=10000
-HISTFILE=~/.cache/zsh/history
-setopt appendhistory
-
+# Below to change autosuggestion options
+#ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#ff00ff,bg=cyan,bold,underline"	# To get colored completion text
+bindkey '^[[Z' autosuggest-accept
+ZSH_AUTOSUGGEST_CLEAR_WIDGETS+=(buffer-empty bracketed-paste accept-line push-line-or-edit)
+ZSH_AUTOSUGGEST_STRATEGY=(history completion)
+ZSH_AUTOSUGGEST_USE_ASYNC=true
 
 # Basic auto/tab complete:
 autoload -U compinit
@@ -28,6 +26,31 @@ bindkey -M menuselect 'k' vi-up-line-or-history
 bindkey -M menuselect 'l' vi-forward-char
 bindkey -M menuselect 'j' vi-down-line-or-history
 bindkey -v '^?' backward-delete-char
+
+# Use lf to switch directories and bind it to ctrl-o
+lfcd () {
+    tmp="$(mktemp)"
+    lf -last-dir-path="$tmp" "$@"
+    if [ -f "$tmp" ]; then
+        dir="$(cat "$tmp")"
+        rm -f "$tmp"
+        [ -d "$dir" ] && [ "$dir" != "$(pwd)" ] && cd "$dir"
+    fi
+}
+bindkey -s '^o' 'lfcd\n'
+
+# Edit line in vim with ctrl-e:
+autoload edit-command-line; zle -N edit-command-line
+bindkey '^e' edit-command-line
+
+# History in cache directory:
+setopt autocd
+# change below theme if using oh-my-zsh
+ZSH_THEME=""
+HISTSIZE=10000
+SAVEHIST=10000
+HISTFILE=~/.cache/zsh/history
+setopt appendhistory
 
 case "$TERM" in (rxvt|rxvt-*|st|st-*|*xterm*|(dt|k|E)term)
     local term_title () { print -n "\e]0;${(j: :q)@}\a" }
@@ -64,28 +87,12 @@ function _set_cursor() {
     fi
 }
 
-
-
-# Use lf to switch directories and bind it to ctrl-o
-lfcd () {
-    tmp="$(mktemp)"
-    lf -last-dir-path="$tmp" "$@"
-    if [ -f "$tmp" ]; then
-        dir="$(cat "$tmp")"
-        rm -f "$tmp"
-        [ -d "$dir" ] && [ "$dir" != "$(pwd)" ] && cd "$dir"
-    fi
-}
-bindkey -s '^o' 'lfcd\n'
-
-# Edit line in vim with ctrl-e:
-autoload edit-command-line; zle -N edit-command-line
-bindkey '^e' edit-command-line
-
-# Load aliases and shortcuts
+# Load aliases 
 [ -f "$ZDOTDIR/aliasrc" ] && source "$ZDOTDIR/aliasrc"
 
+# Note that in different distro or installation way below source files need to be changed, they are usually in ~/.zsh/
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh 2>/dev/null
+source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh 2>/dev/null
 source /usr/share/fzf/completion.zsh
 source /usr/share/fzf/key-bindings.zsh
 powerline-daemon -q
