@@ -93,6 +93,9 @@ return packer.startup(function(use)
   use "nvim-telescope/telescope.nvim"
   use "nvim-telescope/telescope-media-files.nvim"
 
+	-- Hex color plugin
+	use "ap/vim-css-color"
+
   -- Treesitter
   use {
 	  "nvim-treesitter/nvim-treesitter",
