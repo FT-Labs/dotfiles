@@ -13,10 +13,8 @@ export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_CACHE_HOME="$HOME/.cache"
 export QT_QPA_PLATFORMTHEME="qt5ct"	# Have QT use qt5ct theme.
 export ZDOTDIR="${XDG_CONFIG_HOME:-$HOME/.config}/zsh"
-export ZSH="$ZDOTDIR/oh-my-zsh/"
+export ZSH="$ZDOTDIR/oh-my-zsh"
 export HISTFILE="${XDG_DATA_HOME:-$HOME/.local/share}/history"
-plugins=$("which ls $ZSH/plugins")
-
 
 export LD_LIBRARY_PATH="/usr/local/lib"
 export GOPATH="$HOME/.local/go"
@@ -25,7 +23,6 @@ export NODE_PATH="${XDG_DATA_HOME:-$HOME/.local/share}/node_modules"
 # Adds `~/.local/bin` to $PATH
 export SCRIPTS="$(du "$HOME/.local/bin" | cut -f2 | paste -sd ':')"
 export PATH="$PATH:$GOPATH/bin:$NPMBIN:$SCRIPTS"
-
 
 # Other program settings:
 export SUDO_ASKPASS="$HOME/.local/bin/scripts/dmenupass" # Ask password with dmenu if any command needs it
@@ -39,7 +36,6 @@ export LESS_TERMCAP_us="$(printf '%b' '[1;32m')"
 export LESS_TERMCAP_ue="$(printf '%b' '[0m')"
 export LESSOPEN="| /usr/bin/highlight -O ansi %s 2>/dev/null"
 export _JAVA_AWT_WM_NONREPARENTING=1	# Fix for Java applications in dwm
-
 
 # This is the list for lf icons:
 export LF_ICONS="di=📁:\

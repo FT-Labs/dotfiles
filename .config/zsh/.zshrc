@@ -2,6 +2,8 @@
 autoload -U colors && colors
 PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%~%{$fg[red]%}]%{$reset_color%}$%b "
 
+# Fetch all plugins in dir 
+plugins=(`echo $(ls $ZSH/plugins | sed -z 's/\n/ /g')`)
 
 # Below to change autosuggestion options
 #ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#ff00ff,bg=cyan,bold,underline"	# To get colored completion text
@@ -86,11 +88,11 @@ function _set_cursor() {
 [ -f "$ZDOTDIR/aliasrc" ] && source "$ZDOTDIR/aliasrc"
 
 # Note that in different distro or installation way below source files need to be changed, they are usually in ~/.zsh/
+source "$ZDOTDIR/oh-my-zsh/oh-my-zsh.sh"
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh 2>/dev/null
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh 2>/dev/null
 source /usr/share/fzf/completion.zsh
 source /usr/share/fzf/key-bindings.zsh
-source "$ZDOTDIR/oh-my-zsh/oh-my-zsh.sh"
 
 # vi mode
 bindkey -v
