@@ -31,6 +31,8 @@ lfcd () {
     fi
 }
 bindkey -s '^r' 'lfcd\n'
+# below opens a new terminal in current dir
+bindkey -s '^t' 't\n'
 
 case "$TERM" in (rxvt|rxvt-*|st|st-*|*xterm*|(dt|k|E)term)
     local term_title () { print -n "\e]0;${(j: :q)@}\a" }
