@@ -13,7 +13,7 @@ export BROWSER="chromium"
 export READER="zathura"
 
 # ~/ Clean-up:
-plugins=(git mvn)
+plugins=(git mvn golang)
 export ZSH=$HOME/.oh-my-zsh
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_DATA_HOME="$HOME/.local/share"

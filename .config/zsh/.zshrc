@@ -52,6 +52,7 @@ SAVEHIST=10000
 HISTFILE=~/.cache/zsh/history
 setopt appendhistory
 
+
 case "$TERM" in (rxvt|rxvt-*|st|st-*|*xterm*|(dt|k|E)term)
     local term_title () { print -n "\e]0;${(j: :q)@}\a" }
     precmd () {
