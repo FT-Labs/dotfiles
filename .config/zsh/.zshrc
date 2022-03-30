@@ -47,8 +47,7 @@ case "$TERM" in (rxvt|rxvt-*|st|st-*|*xterm*|(dt|k|E)term)
   ;;
 esac
 
-# History in cache directory:
-unsetopt autocd
+setopt autocd
 # change below theme if using oh-my-zsh
 #ZSH_THEME=""
 HISTSIZE=10000
@@ -81,7 +80,7 @@ function _set_cursor() {
 
 # Note that in different distro or installation way below source files need to be changed, they are usually in ~/.zsh/
 source "$ZDOTDIR/oh-my-zsh/oh-my-zsh.sh"
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh 2>/dev/null
+source /usr/share/zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh 2>/dev/null
 source /usr/share/fzf/completion.zsh
 source /usr/share/fzf/key-bindings.zsh
 
