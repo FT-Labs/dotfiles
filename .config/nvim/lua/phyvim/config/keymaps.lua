@@ -55,6 +55,8 @@ kmap("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
 -- Better indenting
 kmap("v", "<", "<gv", opts)
 kmap("v", ">", ">gv", opts)
+-- Ctrl+c to copy in selection mode
+kmap("v", "<C-c>", 'y:call system("xclip -i -selection clipboard", getreg("\\""))<CR>:call system("xclip -i", getreg("\\""))<CR>', opts) 
 
 -- Better terminal navigation
 kmap("t", "<C-h>", "<C-\\><C-N><C-w>h", term_opts)
