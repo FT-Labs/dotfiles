@@ -117,6 +117,7 @@ function M.setup()
       { key = { "l", "<CR>", "o" }, cb = tree_cb "edit" },
       { key = "h", cb = tree_cb "close_node" },
       { key = "v", cb = tree_cb "vsplit" },
+      { key = "n", cb = tree_cb "create" },
       { key = "C", cb = tree_cb "cd" },
       { key = "gtf", cb = "<cmd>lua require'phyvim.core.nvimtree'.start_telescope('find_files')<cr>" },
       { key = "gtg", cb = "<cmd>lua require'phyvim.core.nvimtree'.start_telescope('live_grep')<cr>" },
