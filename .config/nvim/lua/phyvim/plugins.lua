@@ -38,9 +38,13 @@ return packer.startup(function(use)
   use "wbthomason/packer.nvim" -- Have packer manage itself
   use "nvim-lua/popup.nvim" -- An implementation of the Popup API from vim in Neovim
   use "nvim-lua/plenary.nvim" -- Useful lua functions used ny lots of plugins
+
+	--colorschemes
   use "lunarvim/onedarker.nvim"
   use ({ "catppuccin/nvim", as = "catppuccin" })
   use 'folke/tokyonight.nvim'
+	use 'Mofiqul/dracula.nvim'
+
 	use 'lewis6991/impatient.nvim' -- fast startup
 
   -- lsp config
