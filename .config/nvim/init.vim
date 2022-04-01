@@ -69,3 +69,9 @@ function Insert_sh()
 	normal! o
 endfunction
 
+function GenerateFlags()
+	:lua require("notify")("Compile flags generated",0,{title="Clangd Flags",timeout=500})
+	:LspRestart
+	:NvimTreeRefresh
+endfunction
+

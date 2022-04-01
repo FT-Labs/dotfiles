@@ -22,8 +22,11 @@ vim.cmd [[
 	augroup end
 ]]
 
+
+--		autocmd BufWritePost Makefile AsyncRun -post=lua\ require("notify")("Compile\ flags\ generated",0,{title="Clangd\ Flags",timeout=500}) -mode=term -pos=hide make clean && bear -- make -j8
+
 vim.cmd [[
 	augroup make_file
-		autocmd BufWritePost Makefile AsyncRun -post=lua\ require("notify")("Compile\ flags\ generated",0,{title="Clangd\ Flags",timeout=500}) -mode=term -pos=hide make clean && bear -- make -j8
+		autocmd BufWritePost Makefile AsyncRun -post=call\ GenerateFlags() -mode=term -pos=hide make clean && bear -- make -j8
 	augroup end
 ]]
