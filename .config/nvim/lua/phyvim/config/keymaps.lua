@@ -12,7 +12,7 @@ kmap("n", "<C-k>", "<C-w>k", opts)
 kmap("n", "<C-l>", "<C-w>l", opts)
 
  -- kmap("n", "<leader>d", ":bd<cr>", opts) Old way to delete buffer
-kmap("n", "<leader>d", ":Bdelete<cr>", opts) -- better way, syncs with nvim tree
+kmap("n", "<leader>d", ":w | :Bdelete<cr>", opts) -- better way, syncs with nvim tree
 kmap("n", "<Tab>h", ":vertical resize -4<cr>", opts)
 kmap("n", "<Tab>l", ":vertical resize +4<cr>", opts)
 kmap("n", "<Tab>j", ":resize +4<cr>", opts)
@@ -42,7 +42,7 @@ kmap("n", "<F4>", ":! compwrite && clear && g++ %<cr> | :vsp |terminal ./a.out<i
 -- Toggle tags
 kmap("n", "<leader>t", ":SymbolsOutline<cr>", opts)
 -- Restart lsp && refresh files
-kmap("n", "<leader>r", ":NvimTreeRefresh<cr> | :LspRestart<cr>", opts)
+kmap("n", "<leader>r", ":NvimTreeRefresh<cr> | :LspRestart<cr> :lua require('notify')('Lsp restarted and files refreshed',1,{title='RESTART',timeout=500})<cr>", opts)
 
 -- Move text up down
 kmap("v", "<A-j>", ":m .+1<CR>==", opts)
@@ -56,7 +56,7 @@ kmap("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
 kmap("v", "<", "<gv", opts)
 kmap("v", ">", ">gv", opts)
 -- Ctrl+c to copy in selection mode
-kmap("v", "<C-c>", 'y:call system("xclip -i -selection clipboard", getreg("\\""))<CR>:call system("xclip -i", getreg("\\""))<CR>', opts) 
+kmap("v", "<C-c>", 'y:call system("xclip -i -selection clipboard", getreg("\\""))<CR>:call system("xclip -i", getreg("\\""))<CR> :lua require("notify")("Copied to clipboard!",0,{title="CLIPBOARD",timeout=300})<CR>', opts) 
 
 -- Better terminal navigation
 kmap("t", "<C-h>", "<C-\\><C-N><C-w>h", term_opts)

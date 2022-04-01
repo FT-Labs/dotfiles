@@ -89,6 +89,12 @@ return packer.startup(function(use)
   -- snippets
   use "L3MON4D3/LuaSnip" -- snip engine
 
+	-- run scripts asynchronously
+	use "skywind3000/asyncrun.vim"
+
+	-- notify popup plugin
+	use "rcarriga/nvim-notify"
+
   -- Telescope
   use "nvim-telescope/telescope.nvim"
   use "nvim-telescope/telescope-media-files.nvim"
