@@ -21,3 +21,9 @@ vim.cmd [[
 		autocmd BufWritePost *.{sh} !chmod +x <afile>
 	augroup end
 ]]
+
+vim.cmd [[
+	augroup make_file
+		autocmd BufWritePost Makefile !bear -- make -j8
+	augroup end
+]]
