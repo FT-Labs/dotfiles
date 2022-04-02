@@ -22,11 +22,17 @@ vim.cmd [[
 	augroup end
 ]]
 
-
---		autocmd BufWritePost Makefile AsyncRun -post=lua\ require("notify")("Compile\ flags\ generated",0,{title="Clangd\ Flags",timeout=500}) -mode=term -pos=hide make clean && bear -- make -j8
-
 vim.cmd [[
 	augroup make_file
 		autocmd BufWritePost Makefile AsyncRun -post=call\ GenerateFlags() -mode=term -pos=hide make clean && bear -- make -j8
 	augroup end
+]]
+
+-- Automatically delete trailing newlines on file write
+vim.cmd [[
+ 	autocmd BufWritePre * let currPos = getpos(".")
+	autocmd BufWritePre * %s/\s\+$//e
+	autocmd BufWritePre * %s/\n\+\%$//e
+	autocmd BufWritePre *.[ch] %s/\%$/\r/e
+ 	autocmd BufWritePre * cal cursor(currPos[1], currPos[2])
 ]]

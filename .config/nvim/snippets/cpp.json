@@ -213,7 +213,7 @@
     "body": [
       "int main (int argc, char *argv[])",
       "{",
-      "\t$1",
+      "\t$0",
       "\treturn 0;",
       "}"
     ],
