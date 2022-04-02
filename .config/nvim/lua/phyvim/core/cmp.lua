@@ -100,7 +100,7 @@ local function jumpable(dir)
     end
 
     -- No exit node, exit from snippet
-    snippet:remove_from_jumplist()
+    -- snippet:remove_from_jumplist()
     luasnip.session.current_nodes[get_current_buf()] = nil
     return false
   end
