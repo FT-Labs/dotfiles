@@ -75,3 +75,9 @@ function GenerateFlags()
 	:NvimTreeRefresh
 endfunction
 
+" Makefile and run respect to $PROG
+function MakeRun()
+	:let var = system("grep PROG Makefile | awk '{print $3}'")
+	:!make
+	execute "normal! :vsp | terminal ./" . var
+endfunction
