@@ -6,8 +6,6 @@ local pre_hook = nil
 	end
 
 local opts = {
-	active = true,
-	on_config_done = nil,
 	---Add a space b/w comment and the line
 	---@type boolean
 	padding = true,
@@ -26,7 +24,16 @@ local opts = {
 		basic = true,
 		---extended mapping
 		---Includes `g>`, `g<`, `g>[count]{motion}` and `g<[count]{motion}`
-		extra = false,
+		extra = true,
+	},
+
+		extra = {
+			---Add comment on the line above
+			above = 'gcO',
+			---Add comment on the line below
+			below = 'gco',
+			---Add comment at the end of line
+			eol = 'gca',
 	},
 
 	---LHS of line and block comment toggle mapping in NORMAL/VISUAL mode
@@ -35,7 +42,7 @@ local opts = {
 		---line-comment toggle
 		line = "gcc",
 		---block-comment toggle
-		block = "gbc",
+		block = "gbb",
 	},
 
 	---LHS of line and block comment operator-mode mapping in NORMAL/VISUAL mode
