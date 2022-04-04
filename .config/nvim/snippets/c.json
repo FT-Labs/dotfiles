@@ -9,6 +9,11 @@
     ],
     "description": "Code snippet for 'for' loop"
   },
+  "*": {
+	  "prefix": "*",
+	  "body": ["/* $0 */"],
+	  "description": "Block comment"
+  },
   "forr": {
     "prefix": "forr",
     "body": [
