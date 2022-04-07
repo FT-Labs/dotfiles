@@ -109,6 +109,9 @@ return packer.startup(function(use)
 	  run = ":TSUpdate"
   }
 
+	-- Mark lines plugin
+	use 'chentau/marks.nvim'
+
 	-- Colorizer, hex color etc.
 	use "norcalli/nvim-colorizer.lua"
 
