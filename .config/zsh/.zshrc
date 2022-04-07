@@ -2,7 +2,7 @@
 autoload -U colors && colors
 PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%~%{$fg[red]%}]%{$reset_color%}$%b "
 
-# Fetch all plugins in dir 
+# Fetch all plugins in dir
 plugins=(`echo $(ls $ZSH/plugins | sed -z 's/\n/ /g')`)
 
 
@@ -77,14 +77,13 @@ function _set_cursor() {
     fi
 }
 
-# Load aliases 
+# Load aliases
 [ -f "$ZDOTDIR/aliasrc" ] && source "$ZDOTDIR/aliasrc"
 
 # Note that in different distro or installation way below source files need to be changed, they are usually in ~/.zsh/
 source "$ZDOTDIR/oh-my-zsh/oh-my-zsh.sh"
 source /usr/share/zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh 2>/dev/null
 source /usr/share/fzf/completion.zsh
-source /usr/share/fzf/key-bindings.zsh
 
 # vi mode
 bindkey -v
