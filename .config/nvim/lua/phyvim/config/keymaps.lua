@@ -36,7 +36,7 @@ kmap("n", "9",  ":BufferLineGoToBuffer 9<CR>", opts)
 
 -- F Keys
 kmap("n", "<F1>", ":NvimTreeToggle<cr>", opts)
-kmap("i", "<F1>", "<esc> :NvimTreeToggle<cr>", opts)
+kmap("i", "<F1>", "<esc>:NvimTreeToggle<cr>", opts)
 kmap("n", "<F4>", ":! compwrite && clear && g++ %<cr> | :vsp |terminal ./a.out<inp.txt <cr>", opts)
 
 -- Toggle tags
@@ -56,7 +56,7 @@ kmap("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
 kmap("v", "<", "<gv", opts)
 kmap("v", ">", ">gv", opts)
 -- Ctrl+c to copy in selection mode
-kmap("v", "<C-c>", 'y:call system("xclip -i -selection clipboard", getreg("\\""))<CR>:call system("xclip -i", getreg("\\""))<CR> :lua require("notify")("Copied to clipboard!",0,{title="CLIPBOARD",timeout=300})<CR>', opts) 
+kmap("v", "<C-c>", 'y:call system("xclip -i -selection clipboard", getreg("\\""))<CR>:call system("xclip -i", getreg("\\""))<CR> :lua require("notify")("Copied to clipboard!",0,{title="CLIPBOARD",timeout=300})<CR>', opts)
 
 -- Better terminal navigation
 kmap("t", "<C-h>", "<C-\\><C-N><C-w>h", term_opts)

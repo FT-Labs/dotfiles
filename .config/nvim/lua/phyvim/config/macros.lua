@@ -4,6 +4,7 @@ vim.cmd([[ let @1=":call CppComp() \<CR>G:66\<CR>" ]]) -- C++ competitive progra
 vim.cmd([[ let @c=":cd %:h \<CR>" ]]) -- change dir to current file
 vim.cmd([[ let @p=":ProjectRoot \<CR>:lua require('notify')('Project root setted.',0,{title='EXPLORER',0,timeout=300})\<cr>" ]]) -- cd to root project
 vim.cmd([[ let @m=":call MakeRun()\<CR>" ]]) -- make and run
+vim.cmd([[ let @t=":ProjectRoot \<CR>:! go test ./... -coverprofile=coverage.out && go tool cover -html=coverage.out\<cr>" ]])
 
 
 -- All previous macros have been changed to autocmd, @g macro will run current file

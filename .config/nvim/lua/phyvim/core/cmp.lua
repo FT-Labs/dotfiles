@@ -188,8 +188,8 @@ M.setup = function()
 					luasnip.jump(1)
 				elseif cmp.visible() then
 					cmp.confirm({ select = true })
-				elseif has_words_before() then
-					cmp.complete()
+				-- elseif has_words_before() then
+				-- 	cmp.complete()
 				 elseif check_backspace() then
 				 	fallback()
 				else
