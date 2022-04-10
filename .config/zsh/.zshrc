@@ -5,7 +5,6 @@ PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magent
 # Fetch all plugins in dir
 plugins=(`echo $(ls $ZSH/plugins | sed -z 's/\n/ /g')`)
 
-
 # Basic auto/tab complete:
 autoload -U compinit
 zstyle ':completion:*' menu select
@@ -49,6 +48,10 @@ case "$TERM" in (rxvt|rxvt-*|st|st-*|*xterm*|(dt|k|E)term)
   ;;
 esac
 
+#Set bookmarks dir
+[[ -d "$ZSHCFG/bookmarks" ]] && export CDPATH=".:$ZSHCFG/bookmarks:/" \
+	&& alias goto="cd -P"
+
 setopt autocd
 # change below theme if using oh-my-zsh
 #ZSH_THEME=""
@@ -78,10 +81,10 @@ function _set_cursor() {
 }
 
 # Load aliases
-[ -f "$ZDOTDIR/aliasrc" ] && source "$ZDOTDIR/aliasrc"
+[ -f "$ZSHCFG/aliasrc" ] && source "$ZDOTDIR/zshcfg/aliasrc"
 
 # Note that in different distro or installation way below source files need to be changed, they are usually in ~/.zsh/
-source "$ZDOTDIR/oh-my-zsh/oh-my-zsh.sh"
+source "$ZSHCFG/OMZ/oh-my-zsh.sh"
 source /usr/share/zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh 2>/dev/null
 source /usr/share/fzf/completion.zsh
 
@@ -95,7 +98,7 @@ bindkey '^e' edit-command-line
 
 # Below to change autosuggestion options
 #ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#ff00ff,bg=cyan,bold,underline"	# To get colored completion text
-bindkey '^[[Z' autosuggest-accept
+bindkey '^[[Z' autosuggest-accept   # shift tab to accept ghost text
 ZSH_AUTOSUGGEST_CLEAR_WIDGETS+=(buffer-empty bracketed-paste accept-line push-line-or-edit)
 ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 ZSH_AUTOSUGGEST_USE_ASYNC=true

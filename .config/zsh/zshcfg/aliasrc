@@ -1,0 +1,50 @@
+#!/bin/sh
+
+# Use neovim for vim if present.
+[ -x "$(command -v nvim)" ] && alias vim="nvim" vimdiff="nvim -d"
+
+# Verbosity and settings that you pretty much just always are going to want.
+alias \
+	cp="cp -iv" \
+	mv="mv -iv" \
+	rm="rm -vI" \
+	mkd="mkdir -pv" \
+	ffmpeg="ffmpeg -hide_banner"
+
+# Colorize commands when possible.
+alias \
+	ls="ls -hN --color=auto --group-directories-first" \
+	l="colorls" \
+	lt="colorls --tree" \
+	grep="grep --color=auto" \
+	diff="diff --color=auto" \
+	ccat="highlight --out-format=ansi"
+
+alias \
+	ka="killall" \
+	g="git" \
+	f="$FILE" \
+	e="$EDITOR" \
+	v="$EDITOR" \
+	xcp="xclip -selection clipboard" \
+	lf="$HOME/.local/bin/scripts/lfrun"
+
+alias \
+	weath="less -S ${XDG_DATA_HOME:-$HOME/.local/share}/weatherreport" \
+    vm="/usr/bin/vim" \
+	wp="whatsapp-for-linux &>/dev/null & disown" \
+	dc="discord &>/dev/null & disown" \
+	tg="telegram-desktop &>/dev/null & disown"
+
+alias \
+	gco="~/Desktop/Codes/" \
+	ggo="~/Desktop/Codes/Go/" \
+	gcp="~/Desktop/Codes/C++/" \
+	gpy="~/Desktop/Codes/Python/" \
+	gj="~/Desktop/Codes/Java/" \
+	t="st &>/dev/null & disown"
+
+# Bare git dot config
+alias \
+	dots='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME' \
+	glfsforcerefs="git push origin --force 'refs/heads/*'"

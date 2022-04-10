@@ -13,7 +13,8 @@ export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_CACHE_HOME="$HOME/.cache"
 export QT_QPA_PLATFORMTHEME="qt5ct"	# Have QT use qt5ct theme.
 export ZDOTDIR="${XDG_CONFIG_HOME:-$HOME/.config}/zsh"
-export ZSH="$ZDOTDIR/oh-my-zsh"
+export ZSHCFG="$ZDOTDIR/zshcfg"
+export ZSH="$ZSHCFG/OMZ"
 export HISTFILE="${XDG_DATA_HOME:-$HOME/.local/share}/history"
 
 export LD_LIBRARY_PATH="/usr/local/lib"
