@@ -49,6 +49,8 @@ case "$TERM" in (rxvt|rxvt-*|st|st-*|*xterm*|(dt|k|E)term)
 esac
 
 #Set bookmarks dir
+# To add any bookmark, use command below without quotes:
+# bm 'bookmarkdir' '@bookmarkname'
 [[ -d "$ZSHCFG/bookmarks" ]] && export CDPATH=".:$ZSHCFG/bookmarks:/" \
 	&& alias jmp="cd -P"
 
@@ -81,7 +83,7 @@ function _set_cursor() {
 }
 
 # Load aliases
-[ -f "$ZSHCFG/aliasrc" ] && source "$ZDOTDIR/zshcfg/aliasrc"
+[ -f "$ZSHCFG/aliasrc" ] && source "$ZSHCFG/aliasrc"
 
 # Note that in different distro or installation way below source files need to be changed, they are usually in ~/.zsh/
 source "$ZSHCFG/OMZ/oh-my-zsh.sh"
