@@ -50,7 +50,7 @@ esac
 
 #Set bookmarks dir
 [[ -d "$ZSHCFG/bookmarks" ]] && export CDPATH=".:$ZSHCFG/bookmarks:/" \
-	&& alias goto="cd -P"
+	&& alias jmp="cd -P"
 
 setopt autocd
 # change below theme if using oh-my-zsh
