@@ -37,13 +37,13 @@ alias \
 	tg="telegram-desktop &>/dev/null & disown"
 
 alias \
+	t="st &>/dev/null & disown"
 	# These are old now, using bookmarks
 	#gco="~/Desktop/Codes/" \
 	#ggo="~/Desktop/Codes/Go/" \
 	#gcp="~/Desktop/Codes/C++/" \
 	#gpy="~/Desktop/Codes/Python/" \
 	#gj="~/Desktop/Codes/Java/" \
-	t="st &>/dev/null & disown"
 
 # Bare git dot config
 alias \
