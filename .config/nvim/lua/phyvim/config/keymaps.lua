@@ -13,6 +13,7 @@ kmap("n", "<C-l>", "<C-w>l", opts)
 
  -- kmap("n", "<leader>d", ":bd<cr>", opts) Old way to delete buffer
 kmap("n", "<leader>d", ":w | :Bdelete<cr>", opts) -- better way, syncs with nvim tree
+kmap("n", "<leader>D", ":Bwipeout!<cr>", opts) -- close buffer without saving
 kmap("n", "<Tab>h", ":vertical resize -4<cr>", opts)
 kmap("n", "<Tab>l", ":vertical resize +4<cr>", opts)
 kmap("n", "<Tab>j", ":resize +4<cr>", opts)
