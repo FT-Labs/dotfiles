@@ -1,10 +1,6 @@
 local M = {}
 
 
-local cmp_status_ok, cmp = pcall(require, "cmp")
-if not cmp_status_ok then
-	return
-end
 
 local function jumpable(dir)
 
@@ -119,16 +115,16 @@ M.setup = function()
 		return
 	end
 
+	local cmp_status_ok, cmp = pcall(require, "cmp")
+	if not cmp_status_ok then
+		return
+	end
+
 	require("luasnip/loaders/from_vscode").lazy_load({paths="~/.config/nvim/snippets"})
 
 	local check_backspace = function()
 		local col = vim.fn.col "." - 1
 		return col == 0 or vim.fn.getline("."):sub(col, col):match "%s"
-	end
-
-	local has_words_before = function()
-		local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-		return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
 	end
 
 	--   פּ ﯟ   some other good icons
@@ -182,14 +178,12 @@ M.setup = function()
 			-- Set `select` to `false` to only confirm explicitly selected items.
 			-- ["<CR>"] = cmp.mapping.confirm { select = false },
 			["<Tab>"] = cmp.mapping(function(fallback)
-				if luasnip.expandable() then
+				if cmp.visible() then
+					cmp.confirm({ select = true })
+				elseif luasnip.expandable() then
 					luasnip.expand()
 				elseif jumpable() then
 					luasnip.jump(1)
-				elseif cmp.visible() then
-					cmp.confirm({ select = true })
-				-- elseif has_words_before() then
-				-- 	cmp.complete()
 				 elseif check_backspace() then
 				 	fallback()
 				else
@@ -202,8 +196,6 @@ M.setup = function()
 			["<S-Tab>"] = cmp.mapping(function(fallback)
 				if jumpable(-1) then
 					luasnip.jump(-1)
-				--elseif cmp.visible() then
-				--	cmp.select_prev_item()
 				else
 					fallback()
 				end
@@ -211,6 +203,22 @@ M.setup = function()
 				"i",
 				"s",
 			}),
+			["<CR>"] = cmp.mapping(function(fallback)
+        if cmp.visible() then
+          if jumpable() then
+            luasnip.jump(1)
+          end
+          return
+        end
+
+        if jumpable() then
+          if not luasnip.jump(1) then
+            fallback()
+          end
+        else
+          fallback()
+        end
+      end),
 		},
 		formatting = {
 			fields = { "kind", "abbr", "menu" },
