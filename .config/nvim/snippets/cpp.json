@@ -24,6 +24,16 @@
     ],
     "description": "Code snippet for reverse 'for' loop"
   },
+  "mod": {
+	  "prefix": "MOD",
+	  "body": ["#define MOD(N,M)\t((N)%(M) < 0 ? (N)%(M) + (M) : (N)%(M))"],
+	  "description": "mod of N,M"
+  },
+  "between": {
+	  "prefix": "between",
+	  "body": ["#define BETWEEN(x, a, b)\t((a) <= (x) && (x) <= (b))"],
+	  "description": "x is between a, b"
+  },
   "sze" : {
 	  "prefix": "sze",
 	  "body": ["#define SIZE(x) sizeof(x)/sizeof(x[0])","$0"],
