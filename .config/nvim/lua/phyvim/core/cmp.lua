@@ -29,10 +29,6 @@ local function jumpable(dir)
     return pos[1] >= snip_begin_pos[1] and pos[1] <= snip_end_pos[1]
   end
 
-	local has_words_before = function()
-		local cursor = vim.api.nvim_win_get_cursor(0)
-		return (vim.api.nvim_buf_get_lines(0, cursor[1] - 1, cursor[1], true)[1] or ''):sub(cursor[2], cursor[2]):match('%s')
-	end
 
   ---sets the current buffer's luasnip to the one nearest the cursor
   ---@return boolean true if a node is found, false otherwise
@@ -130,6 +126,11 @@ M.setup = function()
 	local check_backspace = function()
 		local col = vim.fn.col "." - 1
 		return col == 0 or vim.fn.getline("."):sub(col, col):match "%s"
+	end
+
+	local has_words_before = function()
+		local cursor = vim.api.nvim_win_get_cursor(0)
+		return (vim.api.nvim_buf_get_lines(0, cursor[1] - 1, cursor[1], true)[1] or ''):sub(cursor[2], cursor[2]):match('%s')
 	end
 
 	--   פּ ﯟ   some other good icons
