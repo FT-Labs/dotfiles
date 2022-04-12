@@ -218,7 +218,10 @@ M.setup = function()
         else
           fallback()
         end
-      end),
+      end, {
+			"i",
+			"s",
+			}),
 		},
 		formatting = {
 			fields = { "kind", "abbr", "menu" },
