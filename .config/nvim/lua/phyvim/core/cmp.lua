@@ -29,6 +29,11 @@ local function jumpable(dir)
     return pos[1] >= snip_begin_pos[1] and pos[1] <= snip_end_pos[1]
   end
 
+	local has_words_before = function()
+		local cursor = vim.api.nvim_win_get_cursor(0)
+		return (vim.api.nvim_buf_get_lines(0, cursor[1] - 1, cursor[1], true)[1] or ''):sub(cursor[2], cursor[2]):match('%s')
+	end
+
   ---sets the current buffer's luasnip to the one nearest the cursor
   ---@return boolean true if a node is found, false otherwise
   local function seek_luasnip_cursor_node()
@@ -184,6 +189,8 @@ M.setup = function()
 					luasnip.expand()
 				elseif jumpable() then
 					luasnip.jump(1)
+				elseif has_words_before() then
+					cmp.complete()
 				 elseif check_backspace() then
 				 	fallback()
 				else
