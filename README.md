@@ -5,6 +5,18 @@
 phyOS arch iso users doesn't need to do anything, all of them will be preinstalled in their system.
 If you are using dwm & dwmblocks from phyOS or installed them seperately from repositories in this account, please extract **all of these dotfiles** to your home directory. \
 All of the scripts and most of the shortcuts which leads to these scripts are located in this repo.
+#### Bookmark support (bm script is in ~/.local/bin/scripts)
+To add a bookmark:
+
+	bm add 'source' 'aliasname'
+
+To remove bookmark:
+
+	bm remove 'aliasname'
+To cd to alias:
+
+	jmp 'aliasname'
+
 #### Status bar
 - All scripts are in ~/.local/bin/statusbar
 #### General scripts

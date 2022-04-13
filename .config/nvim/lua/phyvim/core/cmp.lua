@@ -190,10 +190,10 @@ M.setup = function()
 					luasnip.expand()
 				elseif jumpable() then
 					luasnip.jump(1)
-				elseif has_words_before() then
-					cmp.complete()
 				 elseif check_backspace() then
 				 	fallback()
+				elseif has_words_before() then
+					cmp.complete()
 				else
 					fallback()
 				end
