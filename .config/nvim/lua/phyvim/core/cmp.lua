@@ -192,7 +192,7 @@ M.setup = function()
 				elseif has_words_before() then
 					cmp.complete()
 				else
-					luasnip.session.current_nodes[get_current_buf()] = nil
+					luasnip.session.current_nodes[vim.api.nvim_get_current_buf()] = nil
 					fallback()
 				end
 			end),
