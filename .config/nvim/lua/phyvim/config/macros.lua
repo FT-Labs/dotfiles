@@ -1,5 +1,5 @@
 vim.cmd([[ let @r="\y:%s/\<C-r>\"//g\<Left>\<Left>" ]]) -- replace all occurrences
-vim.cmd([[ let @h=":ProjectRoot \<CR> :w\<CR> :vsp | terminal  go run *.go \<CR>i" ]]) -- run a go project without building
+vim.cmd([[ let @h=":ProjectRoot \<CR> :w\<CR> :vsp | terminal  go run $(ls -1 *.go | grep -v _test.go) \<CR>i" ]]) -- run a go project without building
 vim.cmd([[ let @1=":call CppComp() \<CR>G:66\<CR>" ]]) -- C++ competitive programming template
 vim.cmd([[ let @c=":cd %:h \<CR>" ]]) -- change dir to current file
 vim.cmd([[ let @p=":ProjectRoot \<CR>:lua require('notify')('Project root setted.',0,{title='EXPLORER',0,timeout=300})\<cr>" ]]) -- cd to root project

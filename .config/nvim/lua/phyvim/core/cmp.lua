@@ -1,7 +1,6 @@
 local M = {}
 
 
-
 local function jumpable(dir)
 
   local luasnip_ok, luasnip = pcall(require, "luasnip")
@@ -186,7 +185,7 @@ M.setup = function()
 			["<Tab>"] = cmp.mapping(function(fallback)
 				if cmp.visible() then
 					cmp.confirm({ select = true })
-				elseif luasnip.expandable_or_jumpable() then
+				elseif luasnip.expand_or_locally_jumpable() then
 					luasnip.expand_or_jump()
 				-- elseif jumpable() then
 				-- 	luasnip.jump(1)
@@ -195,6 +194,7 @@ M.setup = function()
 				elseif has_words_before() then
 					cmp.complete()
 				else
+					luasnip.session.current_nodes[get_current_buf()] = nil
 					fallback()
 				end
 			end),
@@ -209,9 +209,10 @@ M.setup = function()
 				"s",
 			}),
 			["<CR>"] = cmp.mapping(function(fallback)
-				if luasnip.expand_or_jumpable() then
+				if luasnip.expand_or_locally_jumpable() then
 					luasnip.expand_or_jump()
         else
+					luasnip.session.current_nodes[vim.api.nvim_get_current_buf()] = nil
           fallback()
         end
       end, {
