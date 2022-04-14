@@ -1,9 +1,9 @@
 local M = {}
 
 local pre_hook = nil
-	pre_hook = function(_ctx)
-		return require("ts_context_commentstring.internal").calculate_commentstring()
-	end
+pre_hook = function(_ctx)
+	return require("ts_context_commentstring.internal").calculate_commentstring()
+end
 
 local opts = {
 	---Add a space b/w comment and the line
@@ -27,13 +27,13 @@ local opts = {
 		extra = true,
 	},
 
-		extra = {
-			---Add comment on the line above
-			above = 'gcO',
-			---Add comment on the line below
-			below = 'gco',
-			---Add comment at the end of line
-			eol = 'gca',
+	extra = {
+		---Add comment on the line above
+		above = "gcO",
+		---Add comment on the line below
+		below = "gco",
+		---Add comment at the end of line
+		eol = "gca",
 	},
 
 	---LHS of line and block comment toggle mapping in NORMAL/VISUAL mode
@@ -64,8 +64,8 @@ local opts = {
 }
 
 function M.setup()
-  local nvim_comment = require "Comment"
-  nvim_comment.setup(opts)
+	local nvim_comment = require("Comment")
+	nvim_comment.setup(opts)
 end
 
 return M

@@ -42,6 +42,16 @@ local opts = {
 			ignore = false,
 			timeout = 200,
 		},
+		renderer = {
+			indent_markers = {
+				enable = true,
+				icons = {
+					corner = "└ ",
+					edge = "│ ",
+					none = "  ",
+				},
+			},
+		},
 		view = {
 			width = 30,
 			height = 30,
@@ -99,9 +109,6 @@ local opts = {
 }
 
 function M.setup()
-
-	vim.g.nvim_tree_indent_markers = 1 -- indentation on left tree
-
 	local status_ok, nvim_tree = pcall(require, "nvim-tree")
 	if not status_ok then
 		return
@@ -112,28 +119,28 @@ function M.setup()
 		return
 	end
 
-  local tree_cb = nvim_tree_config.nvim_tree_callback
+	local tree_cb = nvim_tree_config.nvim_tree_callback
 	opts.setup.view.mappings.list = {
-      { key = { "l", "<CR>", "o" }, cb = tree_cb "edit" },
-      { key = "h", cb = tree_cb "close_node" },
-      { key = "v", cb = tree_cb "vsplit" },
-      { key = "n", cb = tree_cb "create" },
-      { key = "C", cb = tree_cb "cd" },
-      { key = "gtf", cb = "<cmd>lua require'phyvim.core.nvimtree'.start_telescope('find_files')<cr>" },
-      { key = "gtg", cb = "<cmd>lua require'phyvim.core.nvimtree'.start_telescope('live_grep')<cr>" },
+		{ key = { "l", "<CR>", "o" }, cb = tree_cb("edit") },
+		{ key = "h", cb = tree_cb("close_node") },
+		{ key = "v", cb = tree_cb("vsplit") },
+		{ key = "n", cb = tree_cb("create") },
+		{ key = "C", cb = tree_cb("cd") },
+		{ key = "gtf", cb = "<cmd>lua require'phyvim.core.nvimtree'.start_telescope('find_files')<cr>" },
+		{ key = "gtg", cb = "<cmd>lua require'phyvim.core.nvimtree'.start_telescope('live_grep')<cr>" },
 	}
 
 	nvim_tree.setup(opts.setup)
 end
 
 function M.start_telescope(telescope_mode)
-  local node = require("nvim-tree.lib").get_node_at_cursor()
-  local abspath = node.link_to or node.absolute_path
-  local is_folder = node.open ~= nil
-  local basedir = is_folder and abspath or vim.fn.fnamemodify(abspath, ":h")
-  require("telescope.builtin")[telescope_mode] {
-    cwd = basedir,
-  }
+	local node = require("nvim-tree.lib").get_node_at_cursor()
+	local abspath = node.link_to or node.absolute_path
+	local is_folder = node.open ~= nil
+	local basedir = is_folder and abspath or vim.fn.fnamemodify(abspath, ":h")
+	require("telescope.builtin")[telescope_mode]({
+		cwd = basedir,
+	})
 end
 
 return M

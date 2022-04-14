@@ -2,13 +2,16 @@ vim.cmd([[ let @r="\y:%s/\<C-r>\"//g\<Left>\<Left>" ]]) -- replace all occurrenc
 vim.cmd([[ let @h=":ProjectRoot \<CR> :w\<CR> :vsp | terminal  go run $(ls -1 *.go | grep -v _test.go) \<CR>i" ]]) -- run a go project without building
 vim.cmd([[ let @1=":call CppComp() \<CR>G:66\<CR>" ]]) -- C++ competitive programming template
 vim.cmd([[ let @c=":cd %:h \<CR>" ]]) -- change dir to current file
-vim.cmd([[ let @p=":ProjectRoot \<CR>:lua require('notify')('Project root setted.',0,{title='EXPLORER',0,timeout=300})\<cr>" ]]) -- cd to root project
+vim.cmd(
+	[[ let @p=":ProjectRoot \<CR>:lua require('notify')('Project root setted.',0,{title='EXPLORER',0,timeout=300})\<cr>" ]]
+) -- cd to root project
 vim.cmd([[ let @m=":call MakeRun()\<CR>" ]]) -- make and run
-vim.cmd([[ let @t=":ProjectRoot \<CR>:! go test ./... -coverprofile=coverage.out && go tool cover -html=coverage.out\<cr>" ]])
-
+vim.cmd(
+	[[ let @t=":ProjectRoot \<CR>:! go test ./... -coverprofile=coverage.out && go tool cover -html=coverage.out\<cr>" ]]
+)
 
 -- All previous macros have been changed to autocmd, @g macro will run current file
-vim.cmd [[
+vim.cmd([[
 	augroup run_file
 		autocmd BufEnter *.java let @g=":w\<CR>:vsp | terminal java %\<CR>i"
 		autocmd BufEnter *.py let @g=":w\<CR>:vsp |terminal python %\<CR>i"
@@ -19,4 +22,4 @@ vim.cmd [[
 		autocmd BufEnter *.js let @g=":w\<CR> :vsp | terminal node % \<CR>i"
 		autocmd BufEnter *.html let @g=":w\<CR> :silent !chromium % \<CR>"
 	augroup end
-]]
+]])

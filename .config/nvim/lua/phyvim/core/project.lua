@@ -30,9 +30,9 @@ local opts = {
 }
 
 function M.setup()
-  local project = require "project_nvim"
+	local project = require("project_nvim")
 
-  project.setup(opts)
+	project.setup(opts)
 end
 
 return M
