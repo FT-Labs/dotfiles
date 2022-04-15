@@ -182,15 +182,14 @@ M.setup = function()
         if cmp.visible() then
           cmp.confirm { select = true }
         elseif luasnip.expand_or_locally_jumpable() then
-          luasnip.expand_or_jump()
-          -- elseif jumpable() then
-          -- 	luasnip.jump(1)
+          if jumpable() then
+            luasnip.expand_or_jump()
+          end
         elseif check_backspace() then
           fallback()
         elseif has_words_before() then
           cmp.complete()
         else
-          luasnip.session.current_nodes[vim.api.nvim_get_current_buf()] = nil
           fallback()
         end
       end),
@@ -206,7 +205,9 @@ M.setup = function()
       }),
       ["<CR>"] = cmp.mapping(function(fallback)
         if luasnip.expand_or_locally_jumpable() then
-          luasnip.expand_or_jump()
+          if jumpable() then
+            luasnip.expand_or_jump()
+          end
         else
           luasnip.session.current_nodes[vim.api.nvim_get_current_buf()] = nil
           fallback()
