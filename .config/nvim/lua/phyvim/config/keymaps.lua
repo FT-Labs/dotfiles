@@ -45,10 +45,10 @@ kmap("n", "<F5>", ":! compwrite && clear && gcc %<cr> | :vsp |terminal ./a.out<i
 kmap("n", "<leader>t", ":SymbolsOutline<cr>", opts)
 -- Restart lsp && refresh files
 kmap(
-	"n",
-	"<leader>r",
-	":NvimTreeRefresh<cr> | :LspRestart<cr> :lua require('notify')('Lsp restarted and files refreshed',1,{title='RESTART',timeout=500})<cr>",
-	opts
+  "n",
+  "<leader>r",
+  ":NvimTreeRefresh<cr> | :LspRestart<cr> :lua require('notify')('Lsp restarted and files refreshed',1,{title='RESTART',timeout=500})<cr>",
+  opts
 )
 
 -- Move text up down
@@ -64,10 +64,10 @@ kmap("v", "<", "<gv", opts)
 kmap("v", ">", ">gv", opts)
 -- Ctrl+c to copy in selection mode
 kmap(
-	"v",
-	"<C-c>",
-	'y:call system("xclip -i -selection clipboard", getreg("\\""))<CR>:call system("xclip -i", getreg("\\""))<CR> :lua require("notify")("Copied to clipboard!",0,{title="CLIPBOARD",timeout=300})<CR>',
-	opts
+  "v",
+  "<C-c>",
+  'y:call system("xclip -i -selection clipboard", getreg("\\""))<CR>:call system("xclip -i", getreg("\\""))<CR> :lua require("notify")("Copied to clipboard!",0,{title="CLIPBOARD",timeout=300})<CR>',
+  opts
 )
 
 -- Better terminal navigation
@@ -78,18 +78,18 @@ kmap("t", "<C-l>", "<C-\\><C-N><C-w>l", term_opts)
 kmap("t", "<Esc><C-\\><C-n>", ":bd!<cr>", term_opts)
 
 kmap(
-	"n",
-	"<leader>f",
-	"<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({ previewer = false }))<cr>",
-	opts
+  "n",
+  "<leader>f",
+  "<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({ previewer = false }))<cr>",
+  opts
 )
 kmap("n", "<leader>F", "<cmd>Telescope find_files<cr>", opts)
 kmap(
-	"n",
-	"<leader>k",
-	"<cmd>lua require'telescope.builtin'.keymaps(require('telescope.themes').get_dropdown({ previewer = false }))<cr>",
-	opts
+  "n",
+  "<leader>k",
+  "<cmd>lua require'telescope.builtin'.keymaps(require('telescope.themes').get_dropdown({ previewer = false }))<cr>",
+  opts
 )
 kmap("n", "<c-g>", "<cmd>Telescope live_grep<cr>", opts)
 
-require("phyvim.config.macros")
+require "phyvim.config.macros"
