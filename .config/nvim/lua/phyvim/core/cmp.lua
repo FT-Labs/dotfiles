@@ -26,14 +26,7 @@ local function jumpable(dir)
     return pos[1] >= snip_begin_pos[1] and pos[1] <= snip_end_pos[1]
   end
 
-  ---sets the current buffer's luasnip to the one nearest the cursor
-  ---@return boolean true if a node is found, false otherwise
   local function seek_luasnip_cursor_node()
-    -- for outdated versions of luasnip
-    if not luasnip.session.current_nodes then
-      return false
-    end
-
     local pos = win_get_cursor(0)
     pos[1] = pos[1] - 1
     local node = luasnip.session.current_nodes[get_current_buf()]
@@ -54,48 +47,6 @@ local function jumpable(dir)
         return false
       end
     end
-
-    node = snippet.inner_first:jump_into(1, true)
-    while node ~= nil and node.next ~= nil and node ~= snippet do
-      local n_next = node.next
-      local next_pos = n_next and n_next.mark:pos_begin()
-      local candidate = n_next ~= snippet and next_pos and (pos[1] < next_pos[1])
-        or (pos[1] == next_pos[1] and pos[2] < next_pos[2])
-
-      -- Past unmarked exit node, exit early
-      if n_next == nil or n_next == snippet.next then
-        snippet:remove_from_jumplist()
-        luasnip.session.current_nodes[get_current_buf()] = nil
-
-        return false
-      end
-
-      if candidate then
-        luasnip.session.current_nodes[get_current_buf()] = node
-        return true
-      end
-
-      local ok
-      ok, node = pcall(node.jump_from, node, 1, true) -- no_move until last stop
-      if not ok then
-        snippet:remove_from_jumplist()
-        luasnip.session.current_nodes[get_current_buf()] = nil
-
-        return false
-      end
-    end
-
-    -- No candidate, but have an exit node
-    if exit_node then
-      -- to jump to the exit node, seek to snippet
-      luasnip.session.current_nodes[get_current_buf()] = snippet
-      return true
-    end
-
-    -- No exit node, exit from snippet
-    -- snippet:remove_from_jumplist()
-    luasnip.session.current_nodes[get_current_buf()] = nil
-    return false
   end
 
   if dir == -1 then
@@ -182,9 +133,7 @@ M.setup = function()
         if cmp.visible() then
           cmp.confirm { select = true }
         elseif luasnip.expand_or_locally_jumpable() then
-          if jumpable() then
-            luasnip.expand_or_jump()
-          end
+					luasnip.expand_or_jump()
         elseif check_backspace() then
           fallback()
         elseif has_words_before() then
@@ -205,11 +154,9 @@ M.setup = function()
       }),
       ["<CR>"] = cmp.mapping(function(fallback)
         if luasnip.expand_or_locally_jumpable() then
-          if jumpable() then
-            luasnip.expand_or_jump()
-          end
+          luasnip.expand_or_jump()
+					jumpable()
         else
-          luasnip.session.current_nodes[vim.api.nvim_get_current_buf()] = nil
           fallback()
         end
       end, {
