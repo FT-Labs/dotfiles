@@ -154,8 +154,8 @@ M.setup = function()
       }),
       ["<CR>"] = cmp.mapping(function(fallback)
         if luasnip.expand_or_locally_jumpable() then
-          luasnip.expand_or_jump()
 					jumpable()
+          luasnip.expand_or_jump()
         else
           fallback()
         end
