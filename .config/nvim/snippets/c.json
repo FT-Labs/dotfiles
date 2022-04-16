@@ -26,17 +26,17 @@
   },
   "mod": {
   "prefix": "MOD",
-  "body": ["#define MOD(N,M)\t((N)%(M) < 0 ? (N)%(M) + (M) : (N)%(M))"],
+  "body": ["#define MOD(N,M)\t((N)%(M) < 0 ? (N)%(M) + (M) : (N)%(M))\n"],
   "description": "mod of N,M"
   },
   "between": {
 	  "prefix": "between",
-	  "body": ["#define BETWEEN(x, a, b)    ((a) <= (x) && (x) <= (b))"],
+	  "body": ["#define BETWEEN(x, a, b)    ((a) <= (x) && (x) <= (b))\n"],
 	  "description": "x is between a, b"
   },
-  "sze" : {
+  "size" : {
 	  "prefix": "sze",
-	  "body": ["#define SIZE(x) sizeof(x)/sizeof(x[0])","$0"],
+	  "body": ["#define SIZE(x) sizeof(x)/sizeof(x[0])\n"],
 	  "description": "Array size macro"
   },
   "max" : {
@@ -48,21 +48,6 @@
 	  "prefix": "min",
 	  "body": ["#define MIN(x,y) (x) < (y) ? (x) : (y)","$0"],
 	  "description": "Get min element"
-  },
-  "if": {
-    "prefix": "if",
-    "body": ["if ($1) {", "\t$0", "}"],
-    "description": "Code snippet for if statement"
-  },
-  "else": {
-    "prefix": "else",
-    "body": ["else {", "\t$0", "}"],
-    "description": "Code snippet for else statement"
-  },
-  "else if": {
-    "prefix": "else if",
-    "body": ["else if ($1) {", "\t$0", "}"],
-    "description": "Code snippet for else-if statement"
   },
   "enum": {
     "prefix": "enum",
@@ -291,5 +276,10 @@
       "free($2);"
     ],
     "description": "Allocates memory to a pointer variable using calloc(), then deallocates using free()."
+  },
+  "X11 default incs": {
+	  "prefix": "Xdef",
+	  "body": ["#include <X11/X.h>\n#include <X11/Xlib.h>\n#include <X11/Xutil.h>\n#include <X11/XKBlib.h>\n"],
+	  "description": "X11 default library headers"
   }
 }
