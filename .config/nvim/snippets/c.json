@@ -49,6 +49,16 @@
 	  "body": ["#define MIN(x,y) (x) < (y) ? (x) : (y)","$0"],
 	  "description": "Get min element"
   },
+  "safemin": {
+	  "prefix": "safemin",
+	  "body": [
+	  "#define MIN(a, b) ({\\",
+	  "    __typeof__ (a) _a = (a); \\",
+	  "    __typeof__ (b) _b = (b); \\",
+	  "    _a < _b ? _a : _b; })"
+	  ],
+	  "description": "Typesafe min"
+  },
   "enum": {
     "prefix": "enum",
     "body": ["enum ${1:MyEnum} {", "\t$0", "};"],
