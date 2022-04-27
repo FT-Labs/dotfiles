@@ -38,8 +38,8 @@ kmap("n", "9", ":BufferLineGoToBuffer 9<CR>", opts)
 -- F Keys
 kmap("n", "<F1>", ":NvimTreeToggle<cr>", opts)
 kmap("i", "<F1>", "<esc>:NvimTreeToggle<cr>", opts)
-kmap("n", "<F4>", ":! compwrite && clear && g++ %<cr> | :vsp |terminal ./a.out<inp.txt <cr>", opts)
-kmap("n", "<F5>", ":! compwrite && clear && gcc %<cr> | :vsp |terminal ./a.out<inp.txt <cr>", opts)
+kmap("n", "<F4>", ":! compwrite && clear && g++ -std=c++17 -O3 %<cr> | :vsp |terminal ./a.out<inp.txt <cr>", opts)
+kmap("n", "<F5>", ":! compwrite && clear && gcc -std=c99 -O3 %<cr> | :vsp |terminal ./a.out<inp.txt <cr>", opts)
 
 -- Toggle tags
 kmap("n", "<leader>t", ":SymbolsOutline<cr>", opts)
