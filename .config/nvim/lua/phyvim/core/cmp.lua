@@ -133,7 +133,7 @@ M.setup = function()
         if cmp.visible() then
           cmp.confirm { select = true }
         elseif luasnip.expand_or_locally_jumpable() then
-					luasnip.expand_or_jump()
+          luasnip.expand_or_jump()
         elseif check_backspace() then
           fallback()
         elseif has_words_before() then
@@ -154,7 +154,7 @@ M.setup = function()
       }),
       ["<CR>"] = cmp.mapping(function(fallback)
         if luasnip.expand_or_locally_jumpable() then
-					jumpable()
+          jumpable()
           luasnip.expand_or_jump()
         else
           fallback()

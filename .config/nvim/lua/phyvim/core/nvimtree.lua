@@ -11,11 +11,6 @@ local opts = {
       "dashboard",
       "alpha",
     },
-    update_to_buf_dir = {
-      enable = true,
-      auto_open = true,
-    },
-    auto_close = false,
     open_on_tab = false,
     hijack_cursor = false,
     update_cwd = true,
@@ -26,6 +21,24 @@ local opts = {
         info = "",
         warning = "",
         error = "",
+      },
+    },
+    actions = {
+      use_system_clipboard = true,
+      change_dir = {
+        enable = true,
+        global = true,
+        restrict_above_cwd = false,
+      },
+      open_file = {
+        window_picker = {
+          enable = true,
+          chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890",
+          exclude = {
+            filetype = { "notify", "packer", "qf", "diff", "fugitive", "fugitiveblame" },
+            buftype = { "nofile", "terminal", "help" },
+          },
+        },
       },
     },
     update_focused_file = {
@@ -57,7 +70,6 @@ local opts = {
       height = 30,
       hide_root_folder = false,
       side = "left",
-      auto_resize = false,
       mappings = {
         custom_only = false,
         list = {},

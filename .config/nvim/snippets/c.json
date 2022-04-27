@@ -14,6 +14,11 @@
 	  "body": ["/* $0 */"],
 	  "description": "Block comment"
   },
+  "DBG": {
+	  "prefix": "DBG",
+	  "body": ["#define WHERE fprintf(stderr,\"[LOG]%s:%d\n\",__FILE__,__LINE__);"],
+	  "description": "Debug code line"
+  },
   "forr": {
     "prefix": "forr",
     "body": [
@@ -53,6 +58,16 @@
 	  "prefix": "safemin",
 	  "body": [
 	  "#define MIN(a, b) ({\\",
+	  "    __typeof__ (a) _a = (a); \\",
+	  "    __typeof__ (b) _b = (b); \\",
+	  "    _a < _b ? _a : _b; })"
+	  ],
+	  "description": "Typesafe min"
+  },
+  "safemax": {
+	  "prefix": "safemin",
+	  "body": [
+	  "#define MAX(a, b) ({\\",
 	  "    __typeof__ (a) _a = (a); \\",
 	  "    __typeof__ (b) _b = (b); \\",
 	  "    _a < _b ? _a : _b; })"
