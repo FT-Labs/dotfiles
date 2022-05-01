@@ -54,6 +54,11 @@
 	  "body": ["#define MIN(x,y) (x) < (y) ? (x) : (y)","$0"],
 	  "description": "Get min element"
   },
+  "getbit": {
+	  "prefix": "GBIT",
+	  "body": ["#define GETBIT(x,i) (x&(1<<i)))", "$0"],
+	  "description": "Get bit of number"
+  },
   "safemin": {
 	  "prefix": "safemin",
 	  "body": [
