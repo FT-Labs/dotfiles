@@ -12,10 +12,12 @@ To add a bookmark:
 
 To remove bookmark:
 
-	bm remove 'aliasname'
+	bm rm 'aliasname'
 To cd to alias:
 
 	jmp 'aliasname'
+Or
+        cd -P 'aliasname'
 
 #### Status bar
 - All scripts are in ~/.local/bin/statusbar
