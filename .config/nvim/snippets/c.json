@@ -16,7 +16,7 @@
   },
   "DBG": {
 	  "prefix": "DBG",
-	  "body": ["#define WHERE fprintf(stderr,\"[LOG]%s:%d\n\",__FILE__,__LINE__);"],
+	  "body": ["#define WHERE fprintf(stderr,\"[LOG]%s:%d\\n\",__FILE__,__LINE__);"],
 	  "description": "Debug code line"
   },
   "forr": {
