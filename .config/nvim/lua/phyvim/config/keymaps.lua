@@ -25,15 +25,6 @@ kmap("i", "<S-Tab>", "<right>", opts)
 -- Navigate buffers
 kmap("n", "<S-l>", ":BufferLineCycleNext<CR>", opts)
 kmap("n", "<S-h>", ":BufferLineCyclePrev<CR>", opts)
-kmap("n", "1", ":BufferLineGoToBuffer 1<CR>", opts)
-kmap("n", "2", ":BufferLineGoToBuffer 2<CR>", opts)
-kmap("n", "3", ":BufferLineGoToBuffer 3<CR>", opts)
-kmap("n", "4", ":BufferLineGoToBuffer 4<CR>", opts)
-kmap("n", "5", ":BufferLineGoToBuffer 5<CR>", opts)
-kmap("n", "6", ":BufferLineGoToBuffer 6<CR>", opts)
-kmap("n", "7", ":BufferLineGoToBuffer 7<CR>", opts)
-kmap("n", "8", ":BufferLineGoToBuffer 8<CR>", opts)
-kmap("n", "9", ":BufferLineGoToBuffer 9<CR>", opts)
 
 -- F Keys
 kmap("n", "<F1>", ":NvimTreeToggle<cr>", opts)
