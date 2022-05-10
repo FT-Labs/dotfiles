@@ -1,7 +1,7 @@
 If:
   PathMatch: .*\.c
 CompileFlags:
-    Add: [-Wall, -Wextra, -Werror, -pedantic, -O3, -std=c99]
+    Add: [-Wall, -Wextra, -Werror, -Wno-deprecated-declarations, -pedantic, -O3, -std=c99]
     Compiler: gcc
 ---
 If:
