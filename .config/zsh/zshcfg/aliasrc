@@ -12,8 +12,9 @@ alias \
 	ffmpeg="ffmpeg -hide_banner"
 
 # Colorize commands when possible.
+#ls="ls -hN --color=auto --group-directories-first" \
 alias \
-	ls="ls -hN --color=auto --group-directories-first" \
+	ls="exa" \
 	l="colorls" \
 	lt="colorls --tree" \
 	grep="grep --color=auto" \
@@ -38,12 +39,6 @@ alias \
 
 alias \
 	t="st &>/dev/null & disown"
-	# These are old now, using bookmarks
-	#gco="~/Desktop/Codes/" \
-	#ggo="~/Desktop/Codes/Go/" \
-	#gcp="~/Desktop/Codes/C++/" \
-	#gpy="~/Desktop/Codes/Python/" \
-	#gj="~/Desktop/Codes/Java/" \
 
 # Bare git dot config
 alias \
