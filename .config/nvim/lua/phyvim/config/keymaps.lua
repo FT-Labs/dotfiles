@@ -42,6 +42,8 @@ kmap(
   opts
 )
 
+kmap("v", "<leader>e", ":<C-U>let i=0 | '<,'>g/^/s//\\=i.' '/ | let i=i+1 | nohl<CR>", opts)
+
 -- Move text up down
 kmap("v", "<A-j>", ":m .+1<CR>==", opts)
 kmap("v", "<A-k>", ":m .-2<CR>==", opts)
