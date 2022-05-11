@@ -1,11 +1,11 @@
 If:
   PathMatch: .*\.c
 CompileFlags:
-    Add: [-Wall, -Wextra, -Werror, -Wno-deprecated-declarations, -pedantic, -O3, -std=c99]
+    Add: [-Wall, -Wextra, -pedantic, -Wno-deprecated-declarations, -O3, -std=c99]
     Compiler: gcc
 ---
 If:
   PathMatch: .*\.cpp
 CompileFlags:
-    Add: [-Wall, -Wextra, -Werror, -pedantic, -O3, -std=c++17]
+    Add: [-Wall, -Wextra, -pedantic, -O3, -std=c++17]
     Compiler: g++
