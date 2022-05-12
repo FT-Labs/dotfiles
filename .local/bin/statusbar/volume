@@ -5,9 +5,7 @@
 
 case $BLOCK_BUTTON in
 	1) setsid -f "$TERMINAL" -e pulsemixer ;;
-	3) notify-send "📢 Volume module" "\- Shows volume 🔊, 🔇 if muted.
-- Middle click to mute.
-- Scroll to change." ;;
+	3) notify-send "📢 Volume module" "\- Shows volume 🔊, 🔇 if muted." ;;
 esac
 
 function send_notification {

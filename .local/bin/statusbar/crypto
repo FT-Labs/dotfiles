@@ -5,8 +5,8 @@
 
 # Currencies should be ;-separated:
 # human-readable name;urlname;icon
-coins="Bitcoin;btc;S2|
-Ethereum;eth;|S3|
+coins="Bitcoin;btc;2|
+Ethereum;eth;|3|
 "
 
 # Directory where currency info is stored.
