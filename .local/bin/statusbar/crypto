@@ -16,7 +16,7 @@ getprices() { # The command to get the desired prices
 	printprices
 	{ rm -rf "${dir:?}/*"
 	echo "$coins" | while IFS=';' read -r human web icon; do
-		val="$(curl -s "rate.sx/1$web")" &&
+		val="$(curl -s "rate.sx/1$web")" && [ ! -z "$web" ] &&
 		echo "$icon;$val;$human" > "$dir/$web"
 	done; [ -d "$dir" ] && touch "$dir"
 	pkill -RTMIN+6 "${STATUSBAR:-dwmblocks}" ;} &
