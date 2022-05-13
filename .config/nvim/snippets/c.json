@@ -30,7 +30,7 @@
     "description": "Code snippet for reverse 'for' loop"
   },
   "mod": {
-  "prefix": "MOD",
+  "prefix": "mod",
   "body": ["#define MOD(N,M)\t((N)%(M) < 0 ? (N)%(M) + (M) : (N)%(M))\n"],
   "description": "mod of N,M"
   },
@@ -55,7 +55,7 @@
 	  "description": "Get min element"
   },
   "getbit": {
-	  "prefix": "GBIT",
+	  "prefix": "gbit",
 	  "body": ["#define GETBIT(x,i) (x&(1<<i)))", "$0"],
 	  "description": "Get bit of number"
   },
@@ -70,7 +70,7 @@
 	  "description": "Typesafe min"
   },
   "safemax": {
-	  "prefix": "safemin",
+	  "prefix": "safemax",
 	  "body": [
 	  "#define MAX(a, b) ({\\",
 	  "    __typeof__ (a) _a = (a); \\",
@@ -103,21 +103,6 @@
     "prefix": "struct",
     "body": ["struct ${1:MyStruct} {", "\t$0", "};"],
     "description": "Code snippet for struct"
-  },
-  "typedef struct": {
-    "prefix": "structt",
-    "body": ["typedef struct {", "\t$0", "} ${1:MyStruct};"],
-    "description": "Code snippet to define a type with struct"
-  },
-  "switch": {
-    "prefix": "switch",
-    "body": ["switch (${1:switch_on}) {", "\tdefault:", "\t\t$0", "\t\tbreak;", "}"],
-    "description": "Code snippet for switch statement"
-  },
-  "case": {
-    "prefix": "case",
-    "body": ["case $1:", "\t$0", "\tbreak;"],
-    "description": "Code snippet for case branch"
   },
   "union": {
     "prefix": "union",
@@ -155,7 +140,7 @@
     "body": [
       "#include <stdio.h>",
       "",
-      "int main (int argc, char *argv[])",
+      "int main ()",
       "{",
       "\t$0",
       "\treturn 0;",
@@ -177,11 +162,6 @@
     ],
     "description": "A standard starter template for a C program with stdlib included"
   },
-  "Do...while loop": {
-    "prefix": "do",
-    "body": ["do {", "\t$1", "} while($2);"],
-    "description": "Creates a do...while loop"
-  },
   "Create linked list": {
     "prefix": "clist",
     "body": [
@@ -194,59 +174,29 @@
     ],
     "description": "Creates a linked list template"
   },
-  "Create a function": {
-    "prefix": "func",
-    "body": ["${2:void} ${1:func}(${4:void})", "{", "\t$3", "}"],
-    "description": "Creates a function"
-  },
-  "Create int function": {
-    "prefix": "intfunc",
-    "body": ["int $1 ()", "{", "\tint $2 = $3;$4", "\treturn $2;", "}"],
-    "description": "Creates a function that returns the int type"
-  },
-  "Create float function": {
-    "prefix": "flfunc",
-    "body": ["float $1 ()", "{", "\tfloat $2 = $3;$4", "\treturn $2;", "}"],
-    "description": "Creates a function that returns the float type"
-  },
-  "Create double function": {
-    "prefix": "doubfunc",
-    "body": ["double $1 ()", "{", "\tdouble $2 = $3;$4", "\treturn $2;", "}"],
-    "description": "Creates a function that returns the double type"
-  },
-  "Create string function": {
-    "prefix": "strfunc",
-    "body": ["char[] $1 ()", "{", "\tchar[] $2 = {$3};$4", "\treturn $2;", "}"],
-    "description": "Creates a function that returns the char array type"
-  },
-  "Create long function": {
-    "prefix": "longfunc",
-    "body": ["long $1 ()", "{", "\tlong $2 = $3;$4", "\treturn $3;", "}"],
-    "description": "Creates a function that returns the long type"
-  },
   "Print variable of type float (2 decimal places)": {
     "prefix": "pflo",
-    "body": ["printf(\"$0 :>> %.2f\\n\", $0);"],
+    "body": ["printf(\"$1 :>> %.2f\\n\", $1);"],
     "description": "Calls printf() to log value of variable of type float rounded to 2 decimal places"
   },
   "Print variable of type integer": {
     "prefix": "pint",
-    "body": ["printf(\"$0 :>> %d\\n\", $0);"],
+    "body": ["printf(\"$1 : %d\\n\", $1);"],
     "description": "Calls printf() to log value of variable of type signed integer"
   },
   "Print variable of type char": {
     "prefix": "pcha",
-    "body": ["printf(\"$0 :>> %c\\n\", $0);"],
+    "body": ["printf(\"$1 : %c\\n\", $1);"],
     "description": "Calls printf() to log value of variable of type char"
   },
   "Print variable of type pointer": {
     "prefix": "ppoint",
-    "body": ["printf(\"$0 :>> %p\\n\", (void *) $0);"],
+    "body": ["printf(\"$1 : %p\\n\", (void *) $1);"],
     "description": "Calls printf() to log value of variable of type pointer"
   },
   "Print variable of type size_t": {
     "prefix": "psiz",
-    "body": ["printf(\"$0 :>> %zu\\n\", $0);"],
+    "body": ["printf(\"$1 : %zu\\n\", $1);"],
     "description": "Calls printf() to log value of variable of type size_t"
   },
   "printf": {
