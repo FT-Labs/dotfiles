@@ -9,6 +9,5 @@ H[]   Deck Layout		3
 [\\]   Dwindle Layout		5
 |M|   Centered Master Layout		6
 >M>   Centered Floating Master Layout		7
-|||   Column Layout		9
 ><>   Floating Layout		8
 EOF
