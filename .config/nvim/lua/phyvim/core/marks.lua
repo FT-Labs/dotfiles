@@ -2,13 +2,13 @@ local M = {}
 
 M.setup = function()
   local opts = { -- whether to map keybinds or not. default true
-    default_mappings = true,
+    default_mappings = false,
     -- which builtin marks to show. default {}
     builtin_marks = {},
     -- whether movements cycle back to the beginning/end of buffer. default true
     cyclic = true,
     -- whether the shada file is updated after modifying uppercase marks. default false
-    force_write_shada = false,
+    force_write_shada = true,
     -- how often (in ms) to redraw signs/recompute mark positions.
     -- higher values will have better performance but may cause visual lag,
     -- while lower values may cause performance penalties. default 150.
@@ -33,20 +33,29 @@ M.setup = function()
       sign = "",
       virt_text = "Bug",
     },
-    bookmark_1 = {
+    bookmark_2 = {
       sign = "",
       virt_text = "TODO",
     },
     mappings = {
       set_next = "mm",
-      next = "m,",
-      prev = "mn",
-      preview = "mp",
+      next = "mn",
+      prev = "mp",
+      preview = "mP",
       delete = "md",
+			delete_line = "md-",
+			delete_buf = "mD",
+			delete_bookmark = "md-",
+			set_bookmark0 = "m0",
+			set_bookmark1 = "m1",
+			set_bookmark2 = "m2",
+			next_bookmark0 = "mn0",
+			next_bookmark1 = "mn1",
+			next_bookmark2 = "mn2",
     },
   }
 
-  local marks_status_ok, marks = pcall(require, "cmp")
+  local marks_status_ok, marks = pcall(require, "marks")
 
   if not marks_status_ok then
     return

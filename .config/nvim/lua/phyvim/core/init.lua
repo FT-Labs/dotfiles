@@ -17,6 +17,7 @@ M.load = function()
   require("phyvim.core.terminal").setup()
   require("phyvim.core.notify").setup()
   require("phyvim.core.neoscroll").setup()
+  require("phyvim.core.marks").setup()
   require("colorizer").setup()
 end
 

@@ -16,6 +16,7 @@ M.load_options = function()
     smartindent = true,
     completeopt = { "menuone", "noselect" },
     wildignorecase = true,
+		viminfo="'1000,f1",
     --wildmode = { "longest", "list", "full" },
     ignorecase = true,
     conceallevel = 0,
