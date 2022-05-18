@@ -130,10 +130,11 @@ M.setup = function()
       -- Set `select` to `false` to only confirm explicitly selected items.
       -- ["<CR>"] = cmp.mapping.confirm { select = false },
       ["<Tab>"] = cmp.mapping(function(fallback)
-        if cmp.visible() then
-          cmp.confirm { select = true }
-        elseif luasnip.expand_or_locally_jumpable() then
+        if luasnip.expand_or_locally_jumpable() and not cmp.get_active_entry() then
+					jumpable()
           luasnip.expand_or_jump()
+        elseif cmp.visible() then
+          cmp.confirm { select = true }
         elseif check_backspace() then
           fallback()
         elseif has_words_before() then
@@ -141,21 +142,13 @@ M.setup = function()
         else
           fallback()
         end
-      end),
+      end, {
+			"i",
+			"s",
+		}),
       ["<S-Tab>"] = cmp.mapping(function(fallback)
         if jumpable(-1) then
           luasnip.jump(-1)
-        else
-          fallback()
-        end
-      end, {
-        "i",
-        "s",
-      }),
-      ["<CR>"] = cmp.mapping(function(fallback)
-        if luasnip.expand_or_locally_jumpable() then
-          jumpable()
-          luasnip.expand_or_jump()
         else
           fallback()
         end
