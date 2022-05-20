@@ -13,6 +13,7 @@ M.load_options = function()
     shiftwidth = 4,
     tabstop = 4,
     softtabstop = 4,
+		expandtab = true,
     smartindent = true,
     completeopt = { "menuone", "noselect" },
     wildignorecase = true,
