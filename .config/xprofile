@@ -12,6 +12,4 @@ dunst &			# dunst for notifications
 remaps &		# run the remaps script, switching caps/esc and more; check it for more info
 #xbindkeys -f ~/.config/xbindkeysrc &
 xset r rate 250 40 &	# Speed xrate up
-# Switch escape and caps if tty and no passwd required:
-sudo -n loadkeys ${XDG_DATA_HOME:-$HOME/.local/share}/keys/ttymaps.kmap 2>/dev/null
 unclutter &		# Remove mouse when idle
