@@ -5,12 +5,13 @@
 
 xrdb ~/.config/Xresources
 mpd &			# music player daemon-you might prefer it as a service though
-remaps &		# run the remaps script, switching caps/esc and more; check it for more info
 setbg &			# set the background with the `setbg` script
 # Uncomment below for shadows
-#picom -c --experimental-backends --backend glx &		# picom for transparency and rounded corners
 picom --experimental-backends --backend glx &		# picom for transparency and rounded corners
 dunst &			# dunst for notifications
+remaps &		# run the remaps script, switching caps/esc and more; check it for more info
+#xbindkeys -f ~/.config/xbindkeysrc &
 xset r rate 250 40 &	# Speed xrate up
-xbindkeys -f ~/.config/xbindkeysrc
+# Switch escape and caps if tty and no passwd required:
+sudo -n loadkeys ${XDG_DATA_HOME:-$HOME/.local/share}/keys/ttymaps.kmap 2>/dev/null
 unclutter &		# Remove mouse when idle
