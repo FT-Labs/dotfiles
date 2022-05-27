@@ -1,2 +1,0 @@
-"xdotool key --delay 6 space c && notify-send HELLO"
-    b:9
