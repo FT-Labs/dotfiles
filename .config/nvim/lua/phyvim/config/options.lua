@@ -44,7 +44,6 @@ M.load_options = function()
   vim["&t_8b"] = "\\<Esc>[48;2;%lu;%lu;%lum"
   vim.opt.termguicolors = true
 
-  -- Macros
   vim.cmd [[set formatoptions-=cro]]
 
   for k, v in pairs(options) do
