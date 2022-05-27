@@ -21,7 +21,7 @@ M.setup = function()
       -- Set a formatter
       formatting.cmake_format,
       -- formatting.gofmt,
-      formatting.goimports,
+      -- formatting.goimports,
       -- formatting.golines,
       -- formatting.gofumpt,
       -- Set a linter
