@@ -5,11 +5,13 @@ local kmap = vim.api.nvim_set_keymap
 vim.g.mapleader = ";"
 vim.g.maplocalleader = ";"
 
+
 -- Window navigation
 kmap("n", "<C-h>", "<C-w>h", opts)
 kmap("n", "<C-j>", "<C-w>j", opts)
 kmap("n", "<C-k>", "<C-w>k", opts)
 kmap("n", "<C-l>", "<C-w>l", opts)
+
 
 -- kmap("n", "<leader>d", ":bd<cr>", opts) Old way to delete buffer
 kmap("n", "<leader>d", ":w | :Bdelete<cr>", opts) -- better way, syncs with nvim tree
@@ -30,7 +32,7 @@ kmap("n", "<S-h>", ":BufferLineCyclePrev<CR>", opts)
 kmap("n", "<F1>", ":NvimTreeToggle<cr>", opts)
 kmap("i", "<F2>", "<C-O>za", opts) -- toggle fold
 kmap("n", "<F2>", "za", opts) -- toggle fold
-kmap("i", "<F1>", "<esc>:NvimTreeToggle<cr>", opts)
+kmap("i", "<F1>", "<C-O>:NvimTreeToggle<cr>", opts)
 kmap("n", "<F4>", ":! compwrite && clear && g++ -std=c++17 -O3 %<cr> | :vsp |terminal ./a.out<inp.txt <cr>", opts)
 kmap("n", "<F5>", ":! compwrite && clear && gcc -std=c99 -O3 %<cr> | :vsp |terminal ./a.out<inp.txt <cr>", opts)
 
