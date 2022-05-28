@@ -35,3 +35,12 @@ vim.cmd [[
 	autocmd BufWritePre * %s/\n\+\%$//e
  	autocmd BufWritePre * cal cursor(currPos[1], currPos[2])
 ]]
+
+-- Remember foldings
+vim.cmd [[
+  augroup remember_folds
+    autocmd!
+    autocmd BufWinLeave * mkview
+    autocmd BufWinEnter * silent! loadview
+  augroup end
+]]

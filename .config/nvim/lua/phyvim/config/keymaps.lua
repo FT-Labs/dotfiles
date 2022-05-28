@@ -5,6 +5,9 @@ local kmap = vim.api.nvim_set_keymap
 vim.g.mapleader = ";"
 vim.g.maplocalleader = ";"
 
+-- Goes to next closed fold
+kmap("n", "zj", ":call NextClosedFold('j')<cr>", opts)
+kmap("n", "zk", ":call NextClosedFold('k')<cr>", opts)
 
 -- Window navigation
 kmap("n", "<C-h>", "<C-w>h", opts)
