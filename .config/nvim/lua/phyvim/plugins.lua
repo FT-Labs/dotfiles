@@ -65,14 +65,16 @@ return packer.startup(function(use)
   use "lewis6991/gitsigns.nvim" -- gitsigns
   use "kyazdani42/nvim-web-devicons" -- tree webicons
   use "kyazdani42/nvim-tree.lua" -- nvim tree
-  use "akinsho/bufferline.nvim" -- top buffer line
+  use {'akinsho/bufferline.nvim', tag = "v2.*", requires = 'kyazdani42/nvim-web-devicons'}
   use "moll/vim-bbye"
   use "jose-elias-alvarez/null-ls.nvim" -- for formatters and linters
   use "ahmedkhalf/project.nvim"
   use "nvim-lualine/lualine.nvim"
   use "simrat39/symbols-outline.nvim" -- tags
   use "lukas-reineke/indent-blankline.nvim" -- line indent
-  use "akinsho/toggleterm.nvim" -- toggle terminal
+  use {"akinsho/toggleterm.nvim", tag = 'v1.*', config = function()
+  require("toggleterm").setup()
+end}
 
   use {
     "weilbith/nvim-code-action-menu",
