@@ -103,6 +103,6 @@ bindkey '^e' edit-command-line
 bindkey '^[[Z' autosuggest-accept   # shift tab to accept ghost text
 ZSH_AUTOSUGGEST_CLEAR_WIDGETS+=(buffer-empty bracketed-paste accept-line push-line-or-edit)
 ZSH_AUTOSUGGEST_STRATEGY=(history completion)
-ZSH_AUTOSUGGEST_USE_ASYNC=true
+#ZSH_AUTOSUGGEST_USE_ASYNC=true
 
 powerline-daemon -q
