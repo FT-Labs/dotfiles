@@ -72,9 +72,9 @@ return packer.startup(function(use)
   use "nvim-lualine/lualine.nvim"
   use "simrat39/symbols-outline.nvim" -- tags
   use "lukas-reineke/indent-blankline.nvim" -- line indent
-  use {"akinsho/toggleterm.nvim", tag = 'v1.*', config = function()
-  require("toggleterm").setup()
-end}
+  use {"akinsho/toggleterm.nvim", tag = 'v2.*', config = function()
+    require("toggleterm").setup() end}
+  use "nvim-treesitter/nvim-treesitter-refactor"
 
   use {
     "weilbith/nvim-code-action-menu",

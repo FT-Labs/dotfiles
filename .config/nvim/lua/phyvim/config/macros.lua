@@ -1,4 +1,4 @@
-vim.cmd [[ let @r="\y:%s/\<C-r>\"//g\<Left>\<Left>" ]] -- replace all occurrences
+-- vim.cmd [[ let @r="\y:%s/\<C-r>\"//g\<Left>\<Left>" ]] -- replace all occurrences (replaced with treesitter)
 vim.cmd [[ let @h=":ProjectRoot \<CR> :w\<CR> :vsp | terminal  go run $(ls -1 *.go | grep -v _test.go) \<CR>i" ]] -- run a go project without building
 vim.cmd [[ let @1=":call CppComp() \<CR>G:66\<CR>" ]] -- C++ competitive programming template
 vim.cmd [[ let @c=":cd %:h \<CR>" ]] -- change dir to current file

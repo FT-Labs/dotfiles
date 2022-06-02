@@ -19,6 +19,7 @@ M.load = function()
   require("phyvim.core.neoscroll").setup()
   require("phyvim.core.marks").setup()
   require("colorizer").setup()
+  require("phyvim.core.tsrefactor").setup()
 end
 
 return M
