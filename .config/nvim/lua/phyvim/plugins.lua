@@ -43,7 +43,7 @@ return packer.startup(function(use)
   use "lunarvim/onedarker.nvim"
   use { "catppuccin/nvim", as = "catppuccin" }
   use "folke/tokyonight.nvim"
-  use "Mofiqul/dracula.nvim"
+  use 'bluz71/vim-nightfly-guicolors'
 
   use "lewis6991/impatient.nvim" -- fast startup
 
