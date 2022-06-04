@@ -25,6 +25,7 @@ export NODE_PATH="${XDG_DATA_HOME:-$HOME/.local/share}/node_modules"
 # Adds `~/.local/bin` to $PATH
 export SCRIPTS="$(du "$HOME/.local/bin" | cut -f2 | paste -sd ':')"
 export PATH="$PATH:$GOPATH/bin:$NPMBIN:$SCRIPTS"
+export PASSWORD_STORE_DIR="${XDG_DATA_HOME:-$HOME/.local/share}/pass-store"
 
 # Other program settings:
 export SUDO_ASKPASS="$HOME/.local/bin/scripts/dmenupass" # Ask password with dmenu if any command needs it
