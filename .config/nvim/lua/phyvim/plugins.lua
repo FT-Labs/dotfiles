@@ -51,6 +51,7 @@ return packer.startup(function(use)
   use "neovim/nvim-lspconfig"
   use "williamboman/nvim-lsp-installer"
 
+  use "hrsh7th/nvim-pasta" -- Cycle yank history
   use "hrsh7th/nvim-cmp" -- Completion plugin
   use "hrsh7th/cmp-nvim-lsp" -- cmp lsp plugin
   use "hrsh7th/cmp-nvim-lua" -- cmp lua
