@@ -2,8 +2,7 @@
   "for": {
     "prefix": "for",
     "body": [
-      "for (${1:size_t} ${2:i} = ${3:0}; $2 < ${4:length}; $2++)",
-	  "{",
+      "for (${1:size_t} ${2:i} = ${3:0}; $2 < ${4:length}; $2++) {",
       "\t$0",
       "}"
     ],
@@ -17,8 +16,7 @@
   "forr": {
     "prefix": "forr",
     "body": [
-      "for (${1:size_t} ${2:i} = ${3:length} - 1; $2 >= ${4:0}; $2--)",
-	  "{",
+      "for (${1:size_t} ${2:i} = ${3:length} - 1; $2 >= ${4:0}; $2--) {",
       "\t$0",
       "}"
     ],
@@ -46,28 +44,13 @@
   },
   "while": {
     "prefix": "while",
-    "body": ["while ($1)", "{", "\t$2", "}"],
+    "body": ["while ($1) {", "\t$2", "}"],
     "description": ""
   },
   "foreach": {
     "prefix": "foreach",
-    "body": ["for (${1:auto} ${2:var} : ${3:collection_to_loop})", "{", "\t$0", "}"],
+    "body": ["for (${1:auto} ${2:var} : ${3:collection_to_loop}) {", "\t$0", "}"],
     "description": "Code snippet for range-based for loop (c++11) statement"
-  },
-  "if": {
-    "prefix": "if",
-    "body": ["if ($1)", "{", "\t$0", "}"],
-    "description": "Code snippet for if statement"
-  },
-  "else": {
-    "prefix": "else",
-    "body": ["else", "{", "\t$0", "}"],
-    "description": "Code snippet for else statement"
-  },
-  "else if": {
-    "prefix": "else if",
-    "body": ["else if ($1)", "{", "\t$0", "}"],
-    "description": "Code snippet for else-if statement"
   },
   "enum": {
     "prefix": "enum",
@@ -162,8 +145,7 @@
   "try": {
     "prefix": "try",
     "body": [
-      "try",
-      "{",
+      "try {",
       "\t",
       "}",
       "catch (const std::exception&)",
