@@ -7,7 +7,6 @@ export EDITOR="nvim"
 export TERMINAL="st"
 export BROWSER="chromium"
 export READER="zathura"
-
 export COMPOSITOR="picom" # Added this to toggle compositor from dwm
 
 export XDG_CONFIG_HOME="$HOME/.config"
