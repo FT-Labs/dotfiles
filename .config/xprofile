@@ -5,10 +5,10 @@
 
 xrdb ~/.config/Xresources
 mpd &			# music player daemon-you might prefer it as a service though
-setbg &			# set the background with the `setbg` script
+pOS-setbg &			# set the background with the `setbg` script
 # Uncomment below for shadows
 picom --experimental-backends --backend glx &		# picom for transparency and rounded corners
 dunst &			# dunst for notifications
-remaps &		# run the remaps script, switching caps/esc and more; check it for more info
+pOS-remaps &		# run the remaps script, switching caps/esc and more; check it for more info
 xset r rate 250 40 &	# Speed xrate up
 unclutter &		# Remove mouse when idle
