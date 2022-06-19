@@ -9,6 +9,6 @@
 # source them here with the line below.
 
 
-. ~/.config/xprofile
+. .xprofile
 
 ssh-agent dwm
