@@ -12,3 +12,4 @@ dunst &			# dunst for notifications
 pOS-remaps &		# run the remaps script, switching caps/esc and more; check it for more info
 xset r rate 250 40 &	# Speed xrate up
 unclutter &		# Remove mouse when idle
+dex -a # Start xdg autostart
