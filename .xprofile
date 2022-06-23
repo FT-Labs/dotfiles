@@ -8,9 +8,9 @@ mpd &			# music player daemon-you might prefer it as a service though
 pOS-setbg &			# set the background with the `setbg` script
 isvm=$( hwinfo | grep Virtual )
 if [[ -z $isvm ]]; then
-    picom &
-else
     picom --experimental-backends --backend glx &		# picom for transparency and rounded corners
+else
+    picom &
 fi
 dunst &			# dunst for notifications
 pOS-remaps &		# run the remaps script, switching caps/esc and more; check it for more info
