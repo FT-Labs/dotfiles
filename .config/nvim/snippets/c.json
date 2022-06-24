@@ -172,6 +172,51 @@
     ],
     "description": "Creates a linked list template"
   },
+  "Scan integer": {
+    "prefix": "sci",
+    "body": ["scanf(\"%d\", &$1);"],
+    "description": "Scan int"
+  },
+  "Scan 2 integer": {
+    "prefix": "sci2",
+    "body": ["scanf(\"%d %d\", &$1, &$2);"],
+    "description": "Scan 2 int"
+  },
+  "Scan unsigned integer": {
+    "prefix": "scui",
+    "body": ["scanf(\"%d\", &$1);"],
+    "description": "Scan unsigned int"
+  },
+  "Scan float": {
+    "prefix": "scf",
+    "body": ["scanf(\"%f\", &$1);"],
+    "description": "Scan float"
+  },
+  "Scan 2 float": {
+    "prefix": "scf2",
+    "body": ["scanf(\"%f %f\", &$1, &$2);"],
+    "description": "Scan 2 float"
+  },
+  "Scan long": {
+    "prefix": "scl",
+    "body": ["scanf(\"%ld\", &$1);"],
+    "description": "Scan long"
+  },
+  "Scan 2 long": {
+    "prefix": "scl2",
+    "body": ["scanf(\"%ld %ld\", &$1, &$2);"],
+    "description": "Scan 2 long"
+  },
+  "Scan unsigned long": {
+    "prefix": "scul",
+    "body": ["scanf(\"%lu\", &$1);"],
+    "description": "Scan unsigned long"
+  },
+  "Scan unsigned long long": {
+    "prefix": "scull",
+    "body": ["scanf(\"%llu\", &$1);"],
+    "description": "Scan unsigned long long"
+  },
   "Print variable of type float (2 decimal places)": {
     "prefix": "pflo",
     "body": ["printf(\"$1 :>> %.2f\\n\", $1);"],
