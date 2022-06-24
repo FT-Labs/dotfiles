@@ -1,7 +1,7 @@
 configuration{
     modi: "run,drun,window,windowcd";
     lines: 5;
-    font: "SF Pro Text 13";
+    font: "Sans Serif 13";
     show-icons: true;
     icon-theme: "Infinity-Dark-Icons";
     terminal: "st";
