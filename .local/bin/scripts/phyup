@@ -11,7 +11,7 @@ if [ "$1" == "dwm" ]; then
     rm -rf "$1-phyOS" src pkg *.zst PKGBUILD
 elif [ "$1" == "dots" ]; then
     if [[ -d "$HOME/.cfg" ]]; then
-        dots pull
+        $dots pull
     else
         git clone "https://github.com/PhyTech-R0/dotfiles" && mv dotfiles/.git "$HOME/.cfg" && cp -r dotfiles/.* "$HOME/" || rm -rf dotfiles
     fi
