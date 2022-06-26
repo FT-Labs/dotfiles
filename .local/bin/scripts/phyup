@@ -9,5 +9,9 @@ if [ "$1" == "dwm" ]; then
     kill -HUP $(pidof -s dwm) && xdotool key Super_L
     rm -rf "$1-phyOS" src pkg *.zst PKGBUILD
 elif [ "$1" == "dots" ]; then
-	git clone "https://github.com/PhyTech-R0/dotfiles" && rm -rf dotfiles/.git && cp -r dotfiles/.* "$HOME/" || rm -rf dotfiles
+    if [[ -d "$HOME/.cfg" ]]; then
+        dots pull
+    else
+        git clone "https://github.com/PhyTech-R0/dotfiles" && mv dotfiles/.git "$HOME/.cfg" && cp -r dotfiles/.* "$HOME/" || rm -rf dotfiles
+    fi
 fi
