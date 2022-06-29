@@ -14,5 +14,6 @@ elif [ "$1" == "dots" ]; then
         $dots pull
     else
         git clone "https://github.com/PhyTech-R0/dotfiles" && mv dotfiles/.git "$HOME/.cfg" && cp -r dotfiles/.* "$HOME/" || rm -rf dotfiles
+        $dots config --local status.showUntrackedFiles no
     fi
 fi
