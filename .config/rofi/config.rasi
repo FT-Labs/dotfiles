@@ -1,15 +1,18 @@
 configuration{
-    modi: "run,drun,window,windowcd";
+    modi: "run,drun,window";
     lines: 5;
-    font: "Sans Serif 13";
+    font: "Sans Serif 16";
     show-icons: true;
     icon-theme: "Infinity-Dark-Icons";
     terminal: "st";
-    drun-display-format: "{icon} {name}";
+    drun-display-format: "{name}";
     location: 0;
     disable-history: false;
     hide-scrollbar: true;
-    display-drun: "Apps:";
+    display-drun: " 󰵆  Apps ";
+    display-run: " 󰆍  Run ";
+    display-window: " 󱂬  Window";
+    sidebar-mode: true;
 	kb-row-up: "Up,Control+k";
 	kb-row-down: "Down,Control+j";
 	kb-row-left: "Control+h";
@@ -19,106 +22,107 @@ configuration{
 	kb-accept-entry: "Tab,Return,KP_Enter";
 	kb-row-tab: "";
 	kb-remove-to-eol: "";
-
 }
 
-@theme "tokyonight"
+@theme "tokyo-night"
+
+element-text, element-icon , mode-switcher {
+    background-color: inherit;
+    text-color:       inherit;
+
+}
 
 window {
-    transparency:                   "real";
-    background-color:               @bg;
-    text-color:                     @fg;
-	border:							0px;
-	border-color:					@ac;
-    border-radius:                  12px;
-	width:							30%;
-    location:                       center;
-    x-offset:                       0;
-    y-offset:                       0;
-}
-
-prompt {
-    enabled: 						true;
-	padding: 						0.30% 1% 0% -0.5%;
-	background-color: 				@al;
-	text-color: 					@fg;
-	font:							"SF Pro Text 13";
-}
-
-entry {
-    background-color:               @al;
-    text-color:                     @fg;
-    placeholder-color:              @fg;
-    expand:                         true;
-    horizontal-align:               0;
-    placeholder:                    "Search";
-    padding:                        0.10% 0% 0% 0%;
-    blink:                          true;
-}
-
-inputbar {
-	children: 						[ prompt, entry ];
-    background-color:               @bg;
-    text-color:                     @fg;
-    expand:                         false;
-	border:							0% 0% 0% 0%;
-    border-radius:                  0px;
-	border-color:					@ac;
-    margin:                         0% 0% 0% 0%;
-    padding:                        1.5%;
-}
-
-listview {
-    background-color:               @al;
-    padding:                        10px;
-    columns:                        2;
-    lines:                          7;
-    spacing:                        1%;
-    cycle:                          false;
-    dynamic:                        true;
-    layout:                         vertical;
+    height: 500px;
+    border: 0px;
+    border-color: @fg-col;
+    background-color: @bg-col;
+    border-radius: 15;
 }
 
 mainbox {
-    background-color:               @al;
-	border:							0% 0% 0% 0%;
-    border-radius:                  0% 0% 0% 0%;
-	border-color:					@ac;
-    children:                       [ inputbar, listview ];
-    spacing:                       	0%;
-    padding:                        0%;
+    background-color: @bg-col;
+    children: [ mode-switcher, inputbar, listview ];
+}
+
+inputbar {
+    children: [prompt,entry];
+    background-color: @bg-col;
+    border-radius: 5px;
+    padding: 2px;
+}
+
+prompt {
+    background-color: @blue;
+    padding: 6px;
+    text-color: @bg-col;
+    border-radius: 5px;
+    margin: 20px 0px 0px 20px;
+}
+
+textbox-prompt-colon {
+    expand: false;
+    str: ":";
+}
+
+entry {
+    padding: 6px;
+    margin: 20px 0px 0px 10px;
+    text-color: @fg-col;
+    background-color: @bg-col;
+}
+
+listview {
+    border: 0px 0px 0px;
+    padding: 10 10 0;
+    margin: 10 10 0 10;
+    columns: 4;
+    spacing: 15;
+    background-color: @bg-col;
 }
 
 element {
-    background-color:               @al;
-    text-color:                     @fg;
-    orientation:                    horizontal;
-    border-radius:                  0%;
-    padding:                        0.5% 0.5% 0.5% 0.5%;
+    padding: 5px;
+    background-color: @bg-col;
+    text-color: @fg-col  ;
+    orientation: vertical;
+    spacing: 10;
 }
 
 element-icon {
-    background-color: 				inherit;
-    text-color:       				inherit;
-    horizontal-align:               0.5;
-    vertical-align:                 0.5;
-    size:                           24px;
-    border:                         0px;
-}
-
-element-text {
-    background-color: 				@al;
-    text-color:       				inherit;
-    expand:                         true;
-    horizontal-align:               0;
-    vertical-align:                 0.5;
-    margin:                         0% 0.25% 0% 0.25%;
+    size: 56px;
+    horizontal-align: 0.5;
 }
 
 element selected {
-    background-color:               @ac;
-    text-color:                     @fgs;
-	border:							0% 0% 0% 0%;
-    border-radius:                  12px;
-    border-color:                  	@bg;
+    background-color:  @fg-col2 ;
+    text-color: @bg-col  ;
+    border-radius: 8px;
+}
+
+element-text {
+    vertical-align: 0.5;
+    horizontal-align: 0.5;
+    expand: true;
+    font: "Sofia Pro Bold 14";
+  }
+
+mode-switcher {
+    spacing: 0;
+    margin: 5 10 5 10;
+    padding: 10 50 5 50;
+  }
+
+button {
+    padding: 10px;
+    background-color: @bg-col-light;
+    text-color: @fg-col;
+    vertical-align: 0.5;
+    horizontal-align: 0.5;
+}
+
+button selected {
+  background-color:  @green ;
+  text-color: @bg-col;
+  border-radius: 10px;
 }
