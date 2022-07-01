@@ -2,9 +2,6 @@
 *.alpha: 0.8
 
 !! Set a default font and font size as below:
-/* *.font:	 MesloLGS NF:style=regular:pixelsize=18:antialias=true:autohint=true; */
-/* *.font:	 SF Mono:style=regular:pixelsize=18:antialias=true:autohint=true; */
-/**.font:	 Fira Mono:style=Regular:pixelsize=12:antialias=true:autohint=true;*/
 /* *.font:	 Consolas:style=Regular:pixelsize=14:antialias=true:autohint=true; */
 /* *.font:	 Terminus (TTF):style=Bold:pixelsize=24:antialias=true:autohint=true; */
 Xcursor.theme: volantes
