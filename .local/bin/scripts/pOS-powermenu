@@ -12,6 +12,7 @@
 
 theme="card_alt"
 dir="$HOME/.config/rofi/powermenu"
+pOS-powermenutitle &
 
 # random colors
 styles=($(ls -p --hide="colors.rasi" $dir/styles))
@@ -56,3 +57,5 @@ case $chosen in
 	$renew_dwm)
 		kill -HUP $(pidof -s dwm) && xdotool key Super_L ;;
 esac
+
+killall -9 pOS-powermenutitle
