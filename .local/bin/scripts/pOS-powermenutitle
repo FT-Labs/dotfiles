@@ -8,10 +8,16 @@ do
     then
         key=$(echo $line | sed "s/[^0-9]*//g")
 
-        if ([ $key = "43" ] || [ $key = "113" ]) && [ $i != 0 ]; then
+        if ([ $key = "43" ] || [ $key = "113" ]); then
             i=$((i-1))
-        elif ([ $key = "46" ] || [ $key = "114" ]) && [ $i != 4 ]; then
+        elif([ $key = "46" ] || [ $key = "114" ]); then
             i=$((i+1))
+        fi
+
+        if [ $i = 5 ]; then
+            i=0
+        elif [ $i = -1 ]; then
+            i=4
         fi
     fi
 
