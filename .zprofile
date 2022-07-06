@@ -9,6 +9,8 @@ export BROWSER="chromium"
 export READER="zathura"
 export COMPOSITOR="picom" # Added this to toggle compositor from dwm
 
+export ICON_THEME="Infinity_Dark_Icons"
+
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_CACHE_HOME="$HOME/.cache"
