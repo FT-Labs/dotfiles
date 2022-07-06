@@ -46,7 +46,7 @@ screencast() { \
 	ffmpeg -y \
 	-f x11grab \
 	-framerate 60 \
-	-video_size 1920*1080 \
+	-video_size 2560*1440 \
 	-s "2560x1440" \
 	-i "$DISPLAY" \
 	-f alsa -i default \
