@@ -26,6 +26,6 @@ do
         1) dunstify -r 8 -a bottom-center -u normal "  LOCK" ;;
         2) dunstify -r 8 -a bottom-center -u normal "  POWER OFF" ;;
         3) dunstify -r 8 -a bottom-center -u normal "ﰇ  REBOOT" ;;
-        4) dunstify -r 8 -a bottom-center -u normal "  RENEW DWM" ;;
+        4) dunstify -r 8 -a bottom-center -u normal "  RENEW DWM"  ;;
     esac
 done

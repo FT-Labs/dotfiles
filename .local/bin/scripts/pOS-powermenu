@@ -59,3 +59,4 @@ case $chosen in
 esac
 
 killall -9 pOS-powermenutitle
+dunstctl close
