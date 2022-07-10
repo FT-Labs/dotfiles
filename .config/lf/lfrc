@@ -11,8 +11,8 @@ set hiddenfiles ".*:*.aux:*.log:*.bbl:*.bcf:*.blg:*.run.xml"
 
 # Vars that depend on environmental variables
 #$lf -remote "send $id set previewer ${XDG_CONFIG_HOME:-$HOME/.config}/lf/scope"
-$lf -remote "send $id set previewer ${XDG_CONFIG_HOME:-$HOME/.config}/lf/preview"
-$lf -remote "send $id set cleaner ${XDG_CONFIG_HOME:-$HOME/.config}/lf/cleaner"
+set previewer ~/.config/lf/preview
+set cleaner ~/.config/lf/cleaner
 
 # cmds/functions
 cmd open ${{
@@ -20,7 +20,7 @@ cmd open ${{
 	image/vnd.djvu|application/pdf|application/octet-stream) setsid -f zathura $fx >/dev/null 2>&1 ;;
 	text/*|application/json) $EDITOR $fx;;
 	image/x-xcf|image/svg+xml) setsid -f gimp $f >/dev/null 2>&1 ;;
-	image/*) rotdir $f | grep -i "\.\(png\|jpg\|jpeg\|gif\|webp\|tif\)\(_large\)*$" | feh $fx& 2>/dev/null ;;
+	image/*) feh $fx& 2>/dev/null ;;
 	audio/*) mpv --audio-display=no $f ;;
 	video/*) setsid -f mpv $f -quiet >/dev/null 2>&1 ;;
 	application/pdf|application/vnd*|application/epub*) setsid -f zathura $fx >/dev/null 2>&1 ;;
