@@ -9,6 +9,9 @@ if [ "$1" == "dwm" ]; then
     makepkg -si
     kill -HUP $(pidof -s dwm) && xdotool key Super_L
     rm -rf "$1-phyOS" src pkg *.zst PKGBUILD
+elif [ "$1" == "dots" ] && [ "$2" == "--force" ]; then
+        git clone "https://github.com/PhyTech-R0/dotfiles" && mv dotfiles/.git "$HOME/.cfg" && cp -r dotfiles/.* "$HOME/" || rm -rf dotfiles
+        $dots config --local status.showUntrackedFiles no
 elif [ "$1" == "dots" ]; then
     if [[ -d "$HOME/.cfg" ]]; then
         $dots pull
