@@ -55,7 +55,9 @@ case $chosen in
     $reboot)
 		$ctl reboot -i ;;
 	$renew_dwm)
-		kill -HUP $(pidof -s dwm) && xdotool key Super_L ;;
+        ac=$(printf '0x0%x' $(xdotool getactivewindow))
+        kill -HUP $(pidof -s dwm)
+        (sleep 0.1 && wmctrl -ia $ac) & ;;
 esac
 
 killall -9 pOS-powermenutitle
