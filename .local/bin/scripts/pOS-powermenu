@@ -49,7 +49,11 @@ case $chosen in
     $logout)
 		kill -TERM $(pidof -s dwm) && xdotool key Super_L ;;
     $lock)
-		dm-tool lock ;;
+        if pacman -Qq "lightdm" > /dev/null ; then
+            dm-tool lock &
+        else
+            betterlockscreen -l blur &
+        fi ;;
     $shutdown)
 		$ctl poweroff -i ;;
     $reboot)
