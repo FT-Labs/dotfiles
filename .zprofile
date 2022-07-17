@@ -43,4 +43,4 @@ export LESSOPEN="| /usr/bin/highlight -O ansi %s 2>/dev/null"
 export _JAVA_AWT_WM_NONREPARENTING=1	# Fix for Java applications in dwm
 
 # Switch escape and caps if tty and no passwd required:
-sudo -n loadkeys ${XDG_DATA_HOME:-$HOME/.local/share}/keys/ttymaps.kmap 2>/dev/null
+sudo -n loadkeys ${XDG_DATA_HOME:-$HOME/.local/share:-$pOS_SCRIPT_PATH}/util/ttymaps.kmap 2>/dev/null

@@ -1,7 +1,6 @@
 #!/bin/sh
 
 xrdb ~/.config/Xresources
-mpd &			# music player daemon-you might prefer it as a service though
 pOS-setbg &			# set the background
 isvm=$( hwinfo | grep Virtual )
 if [[ -z $isvm ]]; then
@@ -15,4 +14,4 @@ pOS-remaps &		# run the remaps script, switching caps/esc and more; check it for
 [[ -f /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 ]] && /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 xset r rate 250 40 &	# Speed xrate up
 unclutter &		# Remove mouse when idle
-dex -a # Start xdg autostart
+dex -a & # Start xdg autostart
