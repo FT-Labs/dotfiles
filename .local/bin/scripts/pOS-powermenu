@@ -12,6 +12,7 @@
 
 theme="card_alt"
 dir="$HOME/.config/rofi/powermenu"
+dunstctl close-all
 pOS-powermenutitle &
 
 # random colors
@@ -52,7 +53,7 @@ case $chosen in
         if pacman -Qq "lightdm" > /dev/null ; then
             dm-tool lock &
         else
-            betterlockscreen -l blur &
+            betterlockscreen -l &
         fi ;;
     $shutdown)
 		$ctl poweroff -i ;;

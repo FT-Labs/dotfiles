@@ -6,21 +6,17 @@
 # Location of link to wallpaper link.
 bgloc="${XDG_DATA_HOME:-$HOME/.local/share/}/bg"
 
-[ -f "$1" ] && ln -sf "$(readlink -f "$1")" "$bgloc" && notify-send -i "$bgloc" "Changing wallpaper..."
-
-if [ ! -e "$bgloc" ]; then
-	bgloc="/usr/share/wallpapers/wp.png"
+if [ -f "$1" ]; then
+    dunstify -a center -u normal -i "$1" "Changing wallpaper..."
+    if [ $(readlink -f "$1") != $(readlink -f "$bgloc") ] && ! pacman -Qq "lightdm" > /dev/null; then
+        notify-send -a center "Updating lock screen..."
+        betterlockscreen -u "$1"
+    fi
+    ln -sf "$(readlink -f "$1")" "$bgloc"
 fi
 
-
-xwallpaper --zoom "$bgloc"
-
-
-trueloc="$(readlink -f "$1")" &&
-case "$(file --mime-type -b "$trueloc")" in
-	image/* ) ln -sf "$(readlink -f "$1")" "$bgloc" && notify-send -i "$bgloc" "Changing wallpaper..." ;;
-	inode/directory ) ln -sf "$(find "$trueloc" -iregex '.*.\(jpg\|jpeg\|png\|gif\)' -type f | shuf -n 1)" "$bgloc" && notify-send -i "$bgloc" "Random Wallpaper chosen." ;;
-	*) notify-send "Error" "Not a valid image." ; exit 1;;
-esac
+if [ ! -e "$bgloc" ] && [ -f "/usr/share/wallpapers/wp.png" ]; then
+	bgloc="/usr/share/wallpapers/wp.png"
+fi
 
 xwallpaper --zoom "$bgloc"
