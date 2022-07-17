@@ -5,14 +5,14 @@
 
 case $BLOCK_BUTTON in
 	1) setsid -f "$TERMINAL" -e pulsemixer ;;
-	3) notify-send "📢 Volume module" "\- Shows volume 🔊, 🔇 if muted." ;;
 esac
 
 function send_notification {
   iconSound=""
   iconMuted=""
   if [ $(pamixer --get-mute) = true ]; then
-    dunstify -r 3 -a top-center -u normal "$iconMuted    Muted"
+    dunstify --close=3
+    dunstify -r 3 -a center -i "/usr/share/phyos/notification-imgs/mute.png" ""
   else
     bar=$(seq --separator="─" 0 "$((vol / 5))" | sed 's/[0-9]//g')
     dunstify -r 3 -a top-center -u normal "$iconSound $bar"
