@@ -1,6 +1,15 @@
+[CompactMode]
+FontWeight=50
+
+[DetailsMode]
+FontWeight=50
+
 [General]
 Version=201
 ViewPropsTimestamp=2022,2,19,10,56,21.057
+
+[IconsMode]
+FontWeight=50
 
 [KFileDialog Settings]
 Places Icons Auto-resize=false
@@ -9,6 +18,8 @@ Places Icons Static Size=22
 [KPropertiesDialog]
 DP-0 DP-4 Height 1920x1080=759
 DP-0 DP-4 Width 1920x1080=843
+DP-4 DP-0 Height 2560x1440=730
+DP-4 DP-0 Width 2560x1440=722
 
 [MainWindow]
 DP-0 DP-4 Height 1920x1080=996
@@ -21,3 +32,6 @@ DP-0 DP-4 YPosition 1920x1080=63
 DP-0 DP-4 YPosition 2560x1440=63
 MenuBar=Disabled
 ToolBarsMovable=Disabled
+
+[PreviewSettings]
+Plugins=appimagethumbnail,audiothumbnail,comicbookthumbnail,cursorthumbnail,djvuthumbnail,ebookthumbnail,exrthumbnail,directorythumbnail,imagethumbnail,jpegthumbnail,kraorathumbnail,windowsexethumbnail,windowsimagethumbnail,opendocumentthumbnail,svgthumbnail

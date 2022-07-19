@@ -2,13 +2,6 @@
 
 # zsh profile file. Runs on login. Environmental variables are set here.
 
-# Default programs:
-export EDITOR="nvim"
-export TERMINAL="st"
-export BROWSER="chromium"
-export READER="zathura"
-export COMPOSITOR="picom" # Added this to toggle compositor from dwm
-
 export ICON_THEME="Infinity_Dark_Icons"
 
 export XDG_CONFIG_HOME="$HOME/.config"
@@ -40,7 +33,6 @@ export LESS_TERMCAP_se="$(printf '%b' '[0m')"
 export LESS_TERMCAP_us="$(printf '%b' '[1;32m')"
 export LESS_TERMCAP_ue="$(printf '%b' '[0m')"
 export LESSOPEN="| /usr/bin/highlight -O ansi %s 2>/dev/null"
-export _JAVA_AWT_WM_NONREPARENTING=1	# Fix for Java applications in dwm
 
 # Switch escape and caps if tty and no passwd required:
 sudo -n loadkeys ${XDG_DATA_HOME:-$HOME/.local/share:-$pOS_SCRIPT_PATH}/util/ttymaps.kmap 2>/dev/null

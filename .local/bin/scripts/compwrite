@@ -1,9 +1,0 @@
-#!/bin/bash
-
-IFS=
-var=$(xclip -selection clipboard -o)
-
-if ! [[ -z $var ]]
-then
-	echo $var > inp.txt
-fi
