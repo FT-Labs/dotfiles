@@ -83,7 +83,7 @@
     horizontal_padding = 8
 
     # Padding between text and icon.
-    text_icon_padding = -20
+    text_icon_padding = 0
 
     # Defines width in pixels of frame around the notification window.
     # Set to 0 to disable.
@@ -397,13 +397,10 @@
 #    msg_urgency = critical
 #    fullscreen = show
 
-#[espeak]
-#    summary = "*"
-#    script = dunst_espeak.sh
 
-#[script-test]
-#    summary = "*script*"
-#    script = dunst_test.sh
+[script-pOS]
+    summary = ""
+    hide_text = true
 
 #[ignore]
 #    # This notification will not be displayed
