@@ -5,7 +5,7 @@
 /* *.font:	 Consolas:style=Regular:pixelsize=14:antialias=true:autohint=true; */
 /* *.font:	 Terminus (TTF):style=Bold:pixelsize=24:antialias=true:autohint=true; */
 Xcursor.theme: volantes
-#Xcursor.size: 48
+/* Xcursor.size: 48 */
 
 /* name		dark	light */
 /* black	0	8 */
