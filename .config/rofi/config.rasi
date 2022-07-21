@@ -1,5 +1,5 @@
 configuration{
-    modi: "run,drun,window";
+    modi: "run,drun,window,windowcd";
     lines: 5;
     font: "Sans Serif 16";
     show-icons: true;
@@ -18,7 +18,7 @@ configuration{
 	kb-row-left: "Control+h";
 	kb-row-right: "Control+l";
 	kb-remove-char-back: "BackSpace,Shift+BackSpace";
-	kb-mode-complete: "Super+l";
+	kb-mode-complete: "";
 	kb-accept-entry: "Return,KP_Enter";
 	kb-mode-next: "Tab";
 	kb-row-tab: "";

@@ -23,7 +23,7 @@ export PATH="$PATH:$GOPATH/bin:$NPMBIN:$SCRIPTS"
 export PASSWORD_STORE_DIR="${XDG_DATA_HOME:-$HOME/.local/share}/pass-store"
 
 # Other program settings:
-export SUDO_ASKPASS="$HOME/.local/bin/scripts/pOS-pass" # Ask password with dmenu if any command needs it
+export SUDO_ASKPASS="${pOS-pass}" # Ask password with dmenu if any command needs it
 export LESS=-R
 export LESS_TERMCAP_mb="$(printf '%b' '[1;31m')"
 export LESS_TERMCAP_md="$(printf '%b' '[1;36m')"
@@ -33,6 +33,3 @@ export LESS_TERMCAP_se="$(printf '%b' '[0m')"
 export LESS_TERMCAP_us="$(printf '%b' '[1;32m')"
 export LESS_TERMCAP_ue="$(printf '%b' '[0m')"
 export LESSOPEN="| /usr/bin/highlight -O ansi %s 2>/dev/null"
-
-# Switch escape and caps if tty and no passwd required:
-sudo -n loadkeys ${XDG_DATA_HOME:-$HOME/.local/share:-$pOS_SCRIPT_PATH}/util/ttymaps.kmap 2>/dev/null
