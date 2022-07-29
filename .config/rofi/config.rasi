@@ -3,7 +3,7 @@ configuration{
     lines: 5;
     font: "Sans Serif 16";
     show-icons: true;
-    icon-theme: "Infinity-Dark-Icons";
+    icon-theme: "Papirus-Dark";
     terminal: "st";
     drun-display-format: "{name}";
     location: 0;
