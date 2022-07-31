@@ -1,11 +1,14 @@
 #!/bin/sh
 
-
-mon=$(xrandr -q | grep -w connected | awk '{print $1}')
-xrandr --output $mon --auto
-res=$(xrandr | sed "s/x/\ /g" | grep \* | awk '{print $1}')
-scale=$(bc -l <<< "2560/$res")
-xrandr --output $mon --scale $scale
+if [ ! -f "$HOME/.xsync" ]; then
+    mon=$(xrandr -q | grep -w connected | awk '{print $1}')
+    xrandr --output $mon --auto
+    res=$(xrandr | sed "s/x/\ /g" | grep \* | awk '{print $1}')
+    scale=$(bc -l <<< "2560/$res")
+    xrandr --output $mon --scale $scale
+else
+    $HOME/.xsync
+fi
 
 xrdb ~/.config/Xresources
 pOS-setbg &			# set the background
