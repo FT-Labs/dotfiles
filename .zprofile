@@ -34,3 +34,8 @@ export LESS_TERMCAP_se="$(printf '%b' '[0m')"
 export LESS_TERMCAP_us="$(printf '%b' '[1;32m')"
 export LESS_TERMCAP_ue="$(printf '%b' '[0m')"
 export LESSOPEN="| /usr/bin/highlight -O ansi %s 2>/dev/null"
+
+cp -f "$HOME/.config/gtk-3.0/settings.ini.sync" "$HOME/.config/gtk-3.0/settings.ini"
+cp -f "$HOME/.config/rofi/config.rasi.sync" "$HOME/.config/rofi/config.rasi"
+sed -i "s/ICON_THEME/$ICON_THEME/g" "$HOME/.config/rofi/config.rasi"
+sed -i "s/ICON_THEME/$ICON_THEME/g" "$HOME/.config/gtk-3.0/settings.ini"
