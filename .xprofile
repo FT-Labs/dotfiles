@@ -21,6 +21,7 @@ fi
 pOS-conky &
 dunst &			# dunst for notifications
 pOS-remaps &		# run the remaps script, switching caps/esc and more; check it for more info
+[[ -f /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 ]] && /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 xset r rate 250 40 &	# Speed xrate up
 unclutter &		# Remove mouse when idle
 dex -a & # Start xdg autostart
