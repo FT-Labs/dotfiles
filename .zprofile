@@ -2,7 +2,7 @@
 
 # zsh profile file. Runs on login. Environmental variables are set here.
 
-export ICON_THEME="Infinity_Dark_Icons"
+export ICON_THEME="Papirus-Dark"
 
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_DATA_HOME="$HOME/.local/share"
@@ -12,6 +12,7 @@ export ZDOTDIR="${XDG_CONFIG_HOME:-$HOME/.config}/zsh"
 export ZSHCFG="$ZDOTDIR/zshcfg"
 export ZSH="$ZSHCFG/OMZ"
 export HISTFILE="${XDG_DATA_HOME:-$HOME/.local/share}/history"
+export BM_DIR=""
 
 export LD_LIBRARY_PATH="/usr/local/lib"
 export GOPATH="$HOME/.local/go"

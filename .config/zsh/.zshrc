@@ -94,6 +94,10 @@ source /usr/share/fzf/completion.zsh
 bindkey -v
 export KEYTIMEOUT=1
 export GPG_TTY=$(tty)
+if [ ! -z $BM_DIR ]; then
+    cd -P $BM_DIR &&
+    export BM_DIR=""
+fi
 
 # Edit line in vim with ctrl-e:
 autoload edit-command-line; zle -N edit-command-line
