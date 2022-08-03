@@ -19,7 +19,7 @@ export ZSH="$ZSHCFG/OMZ"
 export HISTFILE="${XDG_DATA_HOME:-$HOME/.local/share}/history"
 export BM_DIR=""
 
-export ICON_THEME=""
+export ICON_THEME="Papirus-Dark"
 export SYNC_ROFI="${XDG_CONFIG_HOME:-$HOME/.config}/rofi" && sync_theme $SYNC_ROFI
 export SYNC_GTK="${XDG_CONFIG_HOME:-$HOME/.config}/gtk-3.0" && sync_theme $SYNC_GTK
 export SYNC_JGMENU="${XDG_CONFIG_HOME:-$HOME/.config}/jgmenu" && sync_theme $SYNC_JGMENU
