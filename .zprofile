@@ -35,12 +35,10 @@ export PASSWORD_STORE_DIR="${XDG_DATA_HOME:-$HOME/.local/share}/pass-store"
 
 # Other program settings:
 export SUDO_ASKPASS="${pOS-pass}" # Ask password with dmenu if any command needs it
-export LESS=-R
-export LESS_TERMCAP_mb="$(printf '%b' '[1;31m')"
-export LESS_TERMCAP_md="$(printf '%b' '[1;36m')"
-export LESS_TERMCAP_me="$(printf '%b' '[0m')"
-export LESS_TERMCAP_so="$(printf '%b' '[01;44;33m')"
-export LESS_TERMCAP_se="$(printf '%b' '[0m')"
-export LESS_TERMCAP_us="$(printf '%b' '[1;32m')"
-export LESS_TERMCAP_ue="$(printf '%b' '[0m')"
-export LESSOPEN="| /usr/bin/highlight -O ansi %s 2>/dev/null"
+export LESS_TERMCAP_mb=$(tput bold; tput setaf 39)
+export LESS_TERMCAP_md=$(tput bold; tput setaf 45)
+export LESS_TERMCAP_me=$(tput setaf 70)
+export LESS_TERMCAP_so=$(tput setaf 75)
+export LESS_TERMCAP_se=$(tput setaf 90)
+export LESS_TERMCAP_us=$(tput setaf 110)
+export LESS_TERMCAP_ue=$(tput setaf 130)
