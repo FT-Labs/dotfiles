@@ -34,7 +34,7 @@ export PATH="$PATH:$GOPATH/bin:$NPMBIN:$SCRIPTS"
 export PASSWORD_STORE_DIR="${XDG_DATA_HOME:-$HOME/.local/share}/pass-store"
 
 # Other program settings:
-export SUDO_ASKPASS="${pOS-pass}" # Ask password with dmenu if any command needs it
+export SUDO_ASKPASS="$(which pOS-pass)" # Ask password with dmenu if any command needs it
 export LESS_TERMCAP_mb=$(tput bold; tput setaf 39)
 export LESS_TERMCAP_md=$(tput bold; tput setaf 45)
 export LESS_TERMCAP_me=$(tput sgr0)
