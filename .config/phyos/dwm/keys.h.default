@@ -1,3 +1,10 @@
+
+/* Set your default terminal here */
+#define TERMINAL "st"
+#define TERMCLASS "St"
+
+static const char *termcmd[]  = { TERMINAL, NULL };
+
 /* button definitions */
 /* click can be ClkTagBar, ClkLtSymbol, ClkStatusText, ClkWinTitle, ClkClientWin, or ClkRootWin */
 static Button buttons[] = {
@@ -35,7 +42,7 @@ static Key keys[] = {
     /*{ MODKEY,         XK_F1,      spawn,      SHCMD("") },
     { MODKEY,           XK_F2,      spawn,      SHCMD("")},
     { MODKEY,           XK_F3,      spawn,      SHCMD(TERMINAL "")  },*/
-    { MODKEY,           XK_F4,      spawn,      SHCMD(TERMINAL " -e pulsemixer; kill -44 $(pidof dwmblocks)") },
+    { MODKEY,           XK_F4,      spawn,      SHCMD("pavucontrol; kill -44 $(pidof dwmblocks)") },
     { MODKEY,           XK_F5,      spawn,      SHCMD("pOS-displayselect") },
     /*{ MODKEY,         XK_F6,      spawn,      SHCMD("") },
     { MODKEY,           XK_F7,      spawn,      SHCMD("") },*/
