@@ -8,9 +8,6 @@ sync_theme() {
     sed -i "s/ICON_THEME/$ICON_THEME/g" ${dest::-5}
 }
 
-export TERMINAL=alacritty
-
-
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_CACHE_HOME="$HOME/.cache"
