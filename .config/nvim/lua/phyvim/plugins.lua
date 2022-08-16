@@ -60,7 +60,10 @@ return packer.startup(function(use)
   use "hrsh7th/cmp-cmdline" -- cmdline opts
   use "hrsh7th/cmp-nvim-lsp-signature-help" -- cmdline opts
   use "saadparwaiz1/cmp_luasnip" -- snippet completions
-  use "windwp/nvim-autopairs" -- Autopairs
+  use {
+	"windwp/nvim-autopairs",
+    config = function() require("nvim-autopairs").setup {} end
+  }
   use "numToStr/Comment.nvim" -- Comment
   use "JoosepAlviste/nvim-ts-context-commentstring" -- String ts comment
   use "lewis6991/gitsigns.nvim" -- gitsigns

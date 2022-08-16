@@ -19,6 +19,7 @@ vim.cmd [[
 vim.cmd [[
 	augroup sh_auto_exe
 		autocmd BufWritePost *.{sh} !chmod +x <afile>
+		autocmd BufWritePost * silent! !echo %:p >> /tmp/file-changes.txt
 	augroup end
 ]]
 
