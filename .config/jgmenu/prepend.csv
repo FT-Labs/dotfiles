@@ -1,13 +1,13 @@
-@icon,,18,17,16,16,0,left,top,#7AA2F7,#7AA2F7,/usr/share/phyos/config/jgmenu/search.png
+@icon,,18,17,16,16,0,left,top,#7AA2F7,#7AA2F7,/usr/share/phyos/jgmenu/search.png
 @search,,42,15,150,20,2,left,top,#c0caf5,#7aa2f7,Search
-Terminal,$TERMINAL,/usr/share/phyos/config/jgmenu/terminal.png
-Web Browser,$BROWSER,/usr/share/phyos/config/jgmenu/web-browser.png
-File manager,$FILE_MANAGER,/usr/share/phyos/config/jgmenu/file-manager.png
-Text Editor,$TERMINAL -e $EDITOR,/usr/share/phyos/config/jgmenu/edit-note.png
-Music Player,spotify,/usr/share/phyos/config/jgmenu/music.png
+Terminal,$TERMINAL,/usr/share/phyos/jgmenu/terminal.png
+Web Browser,$BROWSER,/usr/share/phyos/jgmenu/web-browser.png
+File manager,$FILE_MANAGER,/usr/share/phyos/jgmenu/file-manager.png
+Text Editor,$TERMINAL -e $EDITOR,/usr/share/phyos/jgmenu/edit-note.png
+Music Player,spotify,/usr/share/phyos/jgmenu/music.png
 
 ^sep()
-Applications,^checkout(lx-apps),/usr/share/phyos/config/jgmenu/applications.png
+Applications,^checkout(lx-apps),/usr/share/phyos/jgmenu/applications.png
 ^sep()
-Exit,pOS-powermenu,/usr/share/phyos/config/jgmenu/exit.png
+Exit,pOS-powermenu,/usr/share/phyos/jgmenu/exit.png
 ^tag(lx-apps)
