@@ -2,22 +2,23 @@
 
 if [ ! -f "$HOME/.xsync" ]; then
     mon=$(xrandr -q | grep -w connected | awk '{print $1}')
-    xrandr --output $mon --auto
-    res=$(xrandr | sed "s/x/\ /g" | grep \* | awk '{print $1}')
-    scale=$(bc -l <<< "2560/$res")
-    xrandr --output $mon --scale $scale
+    res_x=$(xrandr | sed "s/x/\ /g" | grep \* | awk '{print $1}')
+    res_y=$(xrandr | sed "s/x/\ /g" | grep \* | awk '{print $2}')
+    if (( $res_x < 1920)); then
+        scale_x=$(bc -l <<< "1920/$res_x")
+        scale_y=$(bc -l <<< "1080/$res_y")
+        xrandr --output $mon --scale "${scale_x}x${scale_y}"
+    else
+        xrandr --auto
+    fi
 else
     $HOME/.xsync
 fi
 
 xrdb ~/.config/Xresources
-pOS-setbg &			# set the background
-isvm=$( hwinfo | grep Virtual )
-if [[ -z $isvm ]]; then
-    picom --experimental-backends --backend glx &		# picom for transparency and rounded corners
-else
-    picom &
-fi
+pOS-setbg &			# set the background, use this script to set your own background
+# Below sources configuration file to fetch picom
+pOS-compositor & # Run picom as default compositor (Enable experimental backends from ~/.config/phyos/phyos.conf)
 pOS-conky &
 dunst &			# dunst for notifications
 pOS-remaps &		# run the remaps script, switching caps/esc and more; check it for more info

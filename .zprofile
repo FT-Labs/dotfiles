@@ -41,3 +41,7 @@ export LESS_TERMCAP_so=$(tput setaf 75)
 export LESS_TERMCAP_se=$(tput setaf 114)
 export LESS_TERMCAP_us=$(tput setaf 114)
 export LESS_TERMCAP_ue=$(tput setaf 114)
+
+# This will be the default configuration file. To avoid overwriting it without permission, default file will bu updated with dots.
+# Check phyos.conf.default for new configuration options & changes.
+[[ ! -f "$HOME/.config/phyos/phyos.conf" ]]  && cp "$HOME/.config/phyos/phyos.conf.default" "$HOME/.config/phyos/phyos.conf"
