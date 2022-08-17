@@ -20,6 +20,7 @@ configuration{
 	kb-remove-char-back: "BackSpace,Shift+BackSpace";
 	kb-mode-complete: "";
 	kb-accept-entry: "Return,KP_Enter";
+    kb-element-next: "";
 	kb-mode-next: "Tab";
 	kb-row-tab: "";
 	kb-remove-to-eol: "";
