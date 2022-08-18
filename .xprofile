@@ -1,6 +1,6 @@
 #!/bin/sh
 
-if [ ! -f "$HOME/.xsync" ]; then
+if [ ! -f "$HOME/.xsync" ] && (( $(xrandr -q | grep -w connected | wc -l) == 1 )); then
     mon=$(xrandr -q | grep -w connected | awk '{print $1}')
     res_x=$(xrandr | sed "s/x/\ /g" | grep \* | awk '{print $1}')
     res_y=$(xrandr | sed "s/x/\ /g" | grep \* | awk '{print $2}')
@@ -13,6 +13,7 @@ if [ ! -f "$HOME/.xsync" ]; then
     fi
 else
     $HOME/.xsync
+    [ $? -ne 0 ] && xrandr --auto
 fi
 
 xrdb ~/.config/Xresources

@@ -34,14 +34,9 @@ export PASSWORD_STORE_DIR="${XDG_DATA_HOME:-$HOME/.local/share}/pass-store"
 
 # Other program settings:
 export SUDO_ASKPASS="$(which pOS-pass)" # Ask password with dmenu if any command needs it
-export LESS_TERMCAP_mb=$(tput bold; tput setaf 39)
-export LESS_TERMCAP_md=$(tput bold; tput setaf 45)
-export LESS_TERMCAP_me=$(tput sgr0)
-export LESS_TERMCAP_so=$(tput setaf 75)
-export LESS_TERMCAP_se=$(tput setaf 114)
-export LESS_TERMCAP_us=$(tput setaf 114)
-export LESS_TERMCAP_ue=$(tput setaf 114)
 
 # This will be the default configuration file. To avoid overwriting it without permission, default file will bu updated with dots.
 # Check phyos.conf.default for new configuration options & changes.
 [[ ! -f "$HOME/.config/phyos/phyos.conf" ]]  && cp "$HOME/.config/phyos/phyos.conf.default" "$HOME/.config/phyos/phyos.conf"
+# Set catppuccin colorscheme if not existent in path
+[[ ! -f "$HOME/.config/rofi/colors.rasi" ]] && ln -sf /usr/share/phyos/config/rofi/colors/catppuccin.rasi "$HOME/.config/rofi/colors.rasi"
