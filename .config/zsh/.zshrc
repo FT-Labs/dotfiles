@@ -113,9 +113,5 @@ ZSH_AUTOSUGGEST_USE_ASYNC=true
 export LESS_TERMCAP_mb=$(tput bold; tput setaf 39)
 export LESS_TERMCAP_md=$(tput bold; tput setaf 45)
 export LESS_TERMCAP_me=$(tput sgr0)
-export LESS_TERMCAP_so=$(tput setaf 75)
-export LESS_TERMCAP_se=$(tput setaf 114)
-export LESS_TERMCAP_us=$(tput setaf 114)
-export LESS_TERMCAP_ue=$(tput setaf 114)
 
 powerline-daemon -q
