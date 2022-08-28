@@ -43,8 +43,7 @@ case "$TERM" in (rxvt|rxvt-*|st|st-*|*xterm*|(dt|k|E)term)
       local DIR="$(print -P '[%c]%#')"
       local CMD="${(j:\n:)${(f)1}}"
       #term_title "$DIR" "$CMD" use this if you want directory in command, below only prints program name
-      prf=$(echo $CMD | tr "-" " " | awk '{print $1}')
-	  [[ $prf != "pOS" ]] && term_title "$CMD"
+	  term_title "$CMD"
     }
   ;;
 esac
