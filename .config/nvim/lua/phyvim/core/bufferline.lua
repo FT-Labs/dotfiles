@@ -52,7 +52,10 @@ local opts = {
     right_mouse_command = "vert sbuffer %d", -- can be a string | function, see "Mouse actions"
     left_mouse_command = "buffer %d", -- can be a string | function, see "Mouse actions"
     middle_mouse_command = nil, -- can be a string | function, see "Mouse actions"
-    -- indicator_icon = "▎",
+    indicator = {
+      icon = '▎',
+      style = 'icon',
+    },
     buffer_close_icon = "",
     modified_icon = "●",
     close_icon = "",

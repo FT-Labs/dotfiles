@@ -1,7 +1,6 @@
 local M = {}
 
-M.setup = function()
-  vim.g.symbols_outline = {
+local opts = {
     highlight_hovered_item = true,
     show_guides = false,
     auto_preview = true,
@@ -52,7 +51,16 @@ M.setup = function()
       Operator = { icon = "+", hl = "TSOperator" },
       TypeParameter = { icon = "𝙏", hl = "TSParameter" },
     },
-  }
+}
+
+function M.setup()
+  local status_ok, symbols_outline = pcall(require , "symbols-outline")
+
+  if not status_ok then
+    return
+  end
+
+  symbols_outline.setup(opts)
 end
 
 return M
