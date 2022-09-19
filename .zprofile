@@ -23,7 +23,7 @@ export SYNC_ROFI="${XDG_CONFIG_HOME:-$HOME/.config}/rofi" && sync_theme $SYNC_RO
 export SYNC_GTK="${XDG_CONFIG_HOME:-$HOME/.config}/gtk-3.0" && sync_theme $SYNC_GTK
 export SYNC_JGMENU="${XDG_CONFIG_HOME:-$HOME/.config}/jgmenu" && sync_theme $SYNC_JGMENU
 
-export LD_LIBRARY_PATH="/usr/local/lib"
+export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/local/lib"
 export GOPATH="$HOME/.local/go"
 export NPMBIN="$HOME/.local/npm/bin"
 export NODE_PATH="${XDG_DATA_HOME:-$HOME/.local/share}/node_modules"
