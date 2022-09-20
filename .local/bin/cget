@@ -1,0 +1,21 @@
+#!/bin/zsh
+
+local usage=(
+"cget [-h|--help]"
+"cget [-g|--get] \$destdir \@aliasname"
+)
+
+zmodload zsh/zutil
+zparseopts -D -E -F -- \
+{g,-get}:=get ||
+return 1
+
+[[ -z "$flag_help" ]] || { print -l $usage && return }
+
+if [[ ! -z $get ]]; then
+    case ${get[2]} in
+        log) wget "https://raw.githubusercontent.com/FT-Labs/c-tools/master/log/log.c" &> /dev/null
+             wget "https://raw.githubusercontent.com/FT-Labs/c-tools/master/log/log.h" &> /dev/null ;;
+        glshader) wget "https://raw.githubusercontent.com/FT-Labs/opengl-tools/blob/master/gl_shader.c" &> /dev/null ;;
+    esac
+fi

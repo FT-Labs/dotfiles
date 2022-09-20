@@ -1,0 +1,7 @@
+#!/bin/bash
+
+yes | rm *repo*
+repo-add phyOS-repo.db.tar.gz *.zst
+git add -A
+git commit -S -m "$1"
+git push
