@@ -2,11 +2,12 @@
 
 local usage=(
 "cget [-h|--help]"
-"cget [-g|--get] \$destdir \@aliasname"
+"cget [-g|--get] (log, glshader)"
 )
 
 zmodload zsh/zutil
 zparseopts -D -E -F -- \
+{h,-help}=flag_help \
 {g,-get}:=get ||
 return 1
 
@@ -19,6 +20,6 @@ if [[ ! -z $get ]]; then
         glshader) wget "https://raw.githubusercontent.com/FT-Labs/opengl-tools/blob/master/gl_shader.c" &> /dev/null
                   wget "https://raw.githubusercontent.com/FT-Labs/opengl-tools/blob/master/log.c" &> /dev/null
                   wget "https://raw.githubusercontent.com/FT-Labs/opengl-tools/blob/master/log.h" &> /dev/null
-                  wget "https://raw.githubusercontent.com/FT-Labs/opengl-tools/blob/master/Makefile" &> /dev/null
+                  wget "https://raw.githubusercontent.com/FT-Labs/opengl-tools/blob/master/Makefile" &> /dev/null ;;
     esac
 fi
