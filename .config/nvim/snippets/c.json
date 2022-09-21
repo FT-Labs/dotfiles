@@ -13,6 +13,16 @@
 	  "body": ["/* $0 */"],
 	  "description": "Block comment"
   },
+  "glfw330": {
+      "prefix": "glfw3",
+      "body": [
+          "glfwWindowHint(GLFW_SAMPLES, 4);",
+          "glfwWindowHint(GLFW_VERSION_MAJOR, 3);",
+          "glfwWindowHint(GLFW_VERSION_MINOR, 3);",
+          "glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);"
+      ],
+      "description": "Glfw window hint for opengl v3.3"
+  },
   "DBG": {
 	  "prefix": "DBG",
 	  "body": ["#define WHERE fprintf(stderr,\"[LOG]%s:%d\\n\",__FILE__,__LINE__);"],
