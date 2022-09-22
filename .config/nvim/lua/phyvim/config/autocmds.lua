@@ -5,6 +5,7 @@ vim.cmd [[
 		autocmd BufNewFile *.{h,hpp} call Insert_gates()
 		autocmd BufNewFile *.{py} call Insert_py()
 		autocmd BufNewFile *.{sh} call Insert_sh()
+    autocmd BufNewFile *.{glsl} call Insert_glsl()
 	augroup end
 ]]
 
