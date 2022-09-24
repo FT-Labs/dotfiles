@@ -18,6 +18,7 @@ if [[ ! -z $get ]]; then
         log) wget "https://raw.githubusercontent.com/FT-Labs/c-tools/master/log/log.c" &> /dev/null
              wget "https://raw.githubusercontent.com/FT-Labs/c-tools/master/log/log.h" &> /dev/null ;;
         glshader) wget "https://raw.githubusercontent.com/FT-Labs/opengl-tools/master/gl_shader.c" &> /dev/null
+                  wget "https://raw.githubusercontent.com/FT-Labs/opengl-tools/master/gl_shader.h" &> /dev/null
                   wget "https://raw.githubusercontent.com/FT-Labs/opengl-tools/master/log.c" &> /dev/null
                   wget "https://raw.githubusercontent.com/FT-Labs/opengl-tools/master/log.h" &> /dev/null
                   wget "https://raw.githubusercontent.com/FT-Labs/opengl-tools/master/Makefile" &> /dev/null ;;
