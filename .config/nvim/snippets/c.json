@@ -314,5 +314,17 @@
 	  "prefix": "Xdef",
 	  "body": ["#include <X11/X.h>\n#include <X11/Xlib.h>\n#include <X11/Xutil.h>\n#include <X11/XKBlib.h>\n"],
 	  "description": "X11 default library headers"
+  },
+  "Primitive macros": {
+      "prefix": "#primitive",
+      "body": [
+          "#define i16 short",
+          "#define ui16 unsigned short",
+          "#define i32 int",
+          "#define ui32 unsigned int",
+          "#define i64 long long",
+          "#define ui64 unsigned long long"
+      ],
+      "description": "Primitive macros for int type"
   }
 }
