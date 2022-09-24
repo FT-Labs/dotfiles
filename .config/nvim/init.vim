@@ -6,7 +6,7 @@ lua require ("init")
 function DateAuthor()
 	let var1=strftime('%c')
 	:call setline(1,"/*")
-	:call setline(2,"Author: PhyTech")
+	:call setline(2,"Author: FTL")
 	:call setline(3,var1)
 	:call setline(4,"*/")
 	:call setline(5,"")
@@ -65,6 +65,13 @@ function Insert_gates()
   execute "normal! o#define " . gatename . " "
   execute "normal! Go#endif /* " . gatename . " */"
   normal! kk
+endfunction
+
+function Insert_glsl()
+    execute "normal! 7o"
+    :call setline(1, "#version 330 core")
+    :call setline(5, "void main() {")
+    :call setline(7, "}")
 endfunction
 
 "Python configs
