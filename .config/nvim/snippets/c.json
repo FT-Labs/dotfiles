@@ -13,15 +13,37 @@
 	  "body": ["/* $0 */"],
 	  "description": "Block comment"
   },
-  "glfw330": {
-      "prefix": "glfw3",
+  "glfw330win": {
+      "prefix": "glfw330win",
       "body": [
+          "if (!glfwInit()) {",
+          "log_warn(\"GLFW failed\");",
+          "glfwTerminate();",
+          "return 1;",
+          "}",
           "glfwWindowHint(GLFW_SAMPLES, 4);",
-          "glfwWindowHint(GLFW_VERSION_MAJOR, 3);",
-          "glfwWindowHint(GLFW_VERSION_MINOR, 3);",
+          "glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);",
+          "glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);",
           "glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);"
       ],
       "description": "Glfw window hint for opengl v3.3"
+  },
+  "gl_vertex_arr": {
+      "prefix": "gl_vertex_arr",
+      "body": [
+          "glGenVertexArrays(${1:size}, &$2);",
+          "glBindVertexArray($2);"
+      ],
+      "description": "GL generate vertex array"
+  },
+  "gl_vertex_buffer": {
+      "prefix": "gl_vertex_buffer",
+      "body": [
+          "glGenBuffers(${1:1}, &$2);",
+          "glBindBuffer(${3:buffer_type}, $2);",
+          "glBufferData($3, sizeof($4), $4, $5)"
+      ],
+      "description": "gl generate buffer"
   },
   "DBG": {
 	  "prefix": "DBG",
@@ -38,37 +60,37 @@
     "description": "Code snippet for reverse 'for' loop"
   },
   "mod": {
-  "prefix": "mod",
+  "prefix": "_MOD",
   "body": ["#define MOD(N,M)\t((N)%(M) < 0 ? (N)%(M) + (M) : (N)%(M))\n"],
   "description": "mod of N,M"
   },
   "between": {
-	  "prefix": "between",
+	  "prefix": "_BETWEEN",
 	  "body": ["#define BETWEEN(x, a, b)    ((a) <= (x) && (x) <= (b))\n"],
 	  "description": "x is between a, b"
   },
-  "size" : {
-	  "prefix": "sze",
-	  "body": ["#define SIZE(x) sizeof(x)/sizeof(x[0])\n"],
+  "length" : {
+	  "prefix": "_LENGTH",
+	  "body": ["#define LENGTH(x) sizeof(x)/sizeof(x[0])\n"],
 	  "description": "Array size macro"
   },
   "max" : {
-	  "prefix": "max",
+	  "prefix": "_MAX",
 	  "body": ["#define MAX(x,y) (x) > (y) ? (x) : (y)","$0"],
 	  "description": "Get max element"
   },
   "min" : {
-	  "prefix": "min",
+	  "prefix": "_MIN",
 	  "body": ["#define MIN(x,y) (x) < (y) ? (x) : (y)","$0"],
 	  "description": "Get min element"
   },
   "getbit": {
-	  "prefix": "gbit",
+	  "prefix": "_GETBIT",
 	  "body": ["#define GETBIT(x,i) (x&(1<<i)))", "$0"],
 	  "description": "Get bit of number"
   },
   "safemin": {
-	  "prefix": "safemin",
+	  "prefix": "_SAFEMIN",
 	  "body": [
 	  "#define MIN(a, b) ({\\",
 	  "    __typeof__ (a) _a = (a); \\",
@@ -78,7 +100,7 @@
 	  "description": "Typesafe min"
   },
   "safemax": {
-	  "prefix": "safemax",
+	  "prefix": "_SAFEMAX",
 	  "body": [
 	  "#define MAX(a, b) ({\\",
 	  "    __typeof__ (a) _a = (a); \\",
@@ -86,11 +108,6 @@
 	  "    _a < _b ? _a : _b; })"
 	  ],
 	  "description": "Typesafe min"
-  },
-  "enum": {
-    "prefix": "enum",
-    "body": ["enum ${1:MyEnum} {", "\t$0", "};"],
-    "description": "Code snippet for enum"
   },
   "#ifdef": {
     "prefix": "#ifdef",
