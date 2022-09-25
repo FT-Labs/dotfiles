@@ -26,7 +26,7 @@ vim.cmd [[
 
 vim.cmd [[
 	augroup make_file
-		autocmd BufWritePost Makefile AsyncRun -post=call\ GenerateFlags() -mode=term -pos=hide make clean && bear -- make -j8
+		autocmd BufWritePost Makefile,makefile AsyncRun -post=call\ GenerateFlags() -mode=term -pos=hide compiledb make
 	augroup end
 ]]
 

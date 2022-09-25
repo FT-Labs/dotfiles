@@ -328,12 +328,12 @@
     "description": "Allocates memory to a pointer variable using calloc(), then deallocates using free()."
   },
   "X11 default incs": {
-	  "prefix": "Xdef",
+	  "prefix": "_X11",
 	  "body": ["#include <X11/X.h>\n#include <X11/Xlib.h>\n#include <X11/Xutil.h>\n#include <X11/XKBlib.h>\n"],
 	  "description": "X11 default library headers"
   },
   "Primitive macros": {
-      "prefix": "#primitive",
+      "prefix": "_PRIMITIVE",
       "body": [
           "#define i16 short",
           "#define ui16 unsigned short",
