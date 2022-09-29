@@ -1,5 +1,1 @@
-#
-# ~/.bash_profile
-#
-
-[[ -f ~/.zprofile ]] && source ~/.zprofile
+/home/rzero/.zprofile
