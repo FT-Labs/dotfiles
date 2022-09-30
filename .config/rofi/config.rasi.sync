@@ -26,38 +26,38 @@ configuration{
 	kb-remove-to-eol: "";
 }
 
-@theme "tokyo-night"
+@theme "./colors.rasi"
 
 element-text, element-icon , mode-switcher {
     background-color: inherit;
     text-color:       inherit;
-
 }
 
 window {
     height: 500px;
+    width: 800px;
     border: 0px;
-    border-color: @fg-col;
-    background-color: @bg-col;
+    border-color: @foreground;
+    background-color: @background-alt;
     border-radius: 15;
 }
 
 mainbox {
-    background-color: @bg-col;
+    background-color: @background-alt;
     children: [ mode-switcher, inputbar, listview ];
 }
 
 inputbar {
     children: [prompt,entry];
-    background-color: @bg-col;
+    background-color: @background-alt;
     border-radius: 5px;
     padding: 2px;
 }
 
 prompt {
-    background-color: @blue;
+    background-color: @selected;
     padding: 6px;
-    text-color: @bg-col;
+    text-color: @background-alt;
     border-radius: 5px;
     margin: 20px 0px 0px 20px;
 }
@@ -70,8 +70,8 @@ textbox-prompt-colon {
 entry {
     padding: 6px;
     margin: 20px 0px 0px 10px;
-    text-color: @fg-col;
-    background-color: @bg-col;
+    text-color: @foreground;
+    background-color: @background-alt;
 }
 
 listview {
@@ -80,13 +80,13 @@ listview {
     margin: 10 10 0 10;
     columns: 4;
     spacing: 15;
-    background-color: @bg-col;
+    background-color: @background-alt;
 }
 
 element {
     padding: 5px;
-    background-color: @bg-col;
-    text-color: @fg-col  ;
+    background-color: @background-alt;
+    text-color: @foreground  ;
     orientation: vertical;
     spacing: 10;
 }
@@ -97,8 +97,8 @@ element-icon {
 }
 
 element selected {
-    background-color:  @fg-col2 ;
-    text-color: @bg-col  ;
+    background-color:  @foreground ;
+    text-color: @background-alt  ;
     border-radius: 8px;
 }
 
@@ -117,14 +117,14 @@ mode-switcher {
 
 button {
     padding: 10px;
-    background-color: @bg-col-light;
-    text-color: @fg-col;
+    background-color: @background-alt;
+    text-color: @foreground;
     vertical-align: 0.5;
     horizontal-align: 0.5;
 }
 
 button selected {
-  background-color:  @green ;
-  text-color: @bg-col;
+  background-color:  @active;
+  text-color: @background-alt;
   border-radius: 10px;
 }
