@@ -19,6 +19,10 @@ bindkey -M menuselect 'l' vi-forward-char
 bindkey -M menuselect 'j' vi-down-line-or-history
 bindkey -v '^?' backward-delete-char
 
+phylog() {
+    cat | curl -F 'f:1=<-' ix.io
+}
+
 # Use lf to switch directories and bind it to ctrl-r
 lfcd () {
     tmp="$(mktemp)"
