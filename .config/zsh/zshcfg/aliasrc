@@ -42,10 +42,10 @@ alias \
 # Bare git dot config
 alias \
 	dots='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME' \
+    dpp='dots push private priv' \
+    dmp='dots push origin master' \
+    dcp='dots checkout priv' \
+    dcm='dots checkout master' \
 	glfsforcerefs="git push origin --force 'refs/heads/*'"
 
-if [[ -f "$HOME/.local/bin/scripts/lfrun" ]]; then
-    alias lf="$HOME/.local/bin/scripts/lfrun"
-else
-    alias lf="/usr/bin/lfrun"
-fi
+alias lf="/usr/bin/lfrun"
