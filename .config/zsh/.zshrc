@@ -58,6 +58,7 @@ esac
 [[ -d "$ZSHCFG/bookmarks" ]] && export CDPATH=".:$ZSHCFG/bookmarks:/" \
 	&& alias jmp="cd -P"
 
+setopt chaselinks
 setopt autocd
 # change below theme if using oh-my-zsh
 #ZSH_THEME=""
