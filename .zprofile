@@ -32,9 +32,6 @@ export SCRIPTS="$(du "$HOME/.local/bin" | cut -f2 | paste -sd ':')"
 export PATH="$PATH:$GOPATH/bin:$NPMBIN:$SCRIPTS"
 export PASSWORD_STORE_DIR="${XDG_DATA_HOME:-$HOME/.local/share}/pass-store"
 
-# Other program settings:
-export SUDO_ASKPASS="$(which pOS-pass)" # Ask password with dmenu if any command needs it
-
 # This will be the default configuration file. To avoid overwriting it without permission, default file will bu updated with dots.
 # Check phyos.conf.default for new configuration options & changes.
 [[ ! -f "$HOME/.config/phyos/phyos.conf" ]]  && cp "$HOME/.config/phyos/phyos.conf.default" "$HOME/.config/phyos/phyos.conf"
