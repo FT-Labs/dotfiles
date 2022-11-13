@@ -11,4 +11,4 @@
 
 . ~/.xprofile
 
-ssh-agent ~/.local/src/CORE/phyOS-dwm/dwm
+command -v pdwm &>/dev/null && ssh-agent pdwm || ssh-agent dwm
