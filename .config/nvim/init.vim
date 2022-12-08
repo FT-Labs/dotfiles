@@ -86,7 +86,7 @@ function Insert_py()
 endfunction
 
 function Insert_sh()
-	execute "normal! i#!/bin/bash"
+	execute "normal! i#!/usr/bin/env sh"
 	normal! o
 	normal! o
 endfunction
