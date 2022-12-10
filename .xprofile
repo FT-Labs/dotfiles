@@ -25,6 +25,4 @@ pOS-compositor & # Run picom as default compositor (Enable experimental backends
 pOS-conky &
 dunst &			# dunst for notifications
 [[ -f /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 ]] && /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
-unclutter &		# Remove mouse when idle
-dex -a # Start xdg autostart
 pOS-remaps &		# run the remaps script, switching caps/esc and more; check it for more info
