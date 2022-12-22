@@ -91,6 +91,14 @@ function Insert_sh()
 	normal! o
 endfunction
 
+function! AppendModeline()
+  let l:modeline = printf(" vim: set ts=%d sw=%d tw=%d %set :",
+        \ &tabstop, &shiftwidth, &textwidth, &expandtab ? '' : 'no')
+  let l:modeline = substitute(&commentstring, "%s", l:modeline, "")
+  call append(line("$"), l:modeline)
+endfunction
+nnoremap <silent> <Leader>ml :call AppendModeline()<CR>
+
 function GenerateFlags()
 	:lua require("notify")("Compile flags generated",nil,{title="Clangd Flags",timeout=500})
 	:LspRestart

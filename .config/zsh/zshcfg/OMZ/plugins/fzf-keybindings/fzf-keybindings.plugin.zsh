@@ -65,13 +65,14 @@ fzf-file-widget() {
   zle reset-prompt
   return $ret
 }
-zle     -N            fzf-file-widget
-bindkey -M emacs '^F' fzf-file-widget
-bindkey -M vicmd '^F' fzf-file-widget
-bindkey -M viins '^F' fzf-file-widget
+# zle     -N            fzf-file-widget
+# bindkey -M emacs '^F' fzf-file-widget
+# bindkey -M vicmd '^F' fzf-file-widget
+# bindkey -M viins '^F' fzf-file-widget
 
 # ALT-C - cd into the selected directory
 fzf-cd-widget() {
+  [[ ! -z $BUFFER ]] && LBUFFER+=":" && return
   local cmd="${FZF_ALT_C_COMMAND:-"command ls ~/.config/zsh/zshcfg/bookmarks"}"
   setopt localoptions pipefail no_aliases 2> /dev/null
   local dir="$(eval "$cmd" | FZF_DEFAULT_OPTS="--height ${FZF_TMUX_HEIGHT:-40%} --reverse --bind=ctrl-z:ignore $FZF_DEFAULT_OPTS $FZF_ALT_C_OPTS" $(__fzfcmd) +m)"
@@ -80,17 +81,17 @@ fzf-cd-widget() {
     return 0
   fi
   zle push-line # Clear buffer. Auto-restored on next prompt.
-  BUFFER="cd -- ${(q)dir}"
+  BUFFER="${(q)dir}"
   zle accept-line
   local ret=$?
   unset dir # ensure this doesn't end up appearing in prompt expansion
   zle reset-prompt
   return $ret
 }
-zle     -N             fzf-cd-widget
-bindkey -M emacs '\ec' fzf-cd-widget
-bindkey -M vicmd '\ec' fzf-cd-widget
-bindkey -M viins '\ec' fzf-cd-widget
+zle     -N           fzf-cd-widget
+bindkey -M emacs ':' fzf-cd-widget
+bindkey -M vicmd ':' fzf-cd-widget
+bindkey -M viins ':' fzf-cd-widget
 
 # CTRL-R - Paste the selected command from history into the command line
 fzf-history-widget() {
@@ -108,10 +109,36 @@ fzf-history-widget() {
   zle reset-prompt
   return $ret
 }
-zle     -N            fzf-history-widget
-bindkey -M emacs '^G' fzf-history-widget
-bindkey -M vicmd '^G' fzf-history-widget
-bindkey -M viins '^G' fzf-history-widget
+
+phy-func-widget() {
+  local selected num
+  setopt localoptions noglobsubst noposixbuiltins pipefail no_aliases 2> /dev/null
+  _phyfuncs=("qcow2img\t'\$1 create GB of qcow2img'\nquickemugenconf\t'\$1 conf name to create'\numountforce\t'\$1 force unmount'\nurltotar\t'\$1 url to extract tarball'\nmnt\t\t'\$1 = del remove all -- \$1 mount dev \$2 mountname'\ntarxz\t\t'\$1 compression ratio \$2 file dest'")
+  selected=( $( echo "${_phyfuncs[@]}" |
+    FZF_DEFAULT_OPTS="--height ${FZF_TMUX_HEIGHT:-40%} $FZF_DEFAULT_OPTS --reverse --bind=ctrl-r:toggle-sort,ctrl-z:ignore $FZF_CTRL_R_OPTS --query=${(qqq)LBUFFER} +m" $(__fzfcmd)) )
+  local ret=$?
+  if [ -n "$selected" ]; then
+    num=$selected[1]
+    LBUFFER="${LBUFFER}${num}"
+  fi
+  zle reset-prompt
+  return $ret
+}
+
+copy-widget() {
+    echo -n "$BUFFER" | xclip -selection clipboard
+}
+
+zle     -N              copy-widget
+zle     -N              fzf-history-widget
+zle     -N              phy-func-widget
+bindkey -M emacs '^G'   fzf-history-widget
+bindkey -M vicmd '^G'   fzf-history-widget
+bindkey -M viins '^G'   fzf-history-widget
+bindkey -M viins '^P'   phy-func-widget
+bindkey -M vicmd '^P'   phy-func-widget
+bindkey -M viins '^@'   copy-widget
+bindkey -M vicmd '^@'   copy-widget
 
 } always {
   eval $__fzf_key_bindings_options

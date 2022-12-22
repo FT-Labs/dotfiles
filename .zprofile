@@ -17,6 +17,9 @@ export ZSHCFG="$ZDOTDIR/zshcfg"
 export ZSH="$ZSHCFG/OMZ"
 export HISTFILE="${XDG_DATA_HOME:-$HOME/.local/share}/history"
 export BM_DIR=""
+export SSH_ENV="$HOME/.config/ssh/agent-environment"
+export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
+
 
 export ICON_THEME="Papirus-Dark"
 export SYNC_ROFI="${XDG_CONFIG_HOME:-$HOME/.config}/rofi" && sync_theme $SYNC_ROFI

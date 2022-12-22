@@ -56,13 +56,6 @@ fi
 mkdir -p "$ZSH_CACHE_DIR/completions"
 (( ${fpath[(Ie)"$ZSH_CACHE_DIR/completions"]} )) || fpath=("$ZSH_CACHE_DIR/completions" $fpath)
 
-# Check for updates on initial load...
-if [[ "$DISABLE_AUTO_UPDATE" != true ]]; then
-  source "$ZSH/tools/check_for_upgrade.sh"
-fi
-
-# Initializes Oh My Zsh
-
 # add a function path
 fpath=("$ZSH/functions" "$ZSH/completions" $fpath)
 
@@ -75,6 +68,10 @@ if [[ -z "$ZSH_CUSTOM" ]]; then
     ZSH_CUSTOM="$ZSH/custom"
 fi
 
+ZSH_PHY=($ZSHCFG/OMZ/phycmp/*)
+fpath=($ZSH_PHY $fpath)
+for plg in $ZSH_PHY; do source $plg/*.plugin.zsh; done
+
 is_plugin() {
   local base_dir=$1
   local name=$2
@@ -84,6 +81,7 @@ is_plugin() {
 
 # Add all defined plugins to fpath. This must be done
 # before running compinit.
+plugins=(${plugins:#fast-syntax-highlighting} fast-syntax-highlighting)
 for plugin ($plugins); do
   if is_plugin "$ZSH_CUSTOM" "$plugin"; then
     fpath=("$ZSH_CUSTOM/plugins/$plugin" $fpath)
@@ -94,13 +92,7 @@ for plugin ($plugins); do
   fi
 done
 
-# Figure out the SHORT hostname
-if [[ "$OSTYPE" = darwin* ]]; then
-  # macOS's $HOST changes with dhcp, etc. Use ComputerName if possible.
-  SHORT_HOST=$(scutil --get ComputerName 2>/dev/null) || SHORT_HOST="${HOST/.*/}"
-else
-  SHORT_HOST="${HOST/.*/}"
-fi
+SHORT_HOST="${HOST/.*/}"
 
 # Save the location of the current completion dump file.
 if [[ -z "$ZSH_COMPDUMP" ]]; then
@@ -118,16 +110,7 @@ if ! command grep -q -Fx "$zcompdump_revision" "$ZSH_COMPDUMP" 2>/dev/null \
   zcompdump_refresh=1
 fi
 
-if [[ "$ZSH_DISABLE_COMPFIX" != true ]]; then
-  source "$ZSH/lib/compfix.zsh"
-  # Load only from secure directories
-  compinit -i -d "$ZSH_COMPDUMP"
-  # If completion insecurities exist, warn the user
-  handle_completion_insecurities &|
-else
-  # If the user wants it, load from all found directories
-  compinit -u -d "$ZSH_COMPDUMP"
-fi
+compinit -u -d "$ZSH_COMPDUMP"
 
 # Append zcompdump metadata if missing
 if (( $zcompdump_refresh )) \
