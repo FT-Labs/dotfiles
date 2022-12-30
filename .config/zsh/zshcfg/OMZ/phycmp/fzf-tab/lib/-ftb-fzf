@@ -29,10 +29,11 @@ fi
 $(typeset -p words)
 "
 local binds=tab:down,btab:up,change:top,ctrl-space:toggle,space:accept
-local fzf_command fzf_flags fzf_preview debug_command tmp switch_group fzf_pad fzf_min_height
+local fzf_command fzf_flags fzf_preview debug_command tmp switch_group fzf_pad fzf_min_height fzf_change_desc
 local ret=0
 
 -ftb-zstyle -s fzf-command fzf_command || fzf_command=fzf
+-ftb-zstyle -s fzf-change-desc fzf_change_desc
 -ftb-zstyle -a fzf-bindings tmp && binds+=,${(j:,:)tmp}
 -ftb-zstyle -a fzf-flags fzf_flags
 -ftb-zstyle -s fzf-preview fzf_preview
@@ -67,7 +68,14 @@ if (( ! use_tmux_popup )); then
   echoti cnorm >/dev/tty 2>/dev/null
 fi
 
-cat > $tmp_dir/completions.$$
+read -r fl
+print -rl ${(l:$COLUMNS/2+$#fl/2:)fl} > $tmp_dir/completions.$$
+cmps=$(cat)
+if [[ -z $fzf_change_desc ]]; then
+    print -r -- $cmps >> $tmp_dir/completions.$$
+else
+    paste -d '\0' <(print -r -- $cmps | (tr -d '\0' | rg --color=ansi  --colors 'match:fg:yellow' --colors 'match:fg:green' --colors 'match:style:nobold' --colors 'path:style:bold' --no-heading --trim '(.*)--(.*)' -a --crlf -r '$2`$1' |  column -ts \` -o '  ')) <(print -r -- $cmps)  >> $tmp_dir/completions.$$
+fi
 
 local dd='gdd'
 if (( ${+commands[$dd]} == 0 )) ; then
@@ -78,7 +86,7 @@ if (( ${+commands[$dd]} == 0 )) ; then
 fi
 _ftb_query="${_ftb_query}$(command "$dd" bs=1G count=1 status=none iflag=nonblock < /dev/tty 2>/dev/null)" || true
 
-SHELL=$ZSH_NAME $fzf_command \
+SHELL=$ZSH_NAME  $fzf_command \
   --ansi \
   --bind=$binds \
   --bind="${switch_group[1]}:reload($reload_command -1),${switch_group[2]}:reload($reload_command 1)" \
@@ -89,11 +97,9 @@ SHELL=$ZSH_NAME $fzf_command \
   --header-lines=$header_lines \
   --height=~${FZF_TMUX_HEIGHT:=$(( min(max(lines, fzf_min_height), LINES / 3 * 2)  ))} \
   --layout=reverse \
-  --nth=2,1 \
   --no-multi \
   --print-query \
   --query=$_ftb_query \
-  --tiebreak=begin \
   ${fzf_preview:+--preview=${ftb_preview_init/{f}/'{f}'}$fzf_preview} \
   $fzf_flags < $tmp_dir/completions.$$ || ret=$?
 

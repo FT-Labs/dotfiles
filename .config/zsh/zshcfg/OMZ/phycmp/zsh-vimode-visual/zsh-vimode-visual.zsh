@@ -334,12 +334,14 @@ vi-jump-snippets()
     unsetopt autolist menucomplete automenu # doesn't work well
     setopt extended_glob
     zle autosuggest-disable
-    # posi=(${(MS)${(s. .)BUFFER}#_*_})
-    posi=(${$(echo -n "$BUFFER" | grep -aoP '_.*?_')})
+    #posi=(${(u)$(echo -n "$BUFFER" | grep --text -oP '\_([a-zA-Z-].*?\_)\b')})
+    #posi=(${(u)$(echo -n "$BUFFER" | grep --text -oP '\_\K[^[a-zA-Z-]]_')})
+    posi=(${(u)$(echo -n "$BUFFER" | grep --text -oE '\b_[a-zA-Z]*[-a-zA-Z]_\b')})
     zle reset-prompt
 
     for i in $posi; do
-        CURSOR=$(( ${#BUFFER%${i}*} ))
+        CURSOR=$(( ${#BUFFER%%${i}*} ))
+        _start=$CURSOR
         MARK=$(( ${(M)#BUFFER#*${i}}-1 ))
         zle vi-visual-highlight
         zle -R
@@ -359,6 +361,9 @@ vi-jump-snippets()
                 zle -R
                 read -k key
         done
+        _len=$(( $CURSOR-$_start ))
+        _repl=${BUFFER:$_start:$_len}
+        BUFFER=${BUFFER//$i/$_repl}
     done
     zle autosuggest-enable
     zle vi-visual-exit

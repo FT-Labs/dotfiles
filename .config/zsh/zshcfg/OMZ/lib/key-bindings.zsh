@@ -14,6 +14,14 @@ if (( ${+terminfo[smkx]} )) && (( ${+terminfo[rmkx]} )); then
   zle -N zle-line-init
   zle -N zle-line-finish
 fi
+
+copy-widget() {
+    echo -n "$BUFFER" | xclip -selection clipboard
+}
+zle -N copy-widget
+bindkey -M viins '^@'   copy-widget
+bindkey -M vicmd '^@'   copy-widget
+
 # Start typing + [Up-Arrow] - fuzzy find history forward
 if [[ -n "${terminfo[kcuu1]}" ]]; then
   autoload -U up-line-or-beginning-search

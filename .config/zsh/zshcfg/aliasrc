@@ -15,8 +15,6 @@ alias \
 #ls="ls -hN --color=auto --group-directories-first" \
 alias \
 	ls="exa" \
-	l="colorls" \
-	lt="colorls --tree" \
 	grep="grep --color=auto" \
 	diff="diff --color=auto" \
 	ccat="highlight --out-format=ansi"
@@ -27,25 +25,29 @@ alias \
 	f="$FILE" \
 	e="$EDITOR" \
 	v="$EDITOR" \
-	xcp="xclip -selection clipboard" \
+	xcp="xclip -selection clipboard"
 
 alias \
 	weath="less -S ${XDG_DATA_HOME:-$HOME/.local/share}/weatherreport" \
     vm="/usr/bin/vim" \
-	wp="whatsapp-for-linux &>/dev/null & disown" \
 	dc="discord &>/dev/null & disown" \
 	tg="telegram-desktop &>/dev/null & disown"
 
 alias \
-	t="st &>/dev/null & disown"
+	t="st &>/dev/null & disown" \
+    fix='echo -e "\033c"' \
+    gencpio="LC_ALL=c sort | cpio --quiet -R 0:0 -o -H newc" \
+    res="sudo kexec -l /boot/vmlinuz-linux --initrd=/boot/initramfs-linux.img --reuse-cmdline && sudo systemctl kexec"
 
 # Bare git dot config
 alias \
-	dots='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME' \
+	dots=/usr/bin/git\ --git-dir=$HOME/.cfg/\ --work-tree=$HOME \
     dpp='dots push private priv' \
     dmp='dots push origin master' \
-    dcp='dots checkout priv' \
-    dcm='dots checkout master' \
-	glfsforcerefs="git push origin --force 'refs/heads/*'"
+    dcp='sudo chattr -i ~/.gitconfig; sudo chattr -i ~/.config/ssh; dots checkout priv' \
+    dcm='sudo chattr +i ~/.gitconfig; sudo chattr +i ~/.config/ssh; dots checkout master' \
+	glfsforcerefs="git push origin --force 'refs/heads/*'" \
+    gpl3license="wget https://www.gnu.org/licenses/gpl-3.0.md -o LICENSE.md" \
+    zcheat="zathura $ZDOTDIR/zshcheat.pdf"
 
 alias lf="/usr/bin/lfrun"

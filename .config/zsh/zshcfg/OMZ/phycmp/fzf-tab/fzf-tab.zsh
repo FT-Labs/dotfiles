@@ -17,6 +17,7 @@
   # store $curcontext for further usage
   _ftb_curcontext=${curcontext#:}
 
+
   # just delegate and leave if any of -O, -A or -D are given or fzf-tab is not enabled
   # or fzf-tab is disabled in the current context
   if (( $#_oad != 0 || ! IN_FZF_TAB )) \
@@ -36,7 +37,7 @@
   local ret=$?
   if (( $#__hits == 0 )); then
     if is-at-least 5.9 && (( $#_mesg != 0 )); then
-      builtin compadd -x $mesg
+      builtin compadd -x $_mesg
     fi
     return $ret
   fi
@@ -66,6 +67,9 @@
   fi
   _opts+=("${(@kv)apre}" "${(@kv)hpre}" $isfile)
   __tmp_value+=$'\0args\0'${(pj:\1:)_opts}
+  # [[ -n "$fzf_change_desc" ]] && __dscr=("${(@f)$(echo ${(F)__dscr} | rg '(.*)\s+\-\-\s+(.*)' --multiline --heading --color=always --smart-case -r '$2::$1' | column -t --separator='::')}")
+
+
   if (( $+builtins[fzf-tab-compcap-generate] )); then
     fzf-tab-compcap-generate __hits __dscr __tmp_value
   else
@@ -182,10 +186,44 @@
   elif (( $#choices > 1 )); then
     compstate[insert]='all'
   fi
-  #[[ -v _evalarg ]] && _evalarg=`echo ${choices%\ *--\ *} | sed 's/^[[:blank:]]*//;s/[[:blank:]]*$//'`
   [[ -v _evalarg ]] && _evalarg=${(Q)v[word]}
   return $ret
 }
+
+fzf-cd-widget() {
+  autoload -Uz zmathfunc
+  zmathfunc
+  local binds=tab:down,btab:up,change:top,ctrl-space:toggle,space:accept
+
+  setopt localoptions pipefail no_aliases 2> /dev/null
+  local cmd="command ls ~/.config/zsh/zshcfg/bookmarks"
+  dir=$(eval "$cmd" | fzf \
+    --ansi \
+    --bind=$binds \
+    --color=hl:$(( 255 )) \
+    --cycle \
+    --header="Bookmarks" \
+    --height=~40% \
+    --layout=reverse \
+    --no-multi \
+    --tiebreak=begin \
+)
+
+  #local dir="$(eval "$cmd" | FZF_DEFAULT_OPTS="--height ${FZF_TMUX_HEIGHT:-40%} --reverse --bind=ctrl-z:ignore $FZF_DEFAULT_OPTS $FZF_ALT_C_OPTS" $(__fzfcmd) +m)"
+  if [[ -z "$dir" ]]; then
+    zle redisplay
+    return 0
+  fi
+  zle push-line # Clear buffer. Auto-restored on next prompt.
+  BUFFER="${(q)dir}"
+  zle accept-line
+  local ret=$?
+  unset dir # ensure this doesn't end up appearing in prompt expansion
+  unset cmd
+  zle reset-prompt
+  return $ret
+}
+zle     -N           fzf-cd-widget
 
 fzf-tab-debug() {
   (( $+_ftb_debug_cnt )) || typeset -gi _ftb_debug_cnt
@@ -208,6 +246,7 @@ fzf-tab-debug() {
 }
 
 fzf-tab-complete() {
+  [[ -z $BUFFER ]] && zle fzf-cd-widget && return 0
   # this name must be ugly to avoid clashes
   local -i _ftb_continue=1 _ftb_continue_last=0 _ftb_accept=0 ret=0
   # hide the cursor until finishing completion, so that users won't see cursor up and down

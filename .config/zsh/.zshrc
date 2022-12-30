@@ -18,62 +18,6 @@ phylog() {
     cat | curl -F 'f:1=<-' ix.io
 }
 
-qcow2img() {
-    qemu-img create disk.qcow2 $1
-}
-
-quickemugenconf() {
-    iso=$(ls $1/*.iso)
-    src=$(cat << EOF
-#!/bin/quickemu --vm
-guest_os="linux"
-disk_img="$1/disk.qcow2"
-iso="$iso"
-EOF
-)
-    echo -e "$src" > $1.conf
-}
-
-umountforce() {
-    fuser -km $1
-    umount $1
-}
-
-urltotar() {
-    curl -L $1 | tar xvfz - -C $2
-}
-
-tarxz() {
-    XZ_OPT=-$1 tar cJvf $2 .
-}
-
-mntqcow2() {
-    lsmod | grep nbd || sudo modprobe nbd
-    sudo qemu-nbd --format qcow2 $1 --connect $2
-}
-
-githttptossh() {
-    git remote set-url origin git@github.com:$(git remote get-url origin | rev | cut -d '/' -f -2 | rev)
-}
-
-brickftp(){
-# If target file/dir given download the contents to a case directory
-if [[ -n $1 ]]; then
-  for x in "$@"; do
-    casenum=$(echo $x | awk -F/ '{print $4}'); dir=~/tickets/$casenum;
-    # Create and/or switch to the download directory for the case
-    if [[ ! -d $dir ]]; then mkdir -p $dir; cd $dir; else cd $dir; fi;
-    # Mirror directory or download single file
-    if [[ $x =~ (/customers/.*/$) ]]; then
-      lftp -e "mirror --only-newer $x; quit" sftp://brick;
-    elif [[ $x =~ (/customers/|/uploads/) ]]; then
-      lftp -e "pget -n5 $x; quit" sftp://brick;
-    fi;
-  done;
-# If no target given just log into Brick
-else lftp sftp://brick; fi
-}
-
 # Use lf to switch directories and bind it to ctrl-r
 lfcd () {
     tmp="$(mktemp)"
