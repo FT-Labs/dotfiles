@@ -336,7 +336,8 @@ vi-jump-snippets()
     zle autosuggest-disable
     #posi=(${(u)$(echo -n "$BUFFER" | grep --text -oP '\_([a-zA-Z-].*?\_)\b')})
     #posi=(${(u)$(echo -n "$BUFFER" | grep --text -oP '\_\K[^[a-zA-Z-]]_')})
-    posi=(${(u)$(echo -n "$BUFFER" | grep --text -oE '\b_[a-zA-Z]*[-a-zA-Z]_\b')})
+    posi=(${(u)$(echo -n "$BUFFER" | grep --text -oE '\b_[a-zA-Z\/\-]*[a-zA-Z\/\-]_\b')})
+    echo $posi
     zle reset-prompt
 
     for i in $posi; do

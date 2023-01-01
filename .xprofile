@@ -27,4 +27,4 @@ dunst &			# dunst for notifications
 [[ -f /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 ]] && /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 nm-applet &
 pOS-remaps &		# run the remaps script, switching caps/esc and more; check it for more info
-eval `ssh-agent`
+# eval `ssh-agent` # Uncomment this if using ssh
