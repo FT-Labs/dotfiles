@@ -52,11 +52,15 @@ zstyle ':fzf-tab:complete:(kill|ps):argument-rest' fzf-preview \
 zstyle ':fzf-tab:complete:(kill|ps):argument-rest' fzf-flags --preview-window=down:3:wrap
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'exa -1 --color=always $realpath' # remember to use single quote here!!!
 zstyle ':fzf-tab:complete:systemctl-*:*' fzf-preview 'SYSTEMD_COLORS=1 systemctl status $word'
-zstyle ':fzf-tab:complete:phint:argument-rest' fzf-preview 'echo ${${(M)desc%-- *}:2}'
-zstyle ':fzf-tab:complete:phint:argument-rest' fzf-flags --no-sort --preview-window=down:10%:wrap
 zstyle ':fzf-tab:*' single-group color header
 zstyle -d ':completion:*' format
 zstyle ':completion:*:descriptions' format '[%d]'
+zstyle ':completion:*:phint:*' sort false
+#zstyle ':fzf-tab:complete:phint:argument-rest' fzf-flags  --no-sort --preview-window=down:60%:wrap --with-nth 1
+zstyle ':fzf-tab:complete:phint:argument-rest' fzf-flags  --no-sort --preview-window=down:wrap --with-nth 1
+zstyle ':fzf-tab:complete:phint:argument-rest' fzf-change-desc "swap"
+#zstyle ':fzf-tab:complete:phint:argument-rest' fzf-preview 'echo Cmd: ${${(Q)desc#*--}::-2}'
+zstyle ':fzf-tab:complete:phint:argument-rest' fzf-preview 'echo Cmd: ${word}; grep "" 2>/dev/null $(which ${word#*sudo\ })'
 
 
 # vi mode
@@ -94,3 +98,7 @@ case "$TERM" in (rxvt|rxvt-*|st|st-*|*xterm*|(dt|k|E)term)
     }
   ;;
 esac
+
+export LESS_TERMCAP_mb=$(tput bold; tput setaf 39)
+export LESS_TERMCAP_md=$(tput bold; tput setaf 45)
+export LESS_TERMCAP_me=$(tput sgr0)

@@ -118,6 +118,7 @@ return packer.startup(function(use)
   use "karb94/neoscroll.nvim"
   use {"sakhnik/nvim-gdb", branch = "devel"}
 
+
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if PACKER_BOOTSTRAP then
