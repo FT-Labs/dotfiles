@@ -1,7 +1,7 @@
 local M = {}
 
 local function load_colorscheme()
-  local colorscheme = "catppuccin"
+  local colorscheme = "bluloco-dark"
 
   local status_ok, _ = pcall(vim.cmd, "colorscheme " .. colorscheme)
   if not status_ok then

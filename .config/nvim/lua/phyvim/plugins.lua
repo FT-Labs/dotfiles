@@ -117,7 +117,7 @@ return packer.startup(function(use)
   -- smooth scrolling
   use "karb94/neoscroll.nvim"
   use {"sakhnik/nvim-gdb", branch = "devel"}
-
+  use {'uloco/bluloco.nvim', requires = { 'rktjmp/lush.nvim' }}
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins

@@ -12,7 +12,7 @@ local defaults = {
     on_close = nil,
 
     ---@usage timeout for notifications in ms, default 5000
-    timeout = 1000,
+    timeout = 2000,
 
     -- Render function for notifications. See notify-render()
     render = "default",
@@ -42,7 +42,7 @@ function M.setup()
 
   local notify = require "notify"
 
-  notify.setup(defaults.opts)
+  notify.setup(opts)
   vim.notify = notify
 end
 
