@@ -2,6 +2,9 @@ filetype plugin on
 
 lua require ("init")
 
+xmap ga <Plug>(EasyAlign)
+nmap ga <Plug>(EasyAlign)
+
 " Functions
 function DateAuthor()
 	let var1=strftime('%c')

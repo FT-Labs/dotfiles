@@ -88,14 +88,6 @@ return packer.startup(function(use)
     end,
   } -- better code action menu
 
-  -- Cursorhold fix
-  use {
-    "antoinemadec/FixCursorHold.nvim",
-    event = "BufRead",
-    config = function()
-      vim.g.cursorhold_updatetime = 400
-    end,
-  }
   -- snippets
   use "L3MON4D3/LuaSnip" -- snip engine
   -- run scripts asynchronously
@@ -118,6 +110,7 @@ return packer.startup(function(use)
   use "karb94/neoscroll.nvim"
   use {"sakhnik/nvim-gdb", branch = "devel"}
   use {'uloco/bluloco.nvim', requires = { 'rktjmp/lush.nvim' }}
+	use {'junegunn/vim-easy-align'}
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins

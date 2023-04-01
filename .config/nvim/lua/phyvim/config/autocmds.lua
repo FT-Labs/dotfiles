@@ -15,7 +15,8 @@ vim.cmd [[
 		autocmd FileType * setlocal formatoptions-=c formatoptions-=o formatoptions-=r
 		autocmd Filetype java set makeprg=javac\ -d\ %:~:h:s?src?bin?\ %
 		autocmd FileType lua setlocal tabstop=2 softtabstop=2 shiftwidth=2
-    autocmd FileType c,h setlocal tabstop=8 softtabstop=8 shiftwidth=8 tw=0 noet
+    autocmd BufEnter *.h set filetype=c
+    autocmd FileType c setlocal tabstop=8 softtabstop=8 shiftwidth=8 tw=0 noet
 	augroup end
 ]]
 
