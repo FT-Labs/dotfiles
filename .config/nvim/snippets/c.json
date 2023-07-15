@@ -8,6 +8,19 @@
     ],
     "description": "Code snippet for 'for' loop"
   },
+  "_FOREACH": {
+      "prefix": "_FOREACH",
+      "body": [
+          "#define foreach(item, array) \\",
+          "\tfor(int keep = 1, \\",
+          "\tcount = 0,\\",
+          "\tsize = sizeof (array) / sizeof *(array); \\",
+          "\tkeep && count != size; \\",
+          "\tkeep = !keep, count++) \\",
+          "\tfor(item = (array) + count; keep; keep = !keep)"
+      ],
+      "description": "foreach loop C"
+  },
   "*": {
 	  "prefix": "*",
 	  "body": ["/* $0 */"],
