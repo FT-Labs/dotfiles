@@ -49,5 +49,3 @@ alias \
 	glfsforcerefs="git push origin --force 'refs/heads/*'" \
     gpl3license="wget https://www.gnu.org/licenses/gpl-3.0.md -o LICENSE.md" \
     zcheat="zathura $ZDOTDIR/zshcheat.pdf"
-
-alias lf="/usr/bin/lfrun"
