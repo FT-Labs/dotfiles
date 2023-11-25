@@ -28,9 +28,17 @@ lfcd () {
         [ -d "$dir" ] && [ "$dir" != "$(pwd)" ] && cd "$dir"
     fi
 }
+
+function cppwd() {
+	echo -n "$PWD" | xclip -selection clipboard
+}
+zle -N cppwd
+
 bindkey -s '^r' 'lfcd\n'
 # below opens a new terminal in current dir
 bindkey -s '^t' 't\n'
+# copy present working directory to clipboard
+bindkey '^p' cppwd
 setopt chaselinks
 setopt autocd
 # change below theme if using oh-my-zsh
