@@ -49,3 +49,9 @@ alias \
 	glfsforcerefs="git push origin --force 'refs/heads/*'" \
     gpl3license="wget https://www.gnu.org/licenses/gpl-3.0.md -o LICENSE.md" \
     zcheat="zathura $ZDOTDIR/zshcheat.pdf"
+
+# Python aliases
+alias \
+	pipupdateall="pip list -o | cut -f1 -d' ' | tr " " "\n" | awk '{if(NR>=3)print}' | cut -d' ' -f1 | xargs -n1 pip install -U" \
+	pipforce="pip uninstall --break-system-packages" \
+	pipupgrade="pip install --upgrade"
