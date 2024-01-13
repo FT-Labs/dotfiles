@@ -11,4 +11,4 @@
 
 . ~/.xprofile
 
-command -v pdwm &>/dev/null && ssh-agent pdwm || ssh-agent dwm
+ssh-agent pdwm
