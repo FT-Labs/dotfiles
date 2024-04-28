@@ -14,6 +14,31 @@ plugins=(`echo $(ls $ZSH/plugins | sed -z 's/\n/ /g')`)
 setopt extendedglob
 _comp_options+=(globdots)		# Include hidden files.
 
+
+lf() {
+ueberzug_cmd=$(cat <<'EOF'
+import re
+import sys
+from ueberzug.__main__ import main
+sys.argv[0] = re.sub(r"(-script\.pyw|\.exe)?$", "", sys.argv[0])
+sys.exit(main())
+EOF
+)
+	set -e
+	if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
+		/usr/bin/lf "$@"
+	else
+		[ ! -d "$HOME/.cache/lf" ] && mkdir --parents "$HOME/.cache/lf"
+		export FIFO_UEBERZUG="$HOME/.cache/lf/ueberzug-$$"
+		mkfifo "$FIFO_UEBERZUG"
+		python3 -c "$ueberzug_cmd" layer -s <"$FIFO_UEBERZUG" -p json &
+		exec 3>"$FIFO_UEBERZUG"
+		trap "exec 3>&-;rm \"$FIFO_UEBERZUG\"" EXIT
+		/usr/bin/lf "$@" 3>&-
+	fi
+	set +e
+}
+
 phylog() {
     cat | curl -F 'f:1=<-' ix.io
 }
